@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,34 +21,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //ARROW KEYS!!! IT MOVES WITH THE ARROW KEYS
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        //WASD GOODNESS
-        if (Input.GetKey(KeyCode.W))
-        {
-            verticalInput = 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            verticalInput = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            horizontalInput = 1;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            horizontalInput = -1;
-        }
-
-        movement = new Vector2(horizontalInput, verticalInput).normalized;
-
         rb.linearVelocity = movement * moveSpeed;
 
+    }
 
-    
+    public void Move(InputAction.CallbackContext cb)
+    {
+        movement.x = cb.ReadValue<Vector2>().x;
+        movement.y = cb.ReadValue<Vector2>().y;
     }
 }
