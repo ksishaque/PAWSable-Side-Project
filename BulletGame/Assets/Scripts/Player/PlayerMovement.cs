@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
-        rb.MovePosition(rb.position + (movement * moveSpeed * Time.fixedDeltaTime));
+        rb.linearVelocity = movement * moveSpeed;
 
 
     
