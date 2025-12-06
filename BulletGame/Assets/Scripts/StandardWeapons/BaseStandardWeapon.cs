@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseWeapons : MonoBehaviour
+public abstract class BaseStandardWeapon : MonoBehaviour
 {
     private float attackTimer = 0;
     
