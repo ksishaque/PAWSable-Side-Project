@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestGun : BaseWeapons
+public class TestGun : BaseStandardWeapon
 {
     [SerializeField] private float attackSpeed = 2.0f;
     [SerializeField] private GameObject projectilePrefab = null;
