@@ -20,17 +20,25 @@ public class ProjectileLoot : BaseLoot{
 
 	//	Spawning
 	//*
-	public void SpawnEntity(Transform origin, float angleModifier, float speedModifier){
+	public void spawnEntity(Transform origin, float angleModifier = 0, float speedModifier = 1){
+		GameObject.Instantiate(projectile, origin.position, Quaternion.Euler(0, 0, angleModifier + origin.rotation.eulerAngles.z));
 	/*/
-	public BaseProjectile SpawnEntity(Transform origin, float angleModifier, float speedModifier){
+	public BaseProjectile SpawnEntity(Transform origin, float angleModifier = 0, float speedModifier = 1){
+
+		//	Variable: Spawned projectile component
+		BaseProjectile ans = GameObject.Instantiate(projectile, origin.position, Quaternion.Euler(0, 0, angleModifier + origin.rotation.eulerAngles.z)).GetComponent<BaseProjectile>();
+
+		//	Set up modifiers
+		BaseProjectile.SetUp(speedModifier);
+
+		//	Return
+		return ans;
+
 	//*/
-
-		//	Variable: Spawned weapon component
-		BaseStandardWeapon ans = GameObject.Instantiate(projectile, origin.position, Quaternion.Euler(0, 0, angleModifier)).GetComponent<BaseStandardWeapon>();
-
 	}
 
 	//	Accessors
-	public int GetMass() => mass;
+	public int getMass() => mass;
+	public float getScaledMass() => (Mathf.Pow(3, mass / 10.0f) / 18) + 0.5f;
 
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Scriptable object for standard weapons
-[CreateAssetMenu(fileName = "StandardWeaponLoot", menuName = "Loot/Standard Weapon")] public class StandardWeaponLoot : BaseLoot{
+[CreateAssetMenu(fileName = "StandardWeaponLoot", menuName = "Loot/Standard Weapon")] public class WeaponLoot : BaseLoot{
 
 	/*	Variables:
 	weapon: Weapon indicated by this loot
@@ -14,16 +14,17 @@ using UnityEngine;
 
 	//	Validation
 	private void OnValidate(){
-		if(weapon.GetComponent<BaseStandardWeapon>() == null) weapon = null;
+		if(weapon.GetComponent<BaseWeapon>() == null) weapon = null;
 	}
 
 	//	Spawning
-	public BaseStandardWeapon SpawnEntity(PlayerWeaponHandler.WeaponSlot root){
+	public BaseWeapon spawnEntity(PlayerWeaponHandler.WeaponSlot root){
 
 		//	Variable: Spawned weapon component
-		BaseStandardWeapon ans = GameObject.Instantiate(weapon, root.GetRoot()).GetComponent<BaseStandardWeapon>();
+		BaseWeapon ans = GameObject.Instantiate(weapon, root.getRoot()).GetComponent<BaseWeapon>();
 
-		//	TODO: Animations
+		//	Set up
+		ans.setUp(root.projectiles);
 
 		//	Return
 		return ans;
@@ -31,6 +32,6 @@ using UnityEngine;
 	}
 
 	//	Accessors
-	public int GetProjCount() => projCount;
+	public int getProjCount() => projCount;
 
 }

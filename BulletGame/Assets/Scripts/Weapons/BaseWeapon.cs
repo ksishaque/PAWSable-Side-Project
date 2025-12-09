@@ -1,0 +1,52 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class BaseWeapon : MonoBehaviour
+{
+    private float attackTimer = 0;
+	private List<ProjectileLoot> projectiles;
+	[HideInInspector] public float attackInterval{
+		get;
+		protected set;
+	}
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(attackTimer > 0) attackTimer -= Time.deltaTime;
+		/*
+		onShoot();
+		//*/
+    }
+
+	public void shoot() => onShoot();
+	virtual protected void onShoot(){
+		if(attackTimer <= 0){
+			fireProjectile();
+			attackTimer = attackInterval;
+		}
+	}
+
+	//	Set up
+	public void setUp(List<ProjectileLoot> projectiles){
+		this.projectiles = projectiles;
+		onSetUp();
+		attackTimer = attackInterval;
+	}
+	virtual protected void onSetUp(){}
+
+    abstract public void fireProjectile();
+	protected ProjectileLoot getProjectile(int index){
+		if(index < projectiles.Count && projectiles[index] != null) return projectiles[index];
+		//	TODO: create a "blank" projectile
+		return null;
+	}
+
+
+}
