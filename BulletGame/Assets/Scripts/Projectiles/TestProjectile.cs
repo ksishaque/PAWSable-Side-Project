@@ -11,7 +11,7 @@ using UnityEngine;
     void Start()
     {
         physics = GetComponent<Rigidbody2D>();
-        physics.linearVelocity = transform.rotation * new Vector3(0,speed,0);
+        physics.linearVelocity = transform.rotation * new Vector3(speed,0,0);
     }
 
     // Update is called once per frame

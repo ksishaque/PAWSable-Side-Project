@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9555965ec2000843871d9853444fd51, type: 3}
-  m_Name: TestBullet
+  m_Name: TestBullte
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileLoot
   rarity: 0
   projectile: {fileID: 7684355605594490202, guid: d3c72c05437e2ef48af2857faf5a5f38, type: 3}
-  desc: 
+  desc: "TEST OBJECT \u2014 DO NOT USE"
   mass: 20

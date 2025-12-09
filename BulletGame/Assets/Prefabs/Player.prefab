@@ -178,11 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c743d903d42a074d975365c94541d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
-  weaponSlots:
-  - root: {fileID: 5679545088941959192}
-    weapon: {fileID: 11400000, guid: f8a94d4c025c0d047a5efcdd9c69ba00, type: 2}
-    projectiles:
-    - {fileID: 11400000, guid: 818eec16a9bd01042ac473000185d668, type: 2}
+  input: {fileID: 1281355035219271990}
+  weaponSlots: []
 --- !u!114 &1281355035219271990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +265,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fba50adc-7da2-4aae-adce-5a068882e36f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4119c47-df9b-46f9-9d19-751dd6a84bfe
+    m_ActionName: 'Player/SwitchRight[/Keyboard/k,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15511968-f950-4dcb-a178-f61cf9555009
+    m_ActionName: 'Player/SwitchLeft[/Keyboard/j,/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 360ca388-121c-4105-9d7b-a6e2291b52e1
+    m_ActionName: 'Player/SwitchRightScroll[/Mouse/scroll/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1feaf615-8339-4e87-b0fa-1f7b3f6aadac
+    m_ActionName: 'Player/SwtichLeftScroll[/Mouse/scroll/down]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

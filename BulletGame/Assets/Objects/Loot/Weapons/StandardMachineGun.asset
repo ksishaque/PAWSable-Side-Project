@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daddba9aaa336d7498950a81a24e6314, type: 3}
-  m_Name: TestGun
-  m_EditorClassIdentifier: Assembly-CSharp::StandardWeaponLoot
+  m_Name: StandardMachineGun
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLoot
   rarity: 0
-  weapon: {fileID: 8276326837522888572, guid: 10fb5228b08818848a3d0b1496baf76f, type: 3}
-  desc: DO NOT SHIP
+  weapon: {fileID: 2351583126671403177, guid: d58846e6107a66f4586599fd90678753, type: 3}
+  desc: Standard twin fire machine gun unit. Smaller projectiles can be launched
+    at faster rates.
   projCount: 1
