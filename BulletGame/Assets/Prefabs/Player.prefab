@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
   input: {fileID: 1281355035219271990}
   weaponSlots: []
+  scrollTimeout: 5
 --- !u!114 &1281355035219271990
 MonoBehaviour:
   m_ObjectHideFlags: 0
