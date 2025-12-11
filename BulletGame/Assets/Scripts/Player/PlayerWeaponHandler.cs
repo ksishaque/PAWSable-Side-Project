@@ -18,7 +18,6 @@ public class PlayerWeaponHandler : MonoBehaviour{
 	[Header("References")]
 	//	Variable: Player input component to listen to
 	[SerializeField] private PlayerInput input;
-	private InputAction shoot;
 
 	[Header("Weapons")]
 	/*	Variables:
@@ -28,6 +27,16 @@ public class PlayerWeaponHandler : MonoBehaviour{
 	[SerializeField] private List<WeaponSlot> weaponSlots;
 	private List<BaseWeapon> activeWeapons = new List<BaseWeapon>();
 	private int curWeapon = -1;
+
+	[Header("Inputs")]
+	/*	Variables:
+	shoot: Input action for shooting
+	scroll: Interpreter for scrolling
+	scrollTimeout: Time before `scroll` resets remaining scroll input
+	*/
+	private InputAction shoot;
+	private ScrollWheelInterpreter scroll;
+	[SerializeField] private float scrollTimeout;
 
 
 	//	Validation
@@ -44,7 +53,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 		}
 
 		//	Check if `input` can be automatically set
-		if(this.input == null) input = GetComponent<PlayerInput>();
+		if(input == null) input = GetComponent<PlayerInput>();
 
 	}
 
@@ -55,29 +64,40 @@ public class PlayerWeaponHandler : MonoBehaviour{
 		//	Find `shoot`
 		shoot = input.actions.FindAction("Shoot");
 
+		//	Set up `scroll`
+		scroll = new ScrollWheelInterpreter(input);
+
 		//	Set up callbacks
-		input.actions.FindAction("SwitchRight").started += swapUp;
-		input.actions.FindAction("SwitchLeft").started += swapDown;
+		input.actions.FindAction("ShiftRight").started += cb => swapUp();
+		input.actions.FindAction("ShiftLeft").started += cb => swapDown();
+		scroll.up += swapDown;
+		scroll.down += swapUp;
 
 	}
 
 	private void OnDestroy(){
 
 		//	Clean up callbacks
-		input.actions.FindAction("SwitchRight").started -= swapUp;
-		input.actions.FindAction("SwitchLeft").started -= swapDown;
+		input.actions.FindAction("ShiftRight").started -= cb => swapUp();
+		input.actions.FindAction("ShiftLeft").started -= cb => swapDown();
 
 	}
 
 
-	//	Update for firing
+	//	Update
 	private void Update(){
+
+		//	Update firing
 		if(shoot.ReadValue<float>() > 0.5f) foreach(BaseWeapon weapon in activeWeapons) weapon.shoot();
+
+		//	Update `scroll`
+		scroll.update();
+
 	}
 
 
 	//	Input callbacks
-	private void swapUp(InputAction.CallbackContext cb){
+	private void swapUp(){
 
 		//	Put away current weapons
 		deactivateAll();
@@ -98,7 +118,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 
 	}
 
-	private void swapDown(InputAction.CallbackContext cb){
+	private void swapDown(){
 
 		//	Put away current weapons
 		deactivateAll();
@@ -128,6 +148,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 
 	public void activate(int weaponIndex){
 		if(weaponSlots[weaponIndex].weapon != null) activeWeapons.Add(weaponSlots[weaponIndex].weapon.spawnEntity(weaponSlots[weaponIndex]));
+		Debug.Log("Activate gun: " + weaponIndex);
 	}
 
 	private void activate(){
