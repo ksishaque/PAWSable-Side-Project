@@ -132,6 +132,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7150690676385803416, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150690676385803416, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150690676385803416, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01292
       objectReference: {fileID: 0}
@@ -171,11 +179,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: weaponSlots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: weaponSlots.Array.data[0].root
+      value: 
+      objectReference: {fileID: 763441531}
+    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: weaponSlots.Array.data[0].weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 98d9cc6b1a27d834fa2963c37e258201, type: 2}
+    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: weaponSlots.Array.data[0].projectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+      propertyPath: 'weaponSlots.Array.data[0].projectiles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b9f8469b0e5a6aa4fa7c3057096c43fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+--- !u!1 &763441531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5679545088941959192, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+  m_PrefabInstance: {fileID: 51910598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &815045836
 GameObject:
   m_ObjectHideFlags: 0
