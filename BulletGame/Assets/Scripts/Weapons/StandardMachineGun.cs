@@ -24,7 +24,7 @@ public class StandardMachineGun : BaseWeapon{
 
 
 	//	Fire
-	override public void fireProjectile(){
+	override protected void fireProjectile(){
 		getProjectile(0).spawnEntity(barrel1.transform);
 		getProjectile(0).spawnEntity(barrel2.transform);
 	}

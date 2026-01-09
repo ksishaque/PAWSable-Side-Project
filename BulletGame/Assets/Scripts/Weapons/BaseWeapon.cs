@@ -20,9 +20,6 @@ public abstract class BaseWeapon : MonoBehaviour
     void Update()
     {
         if(attackTimer > 0) attackTimer -= Time.deltaTime;
-		/*
-		onShoot();
-		//*/
     }
 
 	public void shoot() => onShoot();
@@ -41,7 +38,7 @@ public abstract class BaseWeapon : MonoBehaviour
 	}
 	virtual protected void onSetUp(){}
 
-    abstract public void fireProjectile();
+    abstract protected void fireProjectile();
 	protected ProjectileLoot getProjectile(int index){
 		if(index < projectiles.Count && projectiles[index] != null) return projectiles[index];
 		//	TODO: create a "blank" projectile
