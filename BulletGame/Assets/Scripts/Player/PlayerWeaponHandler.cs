@@ -142,7 +142,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 
 	//	Helpers
 	private void deactivateAll(){
-		foreach(BaseWeapon weapon in activeWeapons) Destroy(weapon.gameObject);
+		foreach(BaseWeapon weapon in activeWeapons) ObjectDestroyer.destroy(weapon.gameObject, ObjectDestroyer.Type.HIDE);
 		activeWeapons.Clear();
 	}
 

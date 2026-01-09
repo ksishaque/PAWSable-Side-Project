@@ -20,7 +20,7 @@ using UnityEngine;
 	//	Spawning
 	public BaseWeapon spawnEntity(PlayerWeaponHandler.WeaponSlot root){
 
-		//	Variable: Spawned weapon component
+		//	Variable: Return value / spawned weapon component
 		BaseWeapon ans = GameObject.Instantiate(weapon, root.getRoot()).GetComponent<BaseWeapon>();
 
 		//	Set up

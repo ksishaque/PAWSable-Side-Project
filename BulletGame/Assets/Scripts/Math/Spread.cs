@@ -2,6 +2,7 @@ using UnityEngine;
 
 public partial class Math{
 
+	//	Calculate each value when multiple values are spread within a range
 	static public float spread(int index, int maxIndex, float maxValue, float minValue, bool softEdge = false){
 
 		//	Implement soft edges

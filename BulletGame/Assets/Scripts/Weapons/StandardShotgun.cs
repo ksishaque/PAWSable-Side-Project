@@ -43,7 +43,7 @@ public class StandardShotgun : BaseWeapon{
 
 
 	//	Fire
-	override public void fireProjectile(){
+	override protected void fireProjectile(){
 		for(int i = 0; i < projPerShot; i += 1) getProjectile(0).spawnEntity(barrel.transform, Math.spread(i, projPerShot, -angleRange, angleRange, true));
 	}
 

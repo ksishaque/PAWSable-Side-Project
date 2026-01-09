@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestBullte2
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileLoot
   rarity: 0
-  projectile: {fileID: 7684355605594490202, guid: d3c72c05437e2ef48af2857faf5a5f38, type: 3}
+  projectile: {fileID: 7684355605594490202, guid: 8ffded0d32e3c6e48aba17cdaa247b64, type: 3}
   desc: "TEST OBJECT \u2014 DO NOT USE"
   mass: 5
