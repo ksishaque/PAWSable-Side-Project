@@ -4,6 +4,7 @@ using UnityEngine;
 //	Class that runs a list of actions
 public class ActionList : MonoBehaviour{
 
+	[Header("Actions")]
 	/*	Variables:
 	actions: List of actions left to run
 	timeScaled: If the action list utilizes scaled delta time
