@@ -7,9 +7,11 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        /**
         foreach (BaseLoot item in inventory)
         {        
         }
+        **/
     }
 
     public void AddItem(BaseLoot baseloot)
