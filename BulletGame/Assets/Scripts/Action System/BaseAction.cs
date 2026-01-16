@@ -103,7 +103,7 @@ using UnityEngine;
 	[Header("Timer")]
 	/*	Variables:
 	Duration: Inspector-editable initial duration
-	duration: Read-only accessible duration
+	duration: Duration of the action
 	time: Time since start of the action
 	function: Function to scale `completion` by
 	completion: Completion percentage of the action
@@ -118,10 +118,10 @@ using UnityEngine;
 		get;
 		private set;
 	} = 0;
-	[SerializeReference, SubclassSelector] private BaseFunction function = new StandardFunction();
+	[SerializeReference, SubclassSelector] private BaseFunction completionFunction = new StandardFunction();
 	protected float completion{
 		get{
-			return function.operate(time / Duration);
+			return completionFunction.operate(time / Duration);
 		}
 	}
 

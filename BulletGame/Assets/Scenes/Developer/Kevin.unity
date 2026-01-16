@@ -349,9 +349,88 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
+--- !u!1 &1079701727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079701730}
+  - component: {fileID: 1079701729}
+  - component: {fileID: 1079701728}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1079701728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079701727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa88be67dd340b46be8c0a44c89ed75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIDirector
+  plans:
+  - rid: 6269373878689071171
+  - rid: 6269373878689071172
+  delay: 1
+  durationScale: 1
+  lockInterval: 0
+  skipInterval: 5
+  maxRecency: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6269373878689071171
+      type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}
+      data:
+        weight: 1
+        pattern: {fileID: 11400000, guid: 200d4d48b96ac934485b1a7789e7d031, type: 2}
+    - rid: 6269373878689071172
+      type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}
+      data:
+        weight: 1
+        pattern: {fileID: 11400000, guid: 4a378f033253b28489589fc7f55de678, type: 2}
+--- !u!114 &1079701729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079701727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376ecfc314c50074ea19c7f40519a5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+--- !u!4 &1079701730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079701727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 226623449}
   - {fileID: 813984177}
+  - {fileID: 1079701730}

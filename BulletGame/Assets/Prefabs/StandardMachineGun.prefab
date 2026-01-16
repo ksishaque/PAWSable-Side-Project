@@ -303,26 +303,26 @@ MonoBehaviour:
       type: {class: RotateAction, ns: , asm: Assembly-CSharp}
       data:
         Duration: 0.25
-        function:
-          rid: 6269373711946088523
+        completionFunction:
+          rid: 6269373878689071173
         rotation: 0
         direction: -180
     - rid: 6269373711946088521
       type: {class: ScaleAction, ns: , asm: Assembly-CSharp}
       data:
         Duration: 0.25
-        function:
-          rid: 6269373711946088524
+        completionFunction:
+          rid: 6269373878689071174
         scale: {x: 1, y: 1}
-    - rid: 6269373711946088523
+    - rid: 6269373878689071173
       type: {class: StandardFunction, ns: , asm: Assembly-CSharp}
       data:
-        smoothIn: 1
+        smoothIn: 0
         smoothOut: 1
-    - rid: 6269373711946088524
+    - rid: 6269373878689071174
       type: {class: StandardFunction, ns: , asm: Assembly-CSharp}
       data:
-        smoothIn: 1
+        smoothIn: 0
         smoothOut: 1
 --- !u!114 &5246349997313888593
 MonoBehaviour:
@@ -357,24 +357,24 @@ MonoBehaviour:
       type: {class: RotateAction, ns: , asm: Assembly-CSharp}
       data:
         Duration: 0.25
-        function:
-          rid: 6269373711946088540
+        completionFunction:
+          rid: 6269373878689071175
         rotation: 180
         direction: -180
-    - rid: 6269373711946088540
-      type: {class: StandardFunction, ns: , asm: Assembly-CSharp}
-      data:
-        smoothIn: 1
-        smoothOut: 1
     - rid: 6269373711946088541
       type: {class: ScaleAction, ns: , asm: Assembly-CSharp}
       data:
         Duration: 0.25
-        function:
-          rid: 6269373711946088542
+        completionFunction:
+          rid: 6269373878689071176
         scale: {x: 0, y: 0}
-    - rid: 6269373711946088542
+    - rid: 6269373878689071175
       type: {class: StandardFunction, ns: , asm: Assembly-CSharp}
       data:
         smoothIn: 1
-        smoothOut: 1
+        smoothOut: 0
+    - rid: 6269373878689071176
+      type: {class: StandardFunction, ns: , asm: Assembly-CSharp}
+      data:
+        smoothIn: 1
+        smoothOut: 0
