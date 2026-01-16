@@ -11,7 +11,7 @@ public class ActionList : MonoBehaviour{
 	started: If the first action in `actions` has started
 	*/
 	[SerializeReference, SubclassSelector] private List<BaseAction> actions = new List<BaseAction>();
-	[SerializeField] bool timeScaled = true;
+	[SerializeField] private bool timeScaled = true;
 	private bool started = false;
 
 	//	Run `actions`
@@ -29,16 +29,13 @@ public class ActionList : MonoBehaviour{
 	}
 
 	//	Add to `actions`
-	public void addAction(BaseAction action){
+	public void addOriginalAction(BaseAction action){
 		actions.Add(action);
 	}
-	public void addActions(List<BaseAction> actions){
-		this.actions.AddRange(actions);
-	}
-	public void addClone(BaseAction action){
+	public void addAction(BaseAction action){
 		actions.Add(action.clone());
 	}
-	public void addClones(List<BaseAction> actions){
+	public void addActions(List<BaseAction> actions){
 		BaseAction.addClones(ref this.actions, actions);
 	}
 

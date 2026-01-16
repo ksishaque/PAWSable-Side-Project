@@ -4,7 +4,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour{
 
 	//	Variable: Singleton instance
-	static Spawner instance = null;
+	static public Spawner instance = null;
 
 	//	Timer for delayed spawning
 	private class SpawnTimer{
@@ -54,11 +54,16 @@ public class Spawner : MonoBehaviour{
 	}
 
 	//	Update `timers`
-	void Update(){
+	private void Update(){
 		for(int i = 0; i < timers.Count; i += 1) if(timers[i].update()){
 			timers.RemoveAt(i);
 			i -= 1;
 		}
+	}
+
+	//	Add a spawn
+	public void addSpawn(AISpawnPattern.Spawn spawn){
+		timers.Add(new SpawnTimer(spawn));
 	}
 
 }

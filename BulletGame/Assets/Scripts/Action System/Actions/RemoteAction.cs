@@ -37,7 +37,7 @@ using UnityEngine;
 
 		//	Add base actions
 		if(interruptTarget) target.clearActions();
-		target.addClones(actions);
+		target.addActions(actions);
 
 		//	Add remote callback, if necessary
 		if(waitForCompletion) list.Insert(1, new WaitForCallbackAction(ref target));

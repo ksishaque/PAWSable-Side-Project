@@ -10,10 +10,12 @@ using UnityEngine;
 	rotation: Final local rotation of the actor
 	direction: Direction in which the actor should rotate
 	init: Initial local rotation of the actor
+	physics: Physics component of the actor
 	*/
 	[SerializeField] private float rotation;
 	[SerializeField] private Direction direction;
 	private float init;
+	private Rigidbody2D physics;
 
 	//	Constructors
 	public RotateAction(){
@@ -47,9 +49,13 @@ using UnityEngine;
 
 		}
 
+		//	Attempt to find `physics`
+		physics = actor.GetComponent<Rigidbody2D>();
+
 	}
 	override protected void update(){
-		actor.transform.localRotation = Quaternion.Euler(0, 0, init + (rotation * completion));
+		if(physics == null) actor.transform.localRotation = Quaternion.Euler(0, 0, init + (rotation * completion));
+		else physics.MoveRotation(Quaternion.Euler(0, 0, init + (rotation * completion) - actor.transform.parent.rotation.eulerAngles.z));
 	}
 
 }

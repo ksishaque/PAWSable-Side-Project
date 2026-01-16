@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a90d3cb25bc3194fa8e3d4a9fb490e7, type: 3}
-  m_Name: TestPattern
+  m_Name: TestPattern1
   m_EditorClassIdentifier: Assembly-CSharp::AISpawnPattern
   priority:
     baseValue: 1
-    recency: -2
+    randomness: 0.5
+    recency: -0.25
     playerHealth: 0
     enemyPopulation: 0
     debugGuarantee: 0
@@ -22,15 +23,29 @@ MonoBehaviour:
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 0
     spawnPosition: {x: 2, y: 0}
+    behavior: []
+    endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 2
     spawnPosition: {x: 3, y: 2}
+    behavior: []
+    endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 2
     spawnPosition: {x: 3, y: -2}
+    behavior: []
+    endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 4
     spawnPosition: {x: 4, y: 4}
+    behavior: []
+    endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 4
     spawnPosition: {x: 4, y: -4}
+    behavior: []
+    endMode: 1
+  duration: 12
+  references:
+    version: 2
+    RefIds: []

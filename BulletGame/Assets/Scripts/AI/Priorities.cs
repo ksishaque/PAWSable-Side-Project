@@ -2,9 +2,6 @@ using UnityEngine;
 
 abstract public partial class AIBasePlan{
 
-	//TODO: Put this variable is some global gamerule set. In the future, this should change based on what node is active. For example, bosses should have significantly less recency, while longer combats should have larger recency
-	public const int MAX_RECENCY = 10;
-
 	//	Class for tracking the weight of each priority type
 	[System.Serializable] public class PrioritySet{
 
@@ -16,6 +13,7 @@ abstract public partial class AIBasePlan{
 		debugGuarantee: If this pattern should be (basically) guaranteed, for debugging purposes
 		*/
 		[SerializeField] private float baseValue;
+		[SerializeField] private float randomness;
 		[SerializeField] private float recency;
 		[SerializeField] private float playerHealth;
 		[SerializeField] private float enemyPopulation;
@@ -26,12 +24,14 @@ abstract public partial class AIBasePlan{
 		//	Constructor
 		public PrioritySet(){
 			baseValue = 1;
+			randomness = 0.5f;
 			recency = -2;
 			playerHealth = 0;
 			enemyPopulation = 0;
 		}
-		public PrioritySet(float baseValue, float recency, float playerHealth, float enemyPopulation){
+		public PrioritySet(float baseValue, float randomness, float recency, float playerHealth, float enemyPopulation){
 			this.baseValue = baseValue;
+			this.randomness = randomness;
 			this.recency = recency;
 			this.playerHealth = playerHealth;
 			this.enemyPopulation = enemyPopulation;
@@ -43,8 +43,11 @@ abstract public partial class AIBasePlan{
 			//	Variable: Return value / total priority value to use
 			float ans = baseValue;
 
+			//	Add `randomness`
+			ans +=  UnityEngine.Random.Range(0, randomness);
+
 			//	Add `recency`
-			ans += recency * pattern.recency / MAX_RECENCY;
+			if(AIDirector.instance.getMaxRecency() > 0) ans += recency * pattern.recency / AIDirector.instance.getMaxRecency();
 
 #if UNITY_EDITOR
 			//	Add `debugGuarantee`

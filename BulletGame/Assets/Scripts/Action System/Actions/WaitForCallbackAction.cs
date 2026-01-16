@@ -33,7 +33,7 @@ public class WaitForCallbackAction : BaseAction{
 		actions.Add(new CallbackAction(this));
 	}
 	public WaitForCallbackAction(ref ActionList actions){
-		actions.addAction(new CallbackAction(this));
+		actions.addOriginalAction(new CallbackAction(this));
 	}
 	public WaitForCallbackAction(out BaseAction callback){
 		callback = new CallbackAction(this);
