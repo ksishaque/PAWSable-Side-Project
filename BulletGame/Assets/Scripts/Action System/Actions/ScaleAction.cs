@@ -3,6 +3,7 @@ using UnityEngine;
 //	Action for scaling the actor
 [System.Serializable] public class ScaleAction : BaseTimedAction{
 
+	[Header("Scaling")]
 	/*	Variables:
 	scale: Final local scale of the actor
 	init: Initial local scale of the actor

@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour{
 
-	//	Variable: Singleton instance
-	static public Spawner instance = null;
-
 	//	Timer for delayed spawning
 	private class SpawnTimer{
 
@@ -40,6 +37,9 @@ public class Spawner : MonoBehaviour{
 		}
 
 	}
+
+	//	Variable: Singleton instance
+	static public Spawner instance = null;
 
 	//	Variable: List of spawn timers to manage
 	private List<SpawnTimer> timers = new List<SpawnTimer>();
