@@ -7,7 +7,6 @@ public class AIBehaviorList : ActionList{
 	//	Enumeration for different ways the behavior list could end
 	public enum EndMode{ENDLESS, DESPAWN, STOP}
 
-#if UNITY_EDITOR
 	[Header("Projection")]
 	/*	Variables:
 	projectionColor: Color of projected path and image
@@ -27,7 +26,6 @@ public class AIBehaviorList : ActionList{
 		Gizmos.color = projectionColor;
 		Gizmos.DrawWireSphere(transform.position, projectionDiameter / 2);
 	}
-#endif
 
 	//	Add behaviors
 	public void addBehaviors(List<BaseBehavior> behaviors, bool clearActions = true, EndMode endMode = EndMode.STOP){
@@ -58,7 +56,7 @@ public class AIBehaviorList : ActionList{
 				foreach(BaseBehavior behavior in behaviors) addAction(behavior);
 
 				//	Add despawning action
-				addOriginalAction(new DestroyAction(ObjectDestroyer.Type.DESPAWN));
+				if(endMode == EndMode.DESPAWN) addOriginalAction(new DestroyAction(ObjectDestroyer.Cause.DESPAWN));
 
 			}
 			

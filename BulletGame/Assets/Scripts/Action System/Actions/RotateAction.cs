@@ -6,6 +6,7 @@ using UnityEngine;
 	//	Direction in which the actor should rotate
 	private enum Direction{STRAIGHT = 360, CLOCKWISE = -180, COUNTERCLOCKWISE = 180, FASTEST = 0};
 
+	[Header("Rotating")]
 	/*	Variables:
 	rotation: Final local rotation of the actor
 	direction: Direction in which the actor should rotate
@@ -54,8 +55,7 @@ using UnityEngine;
 
 	}
 	override protected void update(){
-		if(physics == null) actor.transform.localRotation = Quaternion.Euler(0, 0, init + (rotation * completion));
-		else physics.MoveRotation(Quaternion.Euler(0, 0, init + (rotation * completion) - actor.transform.parent.rotation.eulerAngles.z));
+		Physics.setLocalRotation(actor, physics, init + (rotation * completion));
 	}
 
 }

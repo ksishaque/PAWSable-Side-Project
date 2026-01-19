@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Type.DEATH);
+            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DEATH);
         }
         
 

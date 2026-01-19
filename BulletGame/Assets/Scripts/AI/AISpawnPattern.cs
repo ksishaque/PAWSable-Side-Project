@@ -7,16 +7,23 @@ using UnityEngine;
 	//	Class representing a spawned enemy, with timing and pathing
 	[System.Serializable] public class Spawn{
 
+		[Header("Prefab")]
+		//	Variable: Prefab of the enemy to spawn
+		[SerializeField] private GameObject enemy;
+
+		[Header("Spawning")]
 		/*	Variables:
-		enemy: Prefab of the enemy to spawn
 		delay: Time before the enemy spawns
 		spawnPosition: Position at which the enemy should spawn
+		*/
+		[SerializeField] private float delay = 0;
+		[SerializeField] private Vector2 spawnPosition = new Vector2(5, 0);
+
+		[Header("Behavior")]
+		/*	Variables:
 		behavior: Behavior/path to set for the spawned enemy
 		endMode: Type of ending to use
 		*/
-		[SerializeField] private GameObject enemy;
-		[SerializeField] private float delay = 0;
-		[SerializeField] private Vector2 spawnPosition = new Vector2(5, 0);
 		[SerializeReference, SubclassSelector] private List<BaseBehavior> behavior = new List<BaseBehavior>();
 		[SerializeField] private AIBehaviorList.EndMode endMode = AIBehaviorList.EndMode.ENDLESS;
 

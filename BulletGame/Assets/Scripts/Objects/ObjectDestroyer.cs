@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(ActionList))] public class ObjectDestroyer : MonoBehaviour{
 
 	//	Types of destruction
-	public enum Type{DEFAULT, DEATH, HIDE, DESPAWN}
+	public enum Cause{DEFAULT, DEATH, HIDE, DESPAWN}
 
 	//	Class that assigns a set of actions to run upon a certain type of destruction
 	[System.Serializable] private class OnDestroyLayer{
@@ -15,7 +15,7 @@ using UnityEngine;
 		type: Type of death to respond to
 		actions: Set of actions to respond with
 		*/
-		public Type type = Type.DEATH;
+		public Cause type = Cause.DEATH;
 		[SerializeReference, SubclassSelector] public List<BaseAction> actions;
 
 	}
@@ -37,7 +37,7 @@ using UnityEngine;
 	[SerializeField] private List<OnDestroyLayer> onDestroyActions = new List<OnDestroyLayer>();
 
 	//	Destruction
-	static public void destroy(GameObject obj, Type type = Type.DEFAULT){
+	static public void destroy(GameObject obj, Cause type = Cause.DEFAULT){
 
 		//	Variable: Object destroyer to run
 		ObjectDestroyer destroyer = obj.GetComponent<ObjectDestroyer>();
@@ -54,7 +54,7 @@ using UnityEngine;
 	}
 
 	//	Helpers
-	private void destroy(Type type){
+	private void destroy(Cause type){
 
 		//	Variable: Action list found while destroying self
 		ActionList actionList = destroyInner(type);
@@ -74,7 +74,7 @@ using UnityEngine;
 		actionList.addOriginalAction(new DestroyAction());
 
 	}
-	private ActionList destroyInner(Type type){
+	private ActionList destroyInner(Cause type){
 
 		//	Check if there are any destroy layers
 		if(onDestroyActions.Count < 1) return GetComponent<ActionList>();
@@ -92,8 +92,8 @@ using UnityEngine;
 			if(onDestroyActions.Count <= i){
 
 				//	Check if type can be switched to `DEFAULT`
-				if(type == Type.DEFAULT) return GetComponent<ActionList>();
-				return destroyInner(Type.DEFAULT);
+				if(type == Cause.DEFAULT) return GetComponent<ActionList>();
+				return destroyInner(Cause.DEFAULT);
 
 			}
 

@@ -19,7 +19,7 @@ public class DamageHandler : MonoBehaviour
 
         if (pierce <= 0)
         {
-            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Type.DESPAWN);
+            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DESPAWN);
         }
 
     }

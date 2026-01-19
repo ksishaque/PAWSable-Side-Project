@@ -8,29 +8,29 @@ using UnityEngine;
 	type: Type of destruction to use
 	*/
 	[SerializeField] private GameObject target;
-	[SerializeField] private ObjectDestroyer.Type type;
+	[SerializeField] private ObjectDestroyer.Cause cause;
 
 	//	Constructors
 	public DestroyAction(){
 		target = null;
-		type = ObjectDestroyer.Type.DEFAULT;
+		cause = ObjectDestroyer.Cause.DEFAULT;
 	}
-	public DestroyAction(ObjectDestroyer.Type type){
+	public DestroyAction(ObjectDestroyer.Cause cause){
 		target = null;
-		this.type = type;
+		this.cause = cause;
 	}
-	public DestroyAction(GameObject target, ObjectDestroyer.Type type = ObjectDestroyer.Type.DEFAULT){
+	public DestroyAction(GameObject target, ObjectDestroyer.Cause cause = ObjectDestroyer.Cause.DEFAULT){
 		this.target = target;
-		this.type = type;
+		this.cause = cause;
 	}
 
 	//	Overrides
 	override public BaseAction clone(){
-		return new DestroyAction(target, type);
+		return new DestroyAction(target, cause);
 	}
 	override public void update(ref float remainingTime){
-		if(target == null) ObjectDestroyer.destroy(actor, type);
-		else ObjectDestroyer.destroy(target, type);
+		if(target == null) ObjectDestroyer.destroy(actor, cause);
+		else ObjectDestroyer.destroy(target, cause);
 	}
 
 }
