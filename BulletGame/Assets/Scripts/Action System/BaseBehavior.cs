@@ -8,6 +8,18 @@ using UnityEngine;
 		return false;
 	}
 
+	//	Validate
+	virtual public bool forceEnd() => false;
+
+	//	Draw preview
+	abstract public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless = false);
+	protected void drawImage(Vector2 position, float imageRadius){
+		Gizmos.DrawSphere(position, imageRadius);
+	}
+	protected void drawDurationImage(Vector2 position, float imageRadius){
+		Gizmos.DrawWireCube(position, new Vector3(imageRadius * 2, imageRadius * 2, 0));
+	}
+
 }
 
 //	Action for timed enemy movement
@@ -93,12 +105,13 @@ using UnityEngine;
 			if(remainingTime >= 0){
 
 				//	Update position
-				updatePos(getFinalPosition(duration, spentTime - remainingTime));
+				if(runtimePrediction()) updatePos(predictPosition(origin, duration));
+				else updatePos(getPosition(spentTime - remainingTime));
 
 				//	Reset rotation and scale if necessary
 				if(reset){
-					actor.transform.localScale = new Vector3(origSca.x, origSca.y, actor.transform.localScale.z);
-					Physics.setLocalRotation(actor, physics, origRot);
+					if(flip) actor.transform.localScale = new Vector3(origSca.x, origSca.y, actor.transform.localScale.z);
+					if(rotate) Physics.setLocalRotation(actor, physics, origRot);
 				}
 
 			}
@@ -112,6 +125,47 @@ using UnityEngine;
 	sealed override public bool setEndless(bool endless){
 		this.endless = endless;
 		return true;
+	}
+	sealed override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){
+
+		/*	Variables:
+		totalTime: Total amount of time simulated since the start of the preview
+		totalDuration: Total amount of time to simulate by the end
+		newPos: Next position along the simulated path
+		start: Position at which the simulated path starts
+		*/
+		float totalTime = AISpawnPatternEditor.getTimeStep(), totalDuration = duration;
+		Vector2 newPos, start = position;
+
+		//	Update `totalDuration` based on `endless`
+		if(endless) totalDuration = AISpawnPatternEditor.getEndlessDuration();
+
+		//	Draw the path
+		while(totalTime < totalDuration){
+
+			//	Find `newPos` and draw path
+			newPos = predictPosition(start, totalTime);
+			Gizmos.DrawLine(position, newPos);
+
+			//	Increment `totalTime` and update `position`
+			totalTime += AISpawnPatternEditor.getTimeStep();
+			position = newPos;
+
+		}
+
+		//	Draw the final step and finalize `position`
+		newPos = predictPosition(start, totalDuration);
+		Gizmos.DrawLine(position, newPos);
+		position = newPos;
+
+		//	Draw the images, if necessary
+		if(timeUntilImage < totalDuration && timeUntilImage >= 0) drawImage(predictPosition(start, timeUntilImage), imageRadius);
+		if(timeUntilDurationImage < totalDuration && timeUntilDurationImage >= 0) drawDurationImage(predictPosition(start, timeUntilDurationImage), imageRadius);
+
+		//	Finalize times
+		timeUntilImage -= duration;
+		timeUntilDurationImage -= duration;
+
 	}
 
 	//	Helper function for updating position
@@ -152,6 +206,9 @@ using UnityEngine;
 	virtual protected Vector2 getVelocity(float dt){
 		return new Vector2(0, 0);
 	}
-	abstract protected Vector2 getFinalPosition(float duration, float dt);
+
+	//	Predict position
+	abstract protected Vector2 predictPosition(Vector2 start, float duration);
+	virtual protected bool runtimePrediction() => true;
 
 }

@@ -16,9 +16,9 @@ public class AIBehaviorList : ActionList{
 	[SerializeField] private float projectionDiameter = 0.5f;
 
 	//	Set up color and access `projectionDiameter`
-	public float setUpGizmos(){
+	public float setUpPreview(){
 		Gizmos.color = projectionColor;
-		return projectionDiameter;
+		return projectionDiameter / 2;
 	}
 
 	//	Preview `projectionDiameter`
@@ -33,13 +33,11 @@ public class AIBehaviorList : ActionList{
 		//	Clear actions
 		if(clearActions) base.clearActions();
 
-		//	Add behaviors
-		if(behaviors.Count > 0){
+		//	Check `endMode`
+		if(endMode == EndMode.ENDLESS){
+			if(behaviors.Count > 0){
 
-			//	Check endmode
-			if(endMode == EndMode.ENDLESS){
-
-				//	Add all but one
+				//	Add all but one normally
 				for(int i = 0; i < behaviors.Count - 1; i += 1) addAction(behaviors[i]);
 
 				//	Variable: Last action to add
@@ -50,16 +48,15 @@ public class AIBehaviorList : ActionList{
 				addOriginalAction(behavior);
 
 			}
-			else{
+		}
+		else{
 
-				//	Add behaviors
-				foreach(BaseBehavior behavior in behaviors) addAction(behavior);
+			//	Add behaviors
+			foreach(BaseBehavior behavior in behaviors) addAction(behavior);
 
-				//	Add despawning action
-				if(endMode == EndMode.DESPAWN) addOriginalAction(new DestroyAction(ObjectDestroyer.Cause.DESPAWN));
+			//	Add despawning action
+			if(endMode == EndMode.DESPAWN) addOriginalAction(new DestroyAction(ObjectDestroyer.Cause.DESPAWN));
 
-			}
-			
 		}
 
 	}

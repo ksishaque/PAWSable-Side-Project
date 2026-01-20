@@ -20,8 +20,8 @@ using UnityEngine;
 		return new MoveConstantBehavior(this);
 	}
 	override protected Vector2 getVelocity(float dt) => velocity.get();
-	override protected Vector2 getFinalPosition(float duration, float dt){
-		return origin + (duration * velocity.get());
+	override protected Vector2 predictPosition(Vector2 start, float duration){
+		return start + (duration * velocity.get());
 	}
 
 }
