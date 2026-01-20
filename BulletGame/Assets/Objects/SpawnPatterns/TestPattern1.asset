@@ -24,57 +24,60 @@ MonoBehaviour:
     delay: 0
     spawnPosition: {x: 10, y: 0}
     behavior:
-    - rid: 6269373948253700163
+    - rid: 6269373971478610601
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 1
     spawnPosition: {x: 10, y: 2}
     behavior:
-    - rid: 6269373948253700162
+    - rid: 6269373971478610602
     endMode: 2
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 1
     spawnPosition: {x: 10, y: -2}
     behavior:
-    - rid: 6269373948253700164
+    - rid: 6269373971478610603
     endMode: 1
   duration: 12
   references:
     version: 2
     RefIds:
-    - rid: 6269373948253700162
+    - rid: 6269373971478610601
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 10
         flip: 1
         rotate: 0
+        reset: 0
         velocity:
-          rid: 6269373948253700172
-    - rid: 6269373948253700163
+          rid: 6269373971478610604
+    - rid: 6269373971478610602
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 10
         flip: 1
         rotate: 0
+        reset: 0
         velocity:
-          rid: 6269373948253700171
-    - rid: 6269373948253700164
+          rid: 6269373971478610605
+    - rid: 6269373971478610603
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 10
         flip: 1
         rotate: 0
+        reset: 0
         velocity:
-          rid: 6269373948253700173
-    - rid: 6269373948253700171
+          rid: 6269373971478610606
+    - rid: 6269373971478610604
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:
         vector: {x: -1, y: 0}
-    - rid: 6269373948253700172
+    - rid: 6269373971478610605
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:
         vector: {x: -1, y: 0}
-    - rid: 6269373948253700173
+    - rid: 6269373971478610606
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:
         vector: {x: -1, y: 0}

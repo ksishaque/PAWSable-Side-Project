@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //	Class representing a spawn pattern
@@ -27,9 +28,77 @@ using UnityEngine;
 		[SerializeReference, SubclassSelector] private List<BaseBehavior> behavior = new List<BaseBehavior>();
 		[SerializeField] private AIBehaviorList.EndMode endMode = AIBehaviorList.EndMode.ENDLESS;
 
-		//	Validate `enemy`
+		//	Validate and preview
 		public void validate(){
+
+			//	Validate `enemy`
 			if(enemy.GetComponent<AIBehaviorList>() == null) enemy = null;
+
+			//	Variable: If the list of behaviors should continue
+			bool end = false;
+
+			//	Validate `behavior`
+			for(int i = 0; i < behavior.Count; i += 1){
+
+				//	Check `end`
+				if(end){
+					behavior.RemoveAt(i);
+					i -= 1;
+				}
+
+				//	Remove if the list does not continue
+				else end = behavior[i].forceEnd();
+
+			}
+
+		}
+		public void preview(float imageTime, float duration){
+
+			//	Validate, to be safe
+			validate();
+			if(enemy == null) return;
+
+			/*	Variables:
+			radius: Radius of `enemy`
+			position: Current position of the preview
+			*/
+			float radius = enemy.GetComponent<AIBehaviorList>().setUpPreview();
+			Vector2 position = spawnPosition;
+
+			//	Draw spawn point and set up times
+			Gizmos.DrawWireSphere(spawnPosition, radius);
+			imageTime -= delay;
+			duration -= delay;
+
+			//	Check `endMode`
+			if(endMode == AIBehaviorList.EndMode.ENDLESS){
+				if(behavior.Count > 0){
+
+					//	Preview all but one normally
+					for(int i = 0; i < behavior.Count - 1; i += 1) behavior[i].drawPreview(ref position, ref imageTime, ref duration, radius);
+
+					//	Preview the last one endlessly
+					behavior.Last().drawPreview(ref position, ref imageTime, ref duration, radius, true);
+
+				}
+			}
+			else{
+
+				//	Preview each behavior node
+				foreach(BaseBehavior behaviorNode in behavior) behaviorNode.drawPreview(ref position, ref imageTime, ref duration, radius);
+
+				//	Draw the end point, if necessary
+				if(endMode == AIBehaviorList.EndMode.DESPAWN){
+					Gizmos.DrawLine(new Vector3(position.x + radius, position.y + radius, 0), new Vector3(position.x - radius, position.y - radius, 0));
+					Gizmos.DrawLine(new Vector3(position.x - radius, position.y + radius, 0), new Vector3(position.x + radius, position.y - radius, 0));
+				}
+				else{
+					if(imageTime >= 0) Gizmos.DrawSphere(position, radius);
+					if(duration >= 0) Gizmos.DrawWireCube(position, new Vector3(radius * 2, radius * 2, 0));
+				}
+
+			}
+
 		}
 
 		//	Spawn `enemy`
@@ -85,5 +154,21 @@ using UnityEngine;
 	private void OnValidate(){
 		foreach(Spawn spawn in spawns) spawn.validate();
 	}
+
+	//	Update from custom editor
+	public void edit(List<Spawn> spawns, float duration){
+
+		//	Update `spawns` and `duration`
+		this.spawns = spawns;
+		this.duration = duration;
+
+		//	Tell the editor to save
+		UnityEditor.EditorUtility.SetDirty(this);
+
+	}
+
+	//	Accessor
+	public List<Spawn> getSpawns() => spawns;
+	public float getDuration() => duration;
 
 }

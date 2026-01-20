@@ -32,5 +32,7 @@ using UnityEngine;
 		if(target == null) ObjectDestroyer.destroy(actor, cause);
 		else ObjectDestroyer.destroy(target, cause);
 	}
+	override public bool forceEnd() => true;
+	override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){}
 
 }
