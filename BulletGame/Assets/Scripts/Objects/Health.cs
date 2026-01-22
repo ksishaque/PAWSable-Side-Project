@@ -1,25 +1,33 @@
 using UnityEngine;
 
 public class Health : MonoBehaviour
-{
-    [SerializeField] private float maxHealth = 10; 
-    [SerializeField] private float currentHealth = 10;
+{ 
+    [SerializeField] private float maxHealth = 10;
+    private float currentHealth;
+    [SerializeField] private Type type = Type.ENEMY;
 
+   [System.Flags] public enum Type
+    {
+        NONE = 0,
+        PLAYER = 1 << 0,
+        ENEMY = 1 << 1,
+    }
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        // Player Bullet && Enemy Collision 
-        Debug.Log("Collision Detected");
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
-        if (collider.gameObject.layer == 7)
-        {
-            currentHealth -= 1;
-        }
+    public Type getType() => type;
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
             ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DEATH);
         }
-        
-
     }
+
 }
