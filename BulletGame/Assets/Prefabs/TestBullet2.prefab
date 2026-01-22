@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 3934692356497374461}
   - component: {fileID: 3551145353760533588}
   - component: {fileID: -5783387294754541413}
+  - component: {fileID: 9009733418568861928}
   m_Layer: 7
   m_Name: TestBullet2
   m_TagString: Untagged
@@ -217,3 +218,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
   collider: {fileID: 3551145353760533588}
   bounds: 2
+--- !u!114 &9009733418568861928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
+  damage: 10000000
+  pierce: -1
+  affects: 2

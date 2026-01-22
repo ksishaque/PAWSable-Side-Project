@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 390517230}
   - component: {fileID: 390517229}
   - component: {fileID: 390517228}
+  - component: {fileID: 390517231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -211,6 +212,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390517231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390517227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &731320145
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,64 +309,64 @@ MonoBehaviour:
     delay: 0
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610576
-    - rid: 6269373971478610577
-    - rid: 6269373971478610578
+    - rid: 6267784129198424280
+    - rid: 6267784129198424281
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 0.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610579
-    - rid: 6269373971478610580
-    - rid: 6269373971478610578
+    - rid: 6267784129198424283
+    - rid: 6267784129198424284
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 1
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610581
-    - rid: 6269373971478610582
-    - rid: 6269373971478610578
+    - rid: 6267784129198424285
+    - rid: 6267784129198424286
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 1.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610583
-    - rid: 6269373971478610584
-    - rid: 6269373971478610578
+    - rid: 6267784129198424287
+    - rid: 6267784129198424288
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 2
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610585
-    - rid: 6269373971478610586
-    - rid: 6269373971478610578
+    - rid: 6267784129198424289
+    - rid: 6267784129198424290
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 2.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610587
-    - rid: 6269373971478610588
-    - rid: 6269373971478610578
+    - rid: 6267784129198424291
+    - rid: 6267784129198424292
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 3
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610589
-    - rid: 6269373971478610590
-    - rid: 6269373971478610578
+    - rid: 6267784129198424293
+    - rid: 6267784129198424294
+    - rid: 6267784129198424282
     endMode: 0
   - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
     delay: 3.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 6269373971478610591
-    - rid: 6269373971478610578
+    - rid: 6267784129198424295
+    - rid: 6267784129198424282
     endMode: 0
   duration: 18
   timeStep: 0.008333334
@@ -330,7 +375,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6269373971478610576
+    - rid: 6267784129198424280
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -338,12 +383,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 6269373971478610592
-    - rid: 6269373971478610577
+          rid: 6267784129198424296
+    - rid: 6267784129198424281
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 3.5
-    - rid: 6269373971478610578
+    - rid: 6267784129198424282
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -351,8 +396,8 @@ MonoBehaviour:
         rotate: 0
         reset: 1
         velocity:
-          rid: 6269373971478610593
-    - rid: 6269373971478610579
+          rid: 6267784129198424297
+    - rid: 6267784129198424283
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -360,12 +405,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 6269373971478610594
-    - rid: 6269373971478610580
+          rid: 6267784129198424298
+    - rid: 6267784129198424284
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 3
-    - rid: 6269373971478610581
+    - rid: 6267784129198424285
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -373,12 +418,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 6269373971478610595
-    - rid: 6269373971478610582
+          rid: 6267784129198424299
+    - rid: 6267784129198424286
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 2.5
-    - rid: 6269373971478610583
+    - rid: 6267784129198424287
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -386,12 +431,12 @@ MonoBehaviour:
         rotate: 0
         reset: 1
         velocity:
-          rid: 6269373971478610596
-    - rid: 6269373971478610584
+          rid: 6267784129198424300
+    - rid: 6267784129198424288
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 2
-    - rid: 6269373971478610585
+    - rid: 6267784129198424289
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -399,12 +444,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 6269373971478610597
-    - rid: 6269373971478610586
+          rid: 6267784129198424301
+    - rid: 6267784129198424290
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 1.5
-    - rid: 6269373971478610587
+    - rid: 6267784129198424291
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -412,12 +457,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 6269373971478610598
-    - rid: 6269373971478610588
+          rid: 6267784129198424302
+    - rid: 6267784129198424292
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
-    - rid: 6269373971478610589
+    - rid: 6267784129198424293
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -425,12 +470,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 6269373971478610599
-    - rid: 6269373971478610590
+          rid: 6267784129198424303
+    - rid: 6267784129198424294
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 0.5
-    - rid: 6269373971478610591
+    - rid: 6267784129198424295
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -438,47 +483,47 @@ MonoBehaviour:
         rotate: 0
         reset: 1
         velocity:
-          rid: 6269373971478610600
-    - rid: 6269373971478610592
+          rid: 6267784129198424304
+    - rid: 6267784129198424296
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: 0, y: 1}
         magnitude: 3
-    - rid: 6269373971478610593
+    - rid: 6267784129198424297
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:
         vector: {x: -1, y: 0}
-    - rid: 6269373971478610594
+    - rid: 6267784129198424298
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: 1, y: 1}
         magnitude: 3
-    - rid: 6269373971478610595
+    - rid: 6267784129198424299
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: 1, y: 0}
         magnitude: 3
-    - rid: 6269373971478610596
+    - rid: 6267784129198424300
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: 1, y: -1}
         magnitude: 3
-    - rid: 6269373971478610597
+    - rid: 6267784129198424301
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: 0, y: -1}
         magnitude: 3
-    - rid: 6269373971478610598
+    - rid: 6267784129198424302
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: -1, y: -1}
         magnitude: 3
-    - rid: 6269373971478610599
+    - rid: 6267784129198424303
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: -1, y: 0}
         magnitude: 3
-    - rid: 6269373971478610600
+    - rid: 6267784129198424304
       type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
       data:
         direction: {x: -1, y: 1}

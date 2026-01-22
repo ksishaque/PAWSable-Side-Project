@@ -216,7 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
+  damage: 1
   pierce: 1
+  affects: 2
 --- !u!114 &3465725313669367306
 MonoBehaviour:
   m_ObjectHideFlags: 0
