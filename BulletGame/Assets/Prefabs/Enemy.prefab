@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3061749655092662015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2367843530334849778}
+  m_Layer: 0
+  m_Name: Barrel1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2367843530334849778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3061749655092662015}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6874231149028043702}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3300506733405919651
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,6 +44,7 @@ GameObject:
   - component: {fileID: 5566024281723533328}
   - component: {fileID: 2304103580636588700}
   - component: {fileID: 8522200324776300638}
+  - component: {fileID: 2534629779635227407}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -36,6 +68,7 @@ Transform:
   - {fileID: 4392313877744442578}
   - {fileID: 1921883650593519684}
   - {fileID: 6705954137242010626}
+  - {fileID: 2367843530334849778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5542031557820679872
@@ -87,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
   maxHealth: 10
-  currentHealth: 10
+  type: 2
 --- !u!114 &2304103580636588700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +154,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
   collider: {fileID: 5542031557820679872}
   bounds: 1
+--- !u!114 &2534629779635227407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300506733405919651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20b5403dad9224428f4a2d447ae0e63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
+  barrel1: {fileID: 3061749655092662015}
+  projectile: {fileID: 3027774325534135063, guid: ec1bf175f46fe314290e758805bfdf8a, type: 3}
+  attackInterval: 1
 --- !u!1 &5764988186132961648
 GameObject:
   m_ObjectHideFlags: 0
