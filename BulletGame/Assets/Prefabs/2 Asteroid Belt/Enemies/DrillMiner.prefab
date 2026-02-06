@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7928969255536822707}
   - component: {fileID: -5861093911066426482}
+  - component: {fileID: 2014418282166171635}
   m_Layer: 0
   m_Name: DrillMiner
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 447787907
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2387350858834263329, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
@@ -90,3 +91,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2014418282166171635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1347ed2479ac84f4c9b3f376921af44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteAnimator
+  frameRate: 8
+  layers:
+  - renderer: {fileID: -5861093911066426482}
+    frames:
+    - {fileID: 2387350858834263329, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
+    - {fileID: 90159223660372620, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
+    - {fileID: 6715373034654554454, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
+    - {fileID: -5429878846525375592, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
+    updateRate: 1
