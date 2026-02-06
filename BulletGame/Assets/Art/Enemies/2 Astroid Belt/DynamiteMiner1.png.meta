@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 0c57fa045f049e848a6fb38993ab8546
+guid: 2ca5e7e11941fe4498b0ff3d879456e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2387350858834263329
-    second: DrillMiner_0
-  - first:
-      213: 90159223660372620
-    second: DrillMiner_1
-  - first:
-      213: 6715373034654554454
-    second: DrillMiner_2
-  - first:
-      213: -5429878846525375592
-    second: DrillMiner_3
+      213: -6598022201239354207
+    second: DynamiteMiner1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,56 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DrillMiner_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 12d3a0715f2912120800000000000000
-      internalID: 2387350858834263329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DrillMiner_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c826083165f404100800000000000000
-      internalID: 90159223660372620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DrillMiner_2
+      name: DynamiteMiner1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 16
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -168,19 +115,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65952d8023cc13d50800000000000000
-      internalID: 6715373034654554454
+      spriteID: 1a4ccfa04cd1f64a0800000000000000
+      internalID: -6598022201239354207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrillMiner_3
+      name: DynamiteMiner1_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 0
-        width: 32
+        width: 16
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -188,10 +135,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 89b727335f135a4b0800000000000000
-      internalID: -5429878846525375592
+      spriteID: 4876b147dad05f644915bfc53d98b9a3
+      internalID: -879187122
       vertices: []
       indices: 
       edges: []
@@ -200,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: be6fc8ceb574b1a4cbebcf89d9675275
+    spriteID: eeda92ea029a49b45b6f154326abf4f1
     internalID: 0
     vertices: []
     indices: 
@@ -210,12 +157,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":2.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      DrillMiner_0: 2387350858834263329
-      DrillMiner_1: 90159223660372620
-      DrillMiner_2: 6715373034654554454
-      DrillMiner_3: -5429878846525375592
+      DynamiteMiner1_0: -6598022201239354207
+      DynamiteMiner1_1: -879187122
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
