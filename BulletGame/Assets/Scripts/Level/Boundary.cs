@@ -3,6 +3,12 @@ using UnityEngine;
 //	Class that tracks screen-based boundaries
 public class Boundary : MonoBehaviour{
 
+	//	Variable: Far-out location that can be used as a `null`-like vector
+	static public Vector2 VECTOR_NULL{
+		get;
+		private set;
+	} = new Vector2(1000000, 1000000);
+
 	//	Variable: Singleton instance
 	static public Boundary instance = null;
 
@@ -14,7 +20,7 @@ public class Boundary : MonoBehaviour{
 	*/
 	[SerializeField] private Vector2 playerBounds = new Vector2(80.0f / 9, 5);
 	[SerializeField] private Vector2 enemyBounds = new Vector2(98.0f / 9, 7);
-	[SerializeField] private Vector2 projectileBounds = new Vector2(107.0f / 9, 8);
+	[SerializeField] private Vector2 projectileBounds = new Vector2(169.0f / 18, 5.5f);
 	[SerializeField] private Vector2 screenBounds = new Vector2(80.0f / 9, 5);
 
 	//	Manage `instance`

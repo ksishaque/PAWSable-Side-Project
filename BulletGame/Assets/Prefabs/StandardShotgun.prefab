@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 2800925214771285206}
   - component: {fileID: 3559649919686132406}
   - component: {fileID: 3042696825081395977}
+  - component: {fileID: 6242052446578526723}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -233,14 +234,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6277551277296025878}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4122338805615410769}
   m_Father: {fileID: 5904282417867279388}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3559649919686132406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,3 +349,20 @@ MonoBehaviour:
       data:
         smoothIn: 1
         smoothOut: 0
+--- !u!114 &6242052446578526723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277551277296025878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3306b6a5c4d4f3c4a95a297fc5d9befd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectInitializer
+  position: {x: 0, y: 0}
+  rotation: 180
+  rotationAsOffset: 0
+  scale: {x: 0, y: 0}
+  scaleAsOffset: 0

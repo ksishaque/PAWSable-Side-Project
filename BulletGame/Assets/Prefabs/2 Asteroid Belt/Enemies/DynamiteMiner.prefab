@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7381997219393684308}
   - component: {fileID: 4119959967483970934}
-  m_Layer: 0
+  - component: {fileID: 7045273663306786346}
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +91,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7045273663306786346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555537885781707224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69407f5f32737f042b2a2939e6c08917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIFacer
+  target:
+    rid: 4212330434358412240
+  correction: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4212330434358412240
+      type: {class: BaseTarget/ObjectReference, ns: , asm: Assembly-CSharp}
+      data:
+        target:
+          rid: 4212330434358412241
+    - rid: 4212330434358412241
+      type: {class: GlobalReferences/Player, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!1 &4292958115550031967
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +127,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7928969255536822707}
   - component: {fileID: 907085302308043168}
-  m_Layer: 0
+  - component: {fileID: 4388882218723408601}
+  - component: {fileID: 2720727850712413193}
+  - component: {fileID: 5566168276955796629}
+  - component: {fileID: 3327044467622863601}
+  - component: {fileID: -5239081258017961977}
+  - component: {fileID: 6393678234285343524}
+  m_Layer: 8
   m_Name: DynamiteMiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,6 +184,124 @@ MonoBehaviour:
     - {fileID: -6598022201239354207, guid: 2ca5e7e11941fe4498b0ff3d879456e7, type: 3}
     - {fileID: -879187122, guid: 2ca5e7e11941fe4498b0ff3d879456e7, type: 3}
     updateRate: 2
+--- !u!58 &4388882218723408601
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!114 &2720727850712413193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75fa4f43a697a74596af755dbee12e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 3
+  type: 2
+--- !u!114 &5566168276955796629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
+  damage: 1
+  pierce: -1
+  affects: 1
+--- !u!114 &3327044467622863601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ceb739776c8ca40b624a54fc2426d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIBehaviorList
+  actions: []
+  timeScaled: 1
+  projectionColor: {r: 0.9960785, g: 0.3647059, b: 0, a: 1}
+  projectionDiameter: 1
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-5239081258017961977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b10e6fb5d5fd8141ba91a1368b2e235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
+  collider: {fileID: 4388882218723408601}
+  bounds: 1
+--- !u!114 &6393678234285343524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69407f5f32737f042b2a2939e6c08917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIFacer
+  target:
+    rid: -2
+  correction: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &6064634187329097731
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6511751377462630857}
   - component: {fileID: 2899784704917171373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4219926198437217046}
   - component: {fileID: 6229076380854668672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

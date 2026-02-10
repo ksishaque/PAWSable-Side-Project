@@ -11,7 +11,13 @@ GameObject:
   - component: {fileID: 7928969255536822707}
   - component: {fileID: -5861093911066426482}
   - component: {fileID: 2014418282166171635}
-  m_Layer: 0
+  - component: {fileID: 8850871396077396679}
+  - component: {fileID: 3024291955807478533}
+  - component: {fileID: 1617425619040864230}
+  - component: {fileID: 3893534020022184263}
+  - component: {fileID: 3314114057281413252}
+  - component: {fileID: 2828771611352956914}
+  m_Layer: 8
   m_Name: DrillMiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,3 +118,121 @@ MonoBehaviour:
     - {fileID: 6715373034654554454, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
     - {fileID: -5429878846525375592, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
     updateRate: 1
+--- !u!58 &8850871396077396679
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!114 &3024291955807478533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75fa4f43a697a74596af755dbee12e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 5
+  type: 2
+--- !u!114 &1617425619040864230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
+  damage: 1
+  pierce: -1
+  affects: 1
+--- !u!114 &3893534020022184263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ceb739776c8ca40b624a54fc2426d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIBehaviorList
+  actions: []
+  timeScaled: 1
+  projectionColor: {r: 0.20000002, g: 0.93725497, b: 0.2392157, a: 1}
+  projectionDiameter: 1
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &3314114057281413252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b10e6fb5d5fd8141ba91a1368b2e235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
+  collider: {fileID: 8850871396077396679}
+  bounds: 1
+--- !u!114 &2828771611352956914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69407f5f32737f042b2a2939e6c08917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIFacer
+  target:
+    rid: -2
+  correction: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

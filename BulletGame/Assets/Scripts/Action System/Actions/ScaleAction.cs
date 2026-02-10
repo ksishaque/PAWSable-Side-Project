@@ -31,7 +31,7 @@ using UnityEngine;
 
 	}
 	override protected void update(){
-		actor.transform.localScale = new Vector3(init.x + (scale.x * completion), init.y + (scale.y * completion), 1);
+		actor.setScale(init + (scale * completion));
 	}
 
 }

@@ -7,13 +7,15 @@ public class AIBehaviorList : ActionList{
 	//	Enumeration for different ways the behavior list could end
 	public enum EndMode{ENDLESS, DESPAWN, STOP}
 
+
 	[Header("Projection")]
 	/*	Variables:
 	projectionColor: Color of projected path and image
 	projectionDiameter: Size of projected image
 	*/
 	[SerializeField] private Color projectionColor = new Color(1, 0, 0);
-	[SerializeField] private float projectionDiameter = 0.5f;
+	[SerializeField] private float projectionDiameter = 1;
+
 
 	//	Set up color and access `projectionDiameter`
 	public float setUpPreview(){
@@ -26,6 +28,7 @@ public class AIBehaviorList : ActionList{
 		Gizmos.color = projectionColor;
 		Gizmos.DrawWireSphere(transform.position, projectionDiameter / 2);
 	}
+
 
 	//	Add behaviors
 	public void addBehaviors(List<BaseBehavior> behaviors, bool clearActions = true, EndMode endMode = EndMode.STOP){
