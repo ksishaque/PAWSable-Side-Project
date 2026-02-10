@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public partial class Physics{
+static public partial class Physics{
 
 	//	Determine the radius of an object based on its collider
 	static public float getRadius(CircleCollider2D collider){

@@ -105,7 +105,7 @@ using UnityEngine;
 		public void spawn(){
 
 			//	Variable: Behavior list to add `behavior` to
-			AIBehaviorList behaviorList = GameObject.Instantiate(enemy, (Vector3) spawnPosition, Quaternion.identity).GetComponent<AIBehaviorList>();
+			AIBehaviorList behaviorList = ObjectInitializer.instantiate(enemy, spawnPosition).GetComponent<AIBehaviorList>();
 
 			//	Set up behavior list
 			behaviorList.addBehaviors(behavior, true, endMode);

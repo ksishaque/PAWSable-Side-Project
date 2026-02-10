@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 731320147}
   - component: {fileID: 731320148}
   - component: {fileID: 731320149}
+  - component: {fileID: 731320150}
   m_Layer: 0
   m_Name: PatternEditor
   m_TagString: Untagged
@@ -302,71 +303,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7060512b73e1e409ca57298b04c1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AISpawnPatternEditor
-  imageTime: 0
+  imageTime: 45.35
   pattern: {fileID: 11400000, guid: 4a378f033253b28489589fc7f55de678, type: 2}
   spawns:
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
     delay: 0
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161792
-    - rid: 4212330327328161793
-    - rid: 4212330327328161794
+    - rid: 4212330434358411971
+    - rid: 4212330434358411972
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: 722f9ef34d5364c41a57591ee704d413, type: 3}
     delay: 0.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161795
-    - rid: 4212330327328161796
-    - rid: 4212330327328161794
+    - rid: 4212330434358411974
+    - rid: 4212330434358411975
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
     delay: 1
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161797
-    - rid: 4212330327328161798
-    - rid: 4212330327328161794
+    - rid: 4212330434358411976
+    - rid: 4212330434358411977
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: 722f9ef34d5364c41a57591ee704d413, type: 3}
     delay: 1.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161799
-    - rid: 4212330327328161800
-    - rid: 4212330327328161794
+    - rid: 4212330434358411978
+    - rid: 4212330434358411979
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
     delay: 2
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161801
-    - rid: 4212330327328161802
-    - rid: 4212330327328161794
+    - rid: 4212330434358411980
+    - rid: 4212330434358411981
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: 722f9ef34d5364c41a57591ee704d413, type: 3}
     delay: 2.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161803
-    - rid: 4212330327328161804
-    - rid: 4212330327328161794
+    - rid: 4212330434358411982
+    - rid: 4212330434358411983
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
     delay: 3
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161805
-    - rid: 4212330327328161806
-    - rid: 4212330327328161794
+    - rid: 4212330434358411984
+    - rid: 4212330434358411985
+    - rid: 4212330434358411973
     endMode: 0
-  - enemy: {fileID: 3300506733405919651, guid: d2023d688d46b534c806455683658ed9, type: 3}
+  - enemy: {fileID: 4292958115550031967, guid: 722f9ef34d5364c41a57591ee704d413, type: 3}
     delay: 3.5
     spawnPosition: {x: 5, y: 0}
     behavior:
-    - rid: 4212330327328161807
-    - rid: 4212330327328161794
+    - rid: 4212330434358411986
+    - rid: 4212330434358411973
     endMode: 0
   duration: 18
   timeStep: 0.008333334
@@ -375,7 +376,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4212330327328161792
+    - rid: 4212330434358411971
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -383,12 +384,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 4212330327328161808
-    - rid: 4212330327328161793
+          rid: 4212330434358411987
+    - rid: 4212330434358411972
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 3.5
-    - rid: 4212330327328161794
+    - rid: 4212330434358411973
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -396,8 +397,8 @@ MonoBehaviour:
         rotate: 0
         reset: 1
         velocity:
-          rid: 4212330327328161809
-    - rid: 4212330327328161795
+          rid: 4212330434358411988
+    - rid: 4212330434358411974
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -405,12 +406,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 4212330327328161810
-    - rid: 4212330327328161796
+          rid: 4212330434358411989
+    - rid: 4212330434358411975
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 3
-    - rid: 4212330327328161797
+    - rid: 4212330434358411976
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -418,12 +419,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 4212330327328161811
-    - rid: 4212330327328161798
+          rid: 4212330434358411990
+    - rid: 4212330434358411977
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 2.5
-    - rid: 4212330327328161799
+    - rid: 4212330434358411978
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -431,12 +432,12 @@ MonoBehaviour:
         rotate: 0
         reset: 1
         velocity:
-          rid: 4212330327328161812
-    - rid: 4212330327328161800
+          rid: 4212330434358411991
+    - rid: 4212330434358411979
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 2
-    - rid: 4212330327328161801
+    - rid: 4212330434358411980
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -444,12 +445,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 4212330327328161813
-    - rid: 4212330327328161802
+          rid: 4212330434358411992
+    - rid: 4212330434358411981
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 1.5
-    - rid: 4212330327328161803
+    - rid: 4212330434358411982
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -457,12 +458,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 4212330327328161814
-    - rid: 4212330327328161804
+          rid: 4212330434358411993
+    - rid: 4212330434358411983
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
-    - rid: 4212330327328161805
+    - rid: 4212330434358411984
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -470,12 +471,12 @@ MonoBehaviour:
         rotate: 1
         reset: 1
         velocity:
-          rid: 4212330327328161815
-    - rid: 4212330327328161806
+          rid: 4212330434358411994
+    - rid: 4212330434358411985
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 0.5
-    - rid: 4212330327328161807
+    - rid: 4212330434358411986
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
@@ -483,50 +484,50 @@ MonoBehaviour:
         rotate: 0
         reset: 1
         velocity:
-          rid: 4212330327328161816
-    - rid: 4212330327328161808
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+          rid: 4212330434358411995
+    - rid: 4212330434358411987
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: 0, y: 1}
+        direction: 90
         magnitude: 3
-    - rid: 4212330327328161809
+    - rid: 4212330434358411988
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:
         vector: {x: -1, y: 0}
-    - rid: 4212330327328161810
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411989
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: 1, y: 1}
+        direction: 45
         magnitude: 3
-    - rid: 4212330327328161811
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411990
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: 1, y: 0}
+        direction: 0
         magnitude: 3
-    - rid: 4212330327328161812
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411991
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: 1, y: -1}
+        direction: -45
         magnitude: 3
-    - rid: 4212330327328161813
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411992
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: 0, y: -1}
+        direction: -90
         magnitude: 3
-    - rid: 4212330327328161814
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411993
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: -1, y: -1}
+        direction: -135
         magnitude: 3
-    - rid: 4212330327328161815
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411994
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: -1, y: 0}
+        direction: 180
         magnitude: 3
-    - rid: 4212330327328161816
-      type: {class: InspectorVector2/VectorMagnitude, ns: , asm: Assembly-CSharp}
+    - rid: 4212330434358411995
+      type: {class: InspectorVector2/DirectionMagnitude, ns: , asm: Assembly-CSharp}
       data:
-        direction: {x: -1, y: 1}
+        direction: 135
         magnitude: 3
 --- !u!114 &731320148
 MonoBehaviour:
@@ -554,11 +555,240 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boundary
   playerBounds: {x: 8.888889, y: 5}
   enemyBounds: {x: 10.888889, y: 7}
-  projectileBounds: {x: 11.888889, y: 8}
+  projectileBounds: {x: 9.388889, y: 5.5}
   screenBounds: {x: 8.888889, y: 5}
+--- !u!114 &731320150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731320145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdc3f6f265e52e4c9a31a7d9eb7d010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlobalReferences
+  player: {fileID: 755706624}
+--- !u!1 &755706624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755706626}
+  - component: {fileID: 755706625}
+  - component: {fileID: 755706627}
+  - component: {fileID: 755706629}
+  - component: {fileID: 755706628}
+  m_Layer: 6
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &755706625
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755706624}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 1637755875
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -6893326603507580621, guid: 66a489ebecfe7d845b9d8af02a2010f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.2, y: 0.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &755706626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755706624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &755706627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755706624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9ba6e83ea4758419c76e79a3ee4daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  moveSpeed: 5
+--- !u!50 &755706628
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755706624}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &755706629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755706624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 5866369f87cb5124999208bde0d5c42f, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 755706627}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 51cfcff0-cec2-4c31-824a-59f003b4c0f3
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe6ef0f0-8574-41a6-9e25-99ca192d1d71
+    m_ActionName: 'Player/Shoot[/Keyboard/space,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b3e0292-48e5-42cc-9dc0-aa750848f1c6
+    m_ActionName: Player/Ultimate
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4119c47-df9b-46f9-9d19-751dd6a84bfe
+    m_ActionName: 'Player/ShiftRight[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15511968-f950-4dcb-a178-f61cf9555009
+    m_ActionName: 'Player/ShiftLeft[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 360ca388-121c-4105-9d7b-a6e2291b52e1
+    m_ActionName: 'Player/Scroll[/Mouse/scroll/y]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d517a0eb-4fa0-47a8-b8cd-f00042a8aec7
+    m_ActionName: 'UI/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 613d2e30-236f-4342-99fb-6857b6e03c3b
+    m_ActionName: 'UI/Confirm[/Keyboard/space,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7d6122ff-ebd4-427a-b247-cbf3ba1ab111
+    m_ActionName: 'UI/Cancel[/Keyboard/escape,/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6a1eb50-71fd-4a8d-ace0-eb99a1c3c682
+    m_ActionName: 'UI/Point[/Mouse/position]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 390517230}
   - {fileID: 731320146}
+  - {fileID: 755706626}

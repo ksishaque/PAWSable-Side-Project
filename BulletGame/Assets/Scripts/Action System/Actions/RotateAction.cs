@@ -11,12 +11,10 @@ using UnityEngine;
 	rotation: Final local rotation of the actor
 	direction: Direction in which the actor should rotate
 	init: Initial local rotation of the actor
-	physics: Physics component of the actor
 	*/
 	[SerializeField] private float rotation;
 	[SerializeField] private Direction direction;
 	private float init;
-	private Rigidbody2D physics;
 
 	//	Constructors
 	public RotateAction(){
@@ -50,12 +48,9 @@ using UnityEngine;
 
 		}
 
-		//	Attempt to find `physics`
-		physics = actor.GetComponent<Rigidbody2D>();
-
 	}
 	override protected void update(){
-		Physics.setLocalRotation(actor, physics, init + (rotation * completion));
+		actor.setRotation(init + (rotation * completion));
 	}
 
 }

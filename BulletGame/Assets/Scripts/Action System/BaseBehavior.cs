@@ -26,18 +26,14 @@ using UnityEngine;
 [System.Serializable] abstract public class BaseMovementBehavior : BaseBehavior{
 
 	/*	Variables:
-	physics: Physics component of `actor`
 	origin: Original position of `actor`
-	origRot: Original rotation of `actor`
-	origSca: Original scale of `actor`
+	facer: Facer of `actor`
 	*/
-	private Rigidbody2D physics;
 	protected Vector2 origin{
 		get;
 		private set;
 	}
-	private float origRot;
-	private Vector2 origSca;
+	private AIFacer facer;
 
 	[Header("Timing")]
 	/*	Variables
@@ -52,37 +48,20 @@ using UnityEngine;
 	} = 0;
 	protected bool endless;
 
-	[Header("Facing")]
-	/*	Variables:
-	flip: If the object should flip across the y axis when moving backwards
-	rotate: If the object should rotate to face forward
-	*/
-	[SerializeField] private bool flip;
-	[SerializeField] private bool rotate;
-	[SerializeField] private bool reset;
-
 	//	Constructors
 	protected BaseMovementBehavior(){
 		duration = 1;
 		endless = false;
-		flip = true;
-		rotate = false;
-		reset = false;
 	}
 	protected BaseMovementBehavior(BaseMovementBehavior origin){
 		duration = origin.duration;
 		endless = origin.endless;
-		flip = origin.flip;
-		rotate = origin.rotate;
-		reset = origin.reset;
 	}
 
 	//	Overrides
 	sealed override protected void start(){
-		physics = actor.GetComponent<Rigidbody2D>();
+		facer = actor.GetComponent<AIFacer>();
 		origin = (Vector2) actor.transform.localPosition;
-		origRot = actor.transform.localRotation.eulerAngles.z;
-		origSca = (Vector2) actor.transform.localScale;
 	}
 	sealed override public void update(ref float remainingTime){
 
@@ -107,12 +86,6 @@ using UnityEngine;
 				//	Update position
 				if(runtimePrediction()) updatePos(predictPosition(origin, duration));
 				else updatePos(getPosition(spentTime - remainingTime));
-
-				//	Reset rotation and scale if necessary
-				if(reset){
-					if(flip) actor.transform.localScale = new Vector3(origSca.x, origSca.y, actor.transform.localScale.z);
-					if(rotate) Physics.setLocalRotation(actor, physics, origRot);
-				}
 
 			}
 
@@ -170,30 +143,8 @@ using UnityEngine;
 
 	//	Helper function for updating position
 	private void updatePos(Vector2 position){
-
-		//	Flip if necessary
-		if(flip){
-			if(position.x > actor.transform.localPosition.x){
-				if(rotate) actor.transform.localScale = new Vector3(origSca.x, -origSca.y, actor.transform.localScale.z);
-				else actor.transform.localScale = new Vector3(-origSca.x, origSca.y, actor.transform.localScale.z);
-			}
-			else if(position.x < actor.transform.localPosition.x) actor.transform.localScale = new Vector3(origSca.x, origSca.y, actor.transform.localScale.z);
-		}
-
-		//	Rotate if necessary
-		if(rotate){
-
-			//	Variable: Total displacement traveled
-			Vector2 disp = position - (Vector2) actor.transform.localPosition;
-
-			//	Check for standstill and rotate
-			if(disp.x != 0 || disp.y != 0) Physics.setLocalRotation(actor, physics, (Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg) + 180);
-
-		}
-
-		//	Update position
-		Physics.setLocalPosition(actor, physics, position);
-
+		if(facer != null) facer.faceMovement(position);
+		actor.setPosition(position);
 	}
 
 	//	Determine change in position (or velocity)
