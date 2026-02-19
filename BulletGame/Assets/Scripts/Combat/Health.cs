@@ -23,11 +23,18 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+		Debug.Log("[" + gameObject.name + "] Damage taken: " + damage + " (Current health: " + currentHealth + "/" + maxHealth + ")");
 
-        if (currentHealth <= 0)
+        if (isDead())
         {
             ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DEATH);
         }
     }
+
+	//	Accessors
+	public float getHealthValue() => currentHealth;
+	public float getHealthRatio() => currentHealth / maxHealth;
+	public bool isAlive() => currentHealth > 0;
+	public bool isDead() => !isAlive();
 
 }

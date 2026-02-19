@@ -10,7 +10,7 @@ public class ActionList : MonoBehaviour{
 	timeScaled: If the action list utilizes scaled delta time
 	started: If the first action in `actions` has started
 	*/
-	[SerializeReference, SubclassSelector] private List<BaseAction> actions = new List<BaseAction>();
+	[SerializeReference, SubclassSelector] protected List<BaseAction> actions = new List<BaseAction>();
 	[SerializeField] private bool timeScaled = true;
 	private bool started = false;
 
@@ -29,13 +29,13 @@ public class ActionList : MonoBehaviour{
 	}
 
 	//	Add to `actions`
-	public void addOriginalAction(BaseAction action){
+	public void addActionDirect(BaseAction action){
 		actions.Add(action);
 	}
 	public void addAction(BaseAction action){
 		actions.Add(action.clone());
 	}
-	public void addActions(List<BaseAction> actions){
+	public void addActions<Action>(List<Action> actions) where Action : BaseAction{
 		BaseAction.addClones(ref this.actions, actions);
 	}
 

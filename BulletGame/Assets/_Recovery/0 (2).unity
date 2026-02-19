@@ -309,14 +309,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
-      propertyPath: weaponSlots.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
-      propertyPath: weaponSlots.Array.data[3].root
-      value: 
-      objectReference: {fileID: 1208963973}
-    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: weaponSlots.Array.data[0].weapon
       value: 
       objectReference: {fileID: 11400000, guid: 98d9cc6b1a27d834fa2963c37e258201, type: 2}
@@ -326,10 +318,6 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 98d9cc6b1a27d834fa2963c37e258201, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: weaponSlots.Array.data[2].weapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 98d9cc6b1a27d834fa2963c37e258201, type: 2}
-    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
-      propertyPath: weaponSlots.Array.data[3].weapon
       value: 
       objectReference: {fileID: 11400000, guid: 4c696f236b05ea446b3bc8366577cb5e, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
@@ -345,25 +333,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
-      propertyPath: weaponSlots.Array.data[3].projectiles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[0].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: c8830d02c266cb545815f87683b5b366, type: 2}
+      objectReference: {fileID: 11400000, guid: b9f8469b0e5a6aa4fa7c3057096c43fb, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[1].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 1302acf622143f341b97672d1fe3c556, type: 2}
+      objectReference: {fileID: 11400000, guid: 742a37750d3dbd04aadd69d2330611f2, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[2].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: b54b1416c573a32439f957d9804218bd, type: 2}
-    - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
-      propertyPath: 'weaponSlots.Array.data[3].projectiles.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 32db69cbcd894a743ba1e7e3a522ab19, type: 2}
+      objectReference: {fileID: 11400000, guid: b9f8469b0e5a6aa4fa7c3057096c43fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,11 +463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalReferences
   player: {fileID: 813984178}
---- !u!1 &1208963973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3651837781754592508, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
-  m_PrefabInstance: {fileID: 813984177}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

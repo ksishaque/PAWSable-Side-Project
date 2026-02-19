@@ -77,8 +77,8 @@ using UnityEngine;
 		}
 
 	}
-	static public void addClones(ref List<BaseAction> actions, List<BaseAction> additives){
-		foreach(BaseAction additive in additives) actions.Add(additive.clone());
+	static public void addClones<Action>(ref List<BaseAction> actions, List<Action> additives) where Action : BaseAction{
+		foreach(Action additive in additives) actions.Add(additive.clone());
 	}
 
 }
@@ -118,7 +118,7 @@ using UnityEngine;
 		get;
 		private set;
 	} = 0;
-	[SerializeReference, SubclassSelector] private BaseFunction completionFunction = new StandardFunction();
+	[SerializeReference, SubclassSelector] private BaseScalingFunction completionFunction = new StandardScalingFunction();
 	protected float completion{
 		get{
 			return completionFunction.operate(time / Duration);
