@@ -15,7 +15,7 @@ public class AIFacer : MonoBehaviour, IStoreScale{
 	*/
 	private Vector2 origSca = Boundary.VECTOR_NULL;
 	[SerializeReference, SubclassSelector] private BaseTarget target = null;
-	[SerializeField] private AIFacer.Correction correction = AIFacer.Correction.FLIP;
+	[SerializeField] private Correction correction = Correction.FLIP;
 
 
 	//	Face `target`
@@ -36,7 +36,7 @@ public class AIFacer : MonoBehaviour, IStoreScale{
 	}
 
 
-	//	Overrides
+	//	Set up
 	public void storeScale(){
 		origSca = transform.localScale;
 	}

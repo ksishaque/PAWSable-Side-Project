@@ -9,6 +9,14 @@ public interface IStoreScale{
 
 }
 
+//	Interface for behaviors that need to store the original local rotation of the object before initialization
+public interface IStoreRotation{
+
+	//	Store rotation
+	abstract public void storeRotation();
+
+}
+
 
 //	State to set upon instantiation
 //	NOTE: Objects must be instantiated using the custom `instantiate()` method in order for this to run
@@ -36,6 +44,7 @@ public class ObjectInitializer : MonoBehaviour{
 
 		//	Set up each initializer
 		foreach(IStoreScale scaleStorer in ans.GetComponentsInChildren<IStoreScale>()) scaleStorer.storeScale();
+		foreach(IStoreRotation rotStorer in ans.GetComponentsInChildren<IStoreRotation>()) rotStorer.storeRotation();
 		foreach(ObjectInitializer initializer in ans.GetComponentsInChildren<ObjectInitializer>()) initializer.initialize();
 
 		//	Return

@@ -66,12 +66,12 @@ using UnityEngine;
 			ActionList childActionList = child.destroyInner(type);
 
 			//	Add callback
-			actionList.addOriginalAction(new WaitForCallbackAction(ref childActionList));
+			actionList.addActionDirect(new WaitForCallbackAction(ref childActionList));
 
 		}
 
 		//	Properly destroy the game object
-		actionList.addOriginalAction(new DestroyAction());
+		actionList.addActionDirect(new DestroyAction());
 
 	}
 	private ActionList destroyInner(Cause type){

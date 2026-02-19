@@ -36,31 +36,19 @@ public class AIBehaviorList : ActionList{
 		//	Clear actions
 		if(clearActions) base.clearActions();
 
-		//	Check `endMode`
-		if(endMode == EndMode.ENDLESS){
-			if(behaviors.Count > 0){
-
-				//	Add all but one normally
-				for(int i = 0; i < behaviors.Count - 1; i += 1) addAction(behaviors[i]);
-
-				//	Variable: Last action to add
-				BaseBehavior behavior = (BaseBehavior) behaviors.Last().clone();
-
-				//	Set up `behavior` and add
-				behavior.setEndless();
-				addOriginalAction(behavior);
-
-			}
-		}
-		else{
+		//	Check for empty list
+		if(behaviors.Count > 0){
 
 			//	Add behaviors
-			foreach(BaseBehavior behavior in behaviors) addAction(behavior);
+			addActions(behaviors);
 
-			//	Add despawning action
-			if(endMode == EndMode.DESPAWN) addOriginalAction(new DestroyAction(ObjectDestroyer.Cause.DESPAWN));
+			//	Set up `behavior` and add
+			if(endMode == EndMode.ENDLESS) ((BaseBehavior) actions[actions.Count - 1]).setEndless();
 
 		}
+
+		//	Add despawning action
+		if(endMode == EndMode.DESPAWN) addActionDirect(new DestroyAction(ObjectDestroyer.Cause.DESPAWN));
 
 	}
 
