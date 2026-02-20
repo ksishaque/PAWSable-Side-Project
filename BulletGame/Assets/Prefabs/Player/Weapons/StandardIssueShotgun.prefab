@@ -80,9 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StandardShotgun
   barrel: {fileID: 1296378513480681873}
-  intensity: 0.2
-  minInterval: 1
-  baseProjPerShot: 5
+  minInterval: 0.6
+  baseProjPerShot: 3
   minProjPerShot: 2
   angleRange: 30
 --- !u!114 &8025254833513538877

@@ -8,7 +8,7 @@ using UnityEngine;
 
 	[Header("Preview")]
 	//	Variable: Time at which to display the preview image
-	[SerializeField] private float imageTime = 0;
+	[SerializeField, NaughtyAttributes.MinValue(0.0f)] private float imageTime = 0;
 
 	[Header("Pattern")]
 	/*	Variables:

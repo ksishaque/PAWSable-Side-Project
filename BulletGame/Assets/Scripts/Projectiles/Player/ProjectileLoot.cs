@@ -34,8 +34,12 @@ using UnityEngine;
 
 	}
 
+
 	//	Accessors
 	public int getMass() => mass;
+	//	General-purpose value denoting the effects of mass
 	public float getScaledMass() => (Mathf.Pow(4, mass / 30.0f) / 8) + (mass / 120.0f) + 0.25f;
+	//	Value denoting the converse effects of mass on speed, scaled such that a mass of 30 returns 1 and a mass of 60 returns 0
+	public float getInertia() => (11 - (4 * getScaledMass())) / 7;
 
 }

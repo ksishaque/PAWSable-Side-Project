@@ -8,8 +8,8 @@ using UnityEngine;
 
 	override public GameObject spawnEntity(Transform origin, float angleModifier, PlayerProjectile.Data data){
 
-		//	Modify `data`
-		if(kill) data.intensity = 1000000;
+		//	Modify `data` for `kill`
+		if(kill) data = new PlayerProjectile.Data(1000000, data.speed);
 
 		//	Variable: Spawned projectile's graphics component
 		SpriteRenderer sprite = base.spawnEntity(origin, angleModifier, data).GetComponent<SpriteRenderer>();
