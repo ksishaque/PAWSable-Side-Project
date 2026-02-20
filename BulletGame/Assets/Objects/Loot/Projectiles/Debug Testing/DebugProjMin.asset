@@ -15,6 +15,6 @@ MonoBehaviour:
   rarity: 0
   projectile: {fileID: 7684355605594490202, guid: d3c72c05437e2ef48af2857faf5a5f38, type: 3}
   desc: TEST BULLET - DO NOT SHIP
-  mass: 5
+  mass: 15
   color: {r: 0, g: 1, b: 1, a: 1}
   kill: 0

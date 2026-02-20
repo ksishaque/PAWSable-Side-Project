@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponLoot
   rarity: 0
   weapon: {fileID: 2351583126671403177, guid: d58846e6107a66f4586599fd90678753, type: 3}
-  desc: Standard twin fire machine gun unit. Smaller projectiles can be launched
-    at faster rates.
+  desc: Standard twin fire machine gun unit. Smaller projectiles can be fired faster
+    rates.
   projCount: 1

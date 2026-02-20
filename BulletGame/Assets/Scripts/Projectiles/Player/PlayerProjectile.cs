@@ -41,7 +41,7 @@ public class PlayerProjectile : MonoBehaviour{
 	public float getDamageModifier(){
 
 		//	Manage kinetic damage
-		if(kinetic) return data.intensity * data.speed;
+		if(kinetic) return data.intensity * ((1.25f * data.speed) - 0.25f);
 
 		//	Manage non-kinetic damage
 		return data.intensity;

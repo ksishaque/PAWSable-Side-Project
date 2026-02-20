@@ -13,10 +13,8 @@ public class StandardIssueMachineGun : BaseWeapon{
 
 	[Header("Configuration")]
 	/*	Variables:
-	intensity: Intensity of bullet to fire
 	baseInterval: Standard attack interval, assuming a mass of 30
 	*/
-	[SerializeField] private float intensity;
 	[SerializeField] private float baseInterval;
 
 
@@ -24,10 +22,11 @@ public class StandardIssueMachineGun : BaseWeapon{
 	override protected void onSetUp(){
 		attackInterval = getProjectile(0).getScaledMass() * baseInterval;
 	}
+	override public int getProjCount() => 1;
 	override protected void fireProjectile(){
 
 		//	Fire the projectile
-		getProjectile(0).spawnEntity(barrels[nextBarrel].transform, new PlayerProjectile.Data(intensity));
+		getProjectile(0).spawnEntity(barrels[nextBarrel].transform);
 
 		//	Cycle through `barrels`
 		nextBarrel += 1;

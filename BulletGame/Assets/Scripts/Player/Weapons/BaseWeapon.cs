@@ -9,12 +9,6 @@ public abstract class BaseWeapon : MonoBehaviour
 		get;
 		protected set;
 	}
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,12 +32,16 @@ public abstract class BaseWeapon : MonoBehaviour
 	}
 	virtual protected void onSetUp(){}
 
+	//	Firing
     abstract protected void fireProjectile();
 	protected ProjectileLoot getProjectile(int index){
 		if(index < projectiles.Count && projectiles[index] != null) return projectiles[index];
 		//	TODO: create a "blank" projectile
 		return null;
 	}
+
+	//	Accessors
+	abstract public int getProjCount();
 
 
 }

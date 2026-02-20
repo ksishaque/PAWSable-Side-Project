@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daddba9aaa336d7498950a81a24e6314, type: 3}
-  m_Name: StandardIssueShotgun
+  m_Name: StandardIssueSniper
   m_EditorClassIdentifier: Assembly-CSharp::WeaponLoot
   rarity: 0
-  weapon: {fileID: 2351583126671403177, guid: b0ae20c4d7348aa408e7f8600ac3aa8a, type: 3}
-  desc: Standard shotgun unit. Smaller projectiles can be fired in larger groups.
+  weapon: {fileID: 2351583126671403177, guid: 5d1247cf5cbd3cf4ebefca85596d6f33, type: 3}
+  desc: Standard sniper cannon unit. Smaller projectiles can be launched at faster
+    speeds.
   projCount: 1

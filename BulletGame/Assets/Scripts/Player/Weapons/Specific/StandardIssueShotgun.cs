@@ -8,14 +8,12 @@ public class StandardIssueShotgun : BaseWeapon{
 
 	[Header("Configuration")]
 	/*	Variables:
-	intensity: Intensity of bullet to fire
 	minInterval: Minimum attack interval
 	baseProjPerShot: Standard number of projectiles per shot, assuming a mass of 30
 	minProjPerShot: Minimum number of projectiles before excess mass begins affecting attack interval instead
 	angleRange: Maximum angle deviation
 	projPerShot: Number of projectiles in this shot
 	*/
-	[SerializeField] private float intensity;
 	[SerializeField] private float minInterval;
 	[SerializeField] private int baseProjPerShot;
 	[SerializeField] private int minProjPerShot;
@@ -23,7 +21,7 @@ public class StandardIssueShotgun : BaseWeapon{
 	private int projPerShot;
 
 
-	//	Set up
+	//	Overrides
 	override protected void onSetUp(){
 
 		//	Variable: Flaot accurate number of projectiles in this shot
@@ -42,12 +40,9 @@ public class StandardIssueShotgun : BaseWeapon{
 		}
 
 	}
-
-
-	//	Fire
 	override protected void fireProjectile(){
-		for(int i = 0; i < projPerShot; i += 1) getProjectile(0).spawnEntity(barrel.transform, Math.spread(i, projPerShot, -angleRange, angleRange, true), new PlayerProjectile.Data(intensity));
-		Debug.Log("PPS: " + projPerShot + " (" + baseProjPerShot + "/" + getProjectile(0).getScaledMass() + ")");
+		for(int i = 0; i < projPerShot; i += 1) getProjectile(0).spawnEntity(barrel.transform, Math.spread(i, projPerShot, -angleRange, angleRange, true));
 	}
+	override public int getProjCount() => 1;
 
 }

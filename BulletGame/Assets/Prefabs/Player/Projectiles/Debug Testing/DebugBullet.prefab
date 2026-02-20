@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f5c53db0dc3e143985e62845d555f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
-  kinetic: 1
+  kinetic: 0
 --- !u!114 &-5319676866182965909
 MonoBehaviour:
   m_ObjectHideFlags: 0

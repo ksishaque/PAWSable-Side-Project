@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 //	Class representing a spawn pattern
@@ -30,27 +29,7 @@ using UnityEngine;
 
 		//	Validate and preview
 		public void validate(){
-
-			//	Validate `enemy`
-			if(enemy.GetComponent<AIBehaviorList>() == null) enemy = null;
-
-			//	Variable: If the list of behaviors should continue
-			bool end = false;
-
-			//	Validate `behavior`
-			for(int i = 0; i < behavior.Count; i += 1){
-
-				//	Check `end`
-				if(end){
-					behavior.RemoveAt(i);
-					i -= 1;
-				}
-
-				//	Remove if the list does not continue
-				else end = behavior[i].forceEnd();
-
-			}
-
+			if(enemy != null && enemy.GetComponent<AIBehaviorList>() == null) enemy = null;
 		}
 		public void preview(float imageTime, float duration){
 
@@ -78,7 +57,7 @@ using UnityEngine;
 					for(int i = 0; i < behavior.Count - 1; i += 1) behavior[i].drawPreview(ref position, ref imageTime, ref duration, radius);
 
 					//	Preview the last one endlessly
-					behavior.Last().drawPreview(ref position, ref imageTime, ref duration, radius, true);
+					behavior[behavior.Count - 1].drawPreview(ref position, ref imageTime, ref duration, radius, true);
 
 				}
 			}
