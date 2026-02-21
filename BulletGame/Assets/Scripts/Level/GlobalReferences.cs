@@ -24,8 +24,17 @@ public class GlobalReferences : MonoBehaviour{
 	//	Variable: Singleton instance
 	static public GlobalReferences instance = null;
 
-	//	Variable: List of spawn timers to manage
+	[Header("In World References")]
+	/*	Variables:
+	player: Player character
+	*/
 	public GameObject player;
+
+	[Header("Prefab / Scriptable Object References")]
+	/*	Variables:
+	blankProjectilePrefab: Prefab to use on failed fire
+	*/
+	public ProjectileLoot blankProjectileLoot;
 
 	//	Manage `instance`
 	private void Start(){

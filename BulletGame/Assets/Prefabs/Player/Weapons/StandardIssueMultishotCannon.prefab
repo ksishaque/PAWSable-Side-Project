@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8025254833513538877}
   - component: {fileID: 949300700218851694}
   m_Layer: 0
-  m_Name: StandardIssueShotgun
+  m_Name: StandardIssueMultishotCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

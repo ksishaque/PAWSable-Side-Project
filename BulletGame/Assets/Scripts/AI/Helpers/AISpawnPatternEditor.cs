@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 [RequireComponent(typeof(Spawner))] public class AISpawnPatternEditor : MonoBehaviour{
 
@@ -8,7 +9,7 @@ using UnityEngine;
 
 	[Header("Preview")]
 	//	Variable: Time at which to display the preview image
-	[SerializeField, NaughtyAttributes.MinValue(0.0f)] private float imageTime = 0;
+	[SerializeField, MinValue(0.0f)] private float imageTime = 0;
 
 	[Header("Pattern")]
 	/*	Variables:
@@ -16,10 +17,7 @@ using UnityEngine;
 	prevPattern: Previous pattern, to check if `pattern` was swapped
 	spawns: List of enemies to spawn
 	*/
-	[SerializeField] private AISpawnPattern pattern = null;
-	private AISpawnPattern prevPattern = null;
-	[SerializeField] private List<AISpawnPattern.Spawn> spawns = new List<AISpawnPattern.Spawn>();
-	[SerializeField] private float duration = 0;
+	[SerializeField, Expandable] private AISpawnPattern pattern = null;
 
 	[Header("Configuration")]
 	/*	Variables:
@@ -43,43 +41,11 @@ using UnityEngine;
 		instance = this;
 
 		//	Spawn
-		foreach(AISpawnPattern.Spawn spawn in spawns) GetComponent<Spawner>().addSpawn(spawn);
+		if(pattern != null) foreach(AISpawnPattern.Spawn spawn in pattern.getSpawns()) GetComponent<Spawner>().addSpawn(spawn);
 
     }
 	private void OnDestroy(){
 		if(instance == this) instance = null;
-	}
-
-	//	Change or update `pattern`
-	private void OnValidate(){
-
-		//	Check if `prevPattern` is null
-		if(prevPattern == null){
-			spawns.Clear();
-			duration = 0;
-		}
-
-		//	Validate `spawns` and Edit `prevPattern`
-		else{
-			foreach(AISpawnPattern.Spawn spawn in spawns) spawn.validate();
-			prevPattern.edit(spawns, duration);
-		}
-
-		//	Check if `pattern` has been swapped
-		if(pattern != prevPattern){
-
-			//	Update `prevPattern`
-			prevPattern = pattern;
-
-			//	Update `spawn`
-			spawns = new List<AISpawnPattern.Spawn>();
-			if(pattern != null) foreach(AISpawnPattern.Spawn spawn in pattern.getSpawns()) spawns.Add(spawn);
-
-			//	Update `duration`
-			duration = pattern.getDuration();
-
-		}
-
 	}
 
 	//	Preview `spawns`
@@ -92,7 +58,7 @@ using UnityEngine;
 		instance = this;
 
 		//	Preview each spawn
-		foreach(AISpawnPattern.Spawn spawn in spawns) spawn.preview(imageTime / imageTimeScale, duration);
+		if(pattern != null) foreach(AISpawnPattern.Spawn spawn in pattern.getSpawns()) spawn.preview(imageTime / imageTimeScale, pattern.getDuration());
 
 		//	Clean up `instance`, just to be safe
 		instance = original;

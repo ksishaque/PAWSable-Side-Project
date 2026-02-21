@@ -9,8 +9,8 @@ using UnityEngine;
 	mass: Mass value of the projectile
 	*/
 	[SerializeField] protected GameObject projectile;
-	[SerializeField] private string desc = "";
-	[SerializeField] private int mass = 20;
+	[SerializeField, NaughtyAttributes.ResizableTextArea] private string desc = "";
+	[SerializeField] private int mass = 30;
 
 	//	Validation
 	virtual protected void OnValidate(){

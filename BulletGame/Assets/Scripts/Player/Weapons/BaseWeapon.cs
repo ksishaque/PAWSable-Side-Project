@@ -36,8 +36,7 @@ public abstract class BaseWeapon : MonoBehaviour
     abstract protected void fireProjectile();
 	protected ProjectileLoot getProjectile(int index){
 		if(index < projectiles.Count && projectiles[index] != null) return projectiles[index];
-		//	TODO: create a "blank" projectile
-		return null;
+		return GlobalReferences.instance.blankProjectileLoot;
 	}
 
 	//	Accessors

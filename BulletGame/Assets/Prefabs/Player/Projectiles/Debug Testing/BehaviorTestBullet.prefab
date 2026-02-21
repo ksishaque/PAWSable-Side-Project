@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 3465725313669367306}
   - component: {fileID: -3354047977403550075}
   - component: {fileID: 1855675192780047290}
-  - component: {fileID: -5319676866182965909}
+  - component: {fileID: 5604347819487275}
   - component: {fileID: 6063557149723862681}
   m_Layer: 7
-  m_Name: DebugBullet
+  m_Name: BehaviorTestBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,12 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
-  damage: 1
+  damage: 0
   modifier:
     rid: 4212330626405105735
   affects: 2
-  pierce: 1
-  killPierce: -1
+  pierce: -1
+  killPierce: 0
   references:
     version: 2
     RefIds:
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b706f7090bc9a74fa01c5813238af2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicalRotation
---- !u!114 &-5319676866182965909
+--- !u!114 &5604347819487275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,16 +175,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7684355605594490202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d165977affe6284192a8cbcfde78f9b, type: 3}
+  m_Script: {fileID: 11500000, guid: d0cb0db14e896ea44a2ff1325d1a7b4b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConstantProjectileMovment
-  velocity: {x: 12, y: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleProjectileMovement
   speedMod:
-    rid: 4212330626405105730
+    rid: 4212330694571196548
+  behavior:
+    rid: 4212330694571196514
+  endMode: 0
   references:
     version: 2
     RefIds:
-    - rid: 4212330626405105730
+    - rid: 4212330694571196514
+      type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        velocity:
+          rid: 4212330694571196515
+    - rid: 4212330694571196515
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: 5, y: 2.5}
+    - rid: 4212330694571196548
       type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
       data:
         data: {fileID: -3354047977403550075}

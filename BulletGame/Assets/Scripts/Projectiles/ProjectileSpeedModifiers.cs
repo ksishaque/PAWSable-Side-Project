@@ -32,4 +32,16 @@ using UnityEngine;
 	//	Accessor
 	abstract public float getSpeedModifier();
 
+	//	Helper for finding default modifier
+	static public BaseProjectileSpeedModifier getDefault(GameObject obj){
+
+			//	Variable: Player projectile component
+			PlayerProjectile playerProj = obj.GetComponent<PlayerProjectile>();
+
+			//	Determine best modifier type
+			if(playerProj == null) return new Enemy();
+			return new Player(playerProj);
+
+	}
+
 }

@@ -16,10 +16,14 @@ public class PlayerProjectile : MonoBehaviour{
 		public float intensity;
 		public float speed;
 
-		//	Constructor
+		//	Constructors
 		public Data(float intensity = 1, float speed = 1){
 			this.intensity = intensity;
 			this.speed = speed;
+		}
+		public Data(Data source){
+			intensity = source.intensity;
+			speed = source.speed;
 		}
 
 	}
