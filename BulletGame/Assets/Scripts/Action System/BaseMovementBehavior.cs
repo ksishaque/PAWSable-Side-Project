@@ -3,25 +3,24 @@ using UnityEngine;
 //	Action for timed enemy movement
 [System.Serializable] abstract public class BaseMovementBehavior : BaseBehavior{
 
-	//	Interface for components that provide a movement rotation matrix
-	public interface IRotation{
-
-		//	Accessor
-		public RotationMatrix getRotationMatrix();
-
-	}
-
 	/*	Variables:
 	origin: Original position of `actor`
 	facer: Facer of `actor`
-	rotation: Rotation affecting movements
+	rotation: Physical rotation affecting movements
+	rotMatrix: Rotation matrix for `rotation`
 	*/
 	protected Vector2 origin{
 		get;
 		private set;
 	}
 	private AIFacer facer;
-	private RotationMatrix rotation;
+	protected PhysicalRotation rotation;
+	protected RotationMatrix rotMatrix{
+		get{
+			if(rotation == null) return RotationMatrix.IDENTITY;
+			return rotation.matrix;
+		}
+	}
 
 	[Header("Timing")]
 	/*	Variables
@@ -49,16 +48,10 @@ using UnityEngine;
 	//	Overrides
 	sealed override protected void start(){
 
-		//	Set `origin` and `facer`
+		//	Set members
 		origin = (Vector2) actor.transform.localPosition;
 		facer = actor.GetComponent<AIFacer>();
-
-		//	Variable: Rotation provider component
-		IRotation rotator = actor.GetComponent<IRotation>();
-
-		//	Check and set `rotation` based on `rotator`
-		if(rotator == null) rotation = RotationMatrix.IDENTITY;
-		else rotation = rotator.getRotationMatrix();
+		rotation = actor.GetComponent<PhysicalRotation>();
 
 	}
 	sealed override public void update(ref float remainingTime){
@@ -93,7 +86,7 @@ using UnityEngine;
 		}
 
 	}
-	sealed override public bool setEndless(bool endless){
+	sealed override public bool setEndless(bool endless = true){
 		this.endless = endless;
 		return true;
 	}
@@ -147,7 +140,7 @@ using UnityEngine;
 
 	//	Determine change in position (or velocity)
 	virtual protected Vector2 getPosition(float dt){
-		return (getDelPos(dt) * rotation) + (Vector2) actor.transform.position;
+		return (getDelPos(dt) * rotMatrix) + (Vector2) actor.transform.position;
 	}
 	virtual protected Vector2 getDelPos(float dt){
 		return getVelocity(dt) * dt;

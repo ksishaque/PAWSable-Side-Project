@@ -33,8 +33,12 @@ using UnityEngine;
 
 	}
 
-	//	Variable: List of actions to run upon destruction
+	/*	Variables:
+	onDestroyActions: List of actions to run upon destruction
+	destroyed: If this object has already been destroyed, to avoid infinite looping
+	*/
 	[SerializeField] private List<OnDestroyLayer> onDestroyActions = new List<OnDestroyLayer>();
+	private bool destroyed = false;
 
 	//	Destruction
 	static public void destroy(GameObject obj, Cause type = Cause.DEFAULT){
@@ -55,6 +59,10 @@ using UnityEngine;
 
 	//	Helpers
 	private void destroy(Cause type){
+
+		//	Check and set `destroyed`
+		if(destroyed) return;
+		destroyed = true;
 
 		//	Variable: Action list found while destroying self
 		ActionList actionList = destroyInner(type);

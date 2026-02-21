@@ -9,7 +9,7 @@ using UnityEngine;
 	projCount: Number of projectiles that can be loaded
 	*/
 	[SerializeField, NaughtyAttributes.ValidateInput("validateWeapon", "`weapon` must have a player weapon component")] private GameObject weapon;
-	[SerializeField] private string desc = "";
+	[SerializeField, NaughtyAttributes.ResizableTextArea] private string desc = "";
 
 	//	Validation
 	private void OnValidate(){

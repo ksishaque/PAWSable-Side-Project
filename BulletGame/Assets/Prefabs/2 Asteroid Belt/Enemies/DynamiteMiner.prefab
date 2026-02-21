@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2555537885781707224}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1875, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -247,8 +247,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
   damage: 1
-  pierce: -1
+  modifier:
+    rid: 4212330694571196510
   affects: 1
+  pierce: -1
+  killPierce: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4212330694571196510
+      type: {class: BaseDamageModifier/Enemy, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!114 &3327044467622863601
 MonoBehaviour:
   m_ObjectHideFlags: 0

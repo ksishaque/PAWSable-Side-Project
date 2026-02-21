@@ -181,8 +181,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
   damage: 1
-  pierce: -1
+  modifier:
+    rid: 1000
   affects: 1
+  pierce: -1
+  killPierce: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 1000
+      type: {class: BaseDamageModifier/Enemy, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!114 &3893534020022184263
 MonoBehaviour:
   m_ObjectHideFlags: 0

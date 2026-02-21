@@ -65,5 +65,8 @@ public class Spawner : MonoBehaviour{
 	public void addSpawn(AISpawnPattern.Spawn spawn){
 		timers.Add(new SpawnTimer(spawn));
 	}
+	private void spawn(AISpawnPattern.Spawn spawn){
+		spawn.spawn();
+	}
 
 }
