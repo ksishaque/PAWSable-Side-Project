@@ -46,6 +46,7 @@ using UnityEngine;
 
 	//	Access the actual vector
 	abstract public Vector2 get();
+	static public implicit operator Vector2(InspectorVector2 vector) => vector.get();
 
 	//	Get a default
 	static public Vector2D getDefault() => new Vector2D();

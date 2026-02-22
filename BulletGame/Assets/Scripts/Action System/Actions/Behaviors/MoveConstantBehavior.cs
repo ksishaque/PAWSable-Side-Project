@@ -19,9 +19,6 @@ using UnityEngine;
 	override public BaseAction clone(){
 		return new MoveConstantBehavior(this);
 	}
-	override protected Vector2 getVelocity(float dt) => velocity.get();
-	override protected Vector2 predictPosition(Vector2 start, float duration){
-		return start + (duration * velocity.get());
-	}
+	override protected Vector2 getVelocity(float dt) => velocity;
 
 }

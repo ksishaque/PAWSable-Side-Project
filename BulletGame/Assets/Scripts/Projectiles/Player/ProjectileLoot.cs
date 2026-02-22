@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 //	Standard scriptable object for projectiles
 [CreateAssetMenu(fileName = "ProjectileLoot", menuName = "Loot/Projectiles/Standard Projectile")] public class ProjectileLoot : BaseLoot{
@@ -8,9 +9,9 @@ using UnityEngine;
 	desc: Description of the weapon
 	mass: Mass value of the projectile
 	*/
-	[SerializeField] protected GameObject projectile;
-	[SerializeField, NaughtyAttributes.ResizableTextArea] private string desc = "";
-	[SerializeField] private int mass = 30;
+	[SerializeField, BoxGroup("References")] protected GameObject projectile;
+	[SerializeField, BoxGroup("Visual"), ResizableTextArea] private string desc = "";
+	[SerializeField, BoxGroup("Data")] private int mass = 30;
 
 	//	Validation
 	virtual protected void OnValidate(){
@@ -18,19 +19,22 @@ using UnityEngine;
 	}
 
 	//	Spawning
-	public GameObject spawnEntity(Transform origin) => spawnEntity(origin, 0, PlayerProjectile.STANDARD_DATA);
-	public GameObject spawnEntity(Transform origin, float angleModifier) => spawnEntity(origin, angleModifier, PlayerProjectile.STANDARD_DATA);
-	public GameObject spawnEntity(Transform origin, PlayerProjectile.Data data) => spawnEntity(origin, 0, data);
-	virtual public GameObject spawnEntity(Transform origin, float angleModifier, PlayerProjectile.Data data){
+	public void spawnEntity(Transform origin) => spawnEntity(origin, 0, PlayerProjectile.STANDARD_DATA);
+	public void spawnEntity(Transform origin, float angleModifier) => spawnEntity(origin, angleModifier, PlayerProjectile.STANDARD_DATA);
+	public void spawnEntity(Transform origin, PlayerProjectile.Data data) => spawnEntity(origin, 0, data);
+	virtual public void spawnEntity(Transform origin, float angleModifier, PlayerProjectile.Data data){
+		spawnEntityInner(projectile, origin, angleModifier, data);
+	}
+	protected PlayerProjectile spawnEntityInner(GameObject prefab, Transform origin, float angleModifier, PlayerProjectile.Data data){
 
 		//	Variable: Spawned projectile component
-		PlayerProjectile projData = ObjectInitializer.instantiate(projectile, origin.position, angleModifier + origin.rotation.eulerAngles.z).GetComponent<PlayerProjectile>();
+		PlayerProjectile projData = ObjectInitializer.instantiate(prefab, origin.position, angleModifier + origin.rotation.eulerAngles.z).GetComponent<PlayerProjectile>();
 
 		//	Set up `data`
 		projData.setData(data);
 
 		//	Return
-		return projData.gameObject;
+		return projData;
 
 	}
 
