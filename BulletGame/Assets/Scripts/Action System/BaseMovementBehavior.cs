@@ -4,15 +4,10 @@ using UnityEngine;
 [System.Serializable] abstract public class BaseMovementBehavior : BaseBehavior{
 
 	/*	Variables:
-	origin: Original position of `actor`
 	facer: Facer of `actor`
 	rotation: Physical rotation affecting movements
 	rotMatrix: Rotation matrix for `rotation`
 	*/
-	protected Vector2 origin{
-		get;
-		private set;
-	}
 	private AIFacer facer;
 	protected PhysicalRotation rotation;
 	protected RotationMatrix rotMatrix{
@@ -49,9 +44,11 @@ using UnityEngine;
 	sealed override protected void start(){
 
 		//	Set members
-		origin = (Vector2) actor.transform.localPosition;
 		facer = actor.GetComponent<AIFacer>();
 		rotation = actor.GetComponent<PhysicalRotation>();
+
+		//	Calculate children members
+		onStart();
 
 	}
 	sealed override public void update(ref float remainingTime){
@@ -73,11 +70,8 @@ using UnityEngine;
 
 			//	Check for ending
 			if(remainingTime >= 0){
-
-				//	Update position
-				if(runtimePrediction()) updatePos(predictPosition(origin, duration));
-				else updatePos(getPosition(spentTime - remainingTime));
-
+				updatePos(getPosition(spentTime - remainingTime));
+				onEnd();
 			}
 
 			//	Update position
@@ -91,6 +85,7 @@ using UnityEngine;
 		return true;
 	}
 	sealed override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){
+#if FALSE
 
 		/*	Variables:
 		totalTime: Total amount of time simulated since the start of the preview
@@ -130,6 +125,7 @@ using UnityEngine;
 		timeUntilImage -= duration;
 		timeUntilDurationImage -= duration;
 
+#endif
 	}
 
 	//	Helper function for updating position
@@ -138,8 +134,12 @@ using UnityEngine;
 		actor.setPosition(position);
 	}
 
-	//	Determine change in position (or velocity)
-	virtual protected Vector2 getPosition(float dt){
+	//	Functions for starting and stopping the movement
+	virtual protected void onStart(){}
+	virtual protected void onEnd(){}
+
+	//	Determine position and velocity
+	private Vector2 getPosition(float dt){
 		return (getDelPos(dt) * rotMatrix) + (Vector2) actor.transform.position;
 	}
 	virtual protected Vector2 getDelPos(float dt){
@@ -148,9 +148,5 @@ using UnityEngine;
 	virtual protected Vector2 getVelocity(float dt){
 		return new Vector2(0, 0);
 	}
-
-	//	Predict position
-	abstract protected Vector2 predictPosition(Vector2 start, float duration);
-	virtual protected bool runtimePrediction() => true;
 
 }

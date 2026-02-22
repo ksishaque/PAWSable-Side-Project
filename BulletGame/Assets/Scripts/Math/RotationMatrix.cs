@@ -3,8 +3,14 @@ using UnityEngine;
 //	Class used for rotating 2D vectors quickly
 public class RotationMatrix{
 
-	//	Variable: Identity rotation matrix
-	static readonly public RotationMatrix IDENTITY = new RotationMatrix();
+	/*	Variables:
+	IDENTITY: Identity rotation matrix
+	CW_RIGHT: 90 degrees clockwise matrix
+	CCW_RIGHT: 90 degrees counterclockwise matrix
+	*/
+	static readonly public RotationMatrix IDENTITY = new RotationMatrix(1, 0);
+	static readonly public RotationMatrix CW_RIGHT = new RotationMatrix(0, -1);
+	static readonly public RotationMatrix CCW_RIGHT = new RotationMatrix(0, 1);
 
 	/*	Variables:
 	cos: Cosine value of rotation
@@ -38,13 +44,23 @@ public class RotationMatrix{
 		sin = Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
 
 	}
+	private RotationMatrix(float cos, float sin){
+		this.cos = cos;
+		this.sin = sin;
+	}
 
 	//	Rotate
 	public Vector2 rotate(Vector2 vector){
 		return new Vector2((cos * vector.x) - (sin * vector.y), (sin * vector.x) + (cos * vector.y));
 	}
+	public Vector2 inverseRotate(Vector2 vector){
+		return new Vector2((cos * vector.x) + (sin * vector.y), (sin * vector.x) - (cos * vector.y));
+	}
 	static public Vector2 operator*(Vector2 vector, RotationMatrix matrix){
 		return matrix.rotate(vector);
+	}
+	static public Vector2 operator/(Vector2 vector, RotationMatrix matrix){
+		return matrix.inverseRotate(vector);
 	}
 
 }
