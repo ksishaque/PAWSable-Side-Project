@@ -15,11 +15,11 @@ using UnityEngine;
 	[System.Serializable] public class Player : BaseProjectileSpeedModifier{
 
 		//	Variable: Player projectile component
-		[SerializeField] private PlayerProjectile data;
+		[SerializeField] private BasePlayerProjectile data;
 
 		//	Constructors
 		public Player(){}
-		public Player(PlayerProjectile data){
+		public Player(BasePlayerProjectile data){
 			this.data = data;
 		}
 
@@ -36,7 +36,7 @@ using UnityEngine;
 	static public BaseProjectileSpeedModifier getDefault(GameObject obj){
 
 			//	Variable: Player projectile component
-			PlayerProjectile playerProj = obj.GetComponent<PlayerProjectile>();
+			BasePlayerProjectile playerProj = obj.GetComponent<BasePlayerProjectile>();
 
 			//	Determine best modifier type
 			if(playerProj == null) return new Enemy();

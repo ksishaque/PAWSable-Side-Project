@@ -56,7 +56,7 @@ using UnityEngine;
 		//	Check `endless`
 		if(endless){
 			time += remainingTime;
-			updatePos(getPosition(remainingTime));
+			updatePos(getDelPos(remainingTime));
 			remainingTime = -1;
 		}
 		else{
@@ -70,12 +70,12 @@ using UnityEngine;
 
 			//	Check for ending
 			if(remainingTime >= 0){
-				updatePos(getPosition(spentTime - remainingTime));
+				updatePos(getDelPos(spentTime - remainingTime));
 				onEnd();
 			}
 
 			//	Update position
-			else updatePos(getPosition(spentTime));
+			else updatePos(getDelPos(spentTime));
 
 		}
 
@@ -129,9 +129,9 @@ using UnityEngine;
 	}
 
 	//	Helper function for updating position
-	private void updatePos(Vector2 position){
-		if(facer != null) facer.faceMovement(position);
-		actor.setPosition(position);
+	private void updatePos(Vector2 dPos){
+		actor.addPosition(dPos * rotMatrix);
+		if(facer != null) facer.faceMovement(dPos);
 	}
 
 	//	Functions for starting and stopping the movement
@@ -139,9 +139,6 @@ using UnityEngine;
 	virtual protected void onEnd(){}
 
 	//	Determine position and velocity
-	private Vector2 getPosition(float dt){
-		return (getDelPos(dt) * rotMatrix) + (Vector2) actor.transform.position;
-	}
 	virtual protected Vector2 getDelPos(float dt){
 		return getVelocity(dt) * dt;
 	}

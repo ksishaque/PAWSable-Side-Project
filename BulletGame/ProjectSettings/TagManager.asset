@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Player Bullet
-  - Enemy
+  - Player/Body
+  - Player/Bullet
+  - Enemy/Body
+  - Enemy/Bullet
   - Loot
-  - Enemy Bullet
   - 
   - 
   - 
@@ -44,16 +44,22 @@ TagManager:
   - name: Background
     uniqueID: 724477127
     locked: 0
-  - name: Enemy
+  - name: FieldEffects
+    uniqueID: 2405817129
+    locked: 0
+  - name: Enemy/Body
     uniqueID: 3943802239
     locked: 0
-  - name: Player
+  - name: Player/Body
     uniqueID: 1637755875
     locked: 0
-  - name: PlayerProjectiles
+  - name: Player/Weapon
+    uniqueID: 1841444197
+    locked: 0
+  - name: Player/Projectiles
     uniqueID: 281701861
     locked: 0
-  - name: EnemyProjectiles
+  - name: Enemy/Projectiles
     uniqueID: 1466969291
     locked: 0
   m_RenderingLayers:

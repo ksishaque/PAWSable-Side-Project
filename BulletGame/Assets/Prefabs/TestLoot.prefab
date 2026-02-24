@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7268980788572761114}
   - component: {fileID: 1111050037132269264}
   - component: {fileID: -3018407284976787638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TestLoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4878889684802505693}
   - component: {fileID: 783927111097811028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

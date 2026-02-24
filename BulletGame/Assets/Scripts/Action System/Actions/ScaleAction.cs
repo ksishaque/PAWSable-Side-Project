@@ -25,7 +25,7 @@ using UnityEngine;
 	}
 	override protected void start(){
 
-		//	Set up `init` and reconfigure `rotation` to be the added rotation
+		//	Set up `init` and reconfigure `scale` to be the change in scale
 		init = actor.transform.localScale;
 		scale -= init;
 

@@ -1,7 +1,16 @@
 using UnityEngine;
 
+//	Base class for holding player projectile information
+public abstract class BasePlayerProjectile : MonoBehaviour{
+
+	//	Accessors
+	abstract public float getSpeedModifier();
+	abstract public float getDamageModifier();
+
+}
+
 //	Behavior that holds player projectile information
-public class PlayerProjectile : MonoBehaviour{
+public class PlayerProjectile : BasePlayerProjectile{
 
 	//	Variable: Constant for a default projectile
 	static readonly public Data STANDARD_DATA = new Data();
@@ -41,8 +50,8 @@ public class PlayerProjectile : MonoBehaviour{
 	}
 
 	//	Accessors
-	public float getSpeedModifier() => data.speed;
-	public float getDamageModifier(){
+	override public float getSpeedModifier() => data.speed;
+	override public float getDamageModifier(){
 
 		//	Manage kinetic damage
 		if(kinetic) return data.intensity * ((1.25f * data.speed) - 0.25f);

@@ -1,19 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//	Interface for behaviors that need to store the original local scale of the object before initialization
-public interface IStoreScale{
-
-	//	Store scale
-	abstract public void storeScale();
-
-}
-
-//	Interface for behaviors that need to store the original local rotation of the object before initialization
-public interface IStoreRotation{
+//	Interface for behaviors that need to store the original rotation of the object before initialization
+public interface IStoreTransform{
 
 	//	Store rotation
-	abstract public void storeRotation();
+	abstract public void storeTransform();
 
 }
 
@@ -23,61 +15,79 @@ public interface IStoreRotation{
 public class ObjectInitializer : MonoBehaviour{
 
 	/*	Variables:
-	position: Local position to instantiate at
-		NOTE: `position` is alway additively relative, so there is no "positionAsOffset". ("positionAsOffset" is always `true`.)
-	rotation: Local rotation to instantiate at
-	rotationAsOffset: If `rotation` is additively relative to the original rotation
-	scale: Local scale to instantiate at
-	scaleAsOffset: If `scale` is multiplicitively relative to the original scale
+	positionOffset: Local position offset to instantiate at
+	positionRootLayer: Number of parent layers to move up before resetting the local position
+		NOTE: If set to -1, it does not reset the layer at all
+	rotationOffset: Local rotation offset to instantiate at
+	rotationRootLayer: Number of parent layers to move up before resetting the local rotation
+		NOTE: If set to -1, it does not reset the layer at all
+	scaleOffset: Local scale offset to instantiate at
+	scaleReset: If local scale should be reset
 	*/
-	public Vector2 position = new Vector2(0, 0);
-	public float rotation = 0;
-	public bool rotationAsOffset = true;
-	public Vector2 scale = new Vector2(1, 1);
-	public bool scaleAsOffset = true;
+	[SerializeField] private Vector2 positionOffset = new Vector2(0, 0);
+	[SerializeField] private int positionRootLayer = -1;
+	[SerializeField] private float rotationOffset = 0;
+	[SerializeField] private int rotationRootLayer = -1;
+	[SerializeField] private Vector2 scaleOffset = new Vector2(1, 1);
+	[SerializeField] private bool scaleReset = false;
 
-	//	Set up
+	//	Variable: If this object has already been initialized, to avoid repeats
+	private bool initialized = false;
+
+	//	Instantiate
 	static public GameObject instantiate(GameObject prefab, Vector2 position, float rotation = 0){
-
-		//	Variable: Instantiated game object
-		GameObject ans = GameObject.Instantiate(prefab, (Vector3) position, Quaternion.Euler(0, 0, rotation));
-
-		//	Set up each initializer
-		foreach(IStoreScale scaleStorer in ans.GetComponentsInChildren<IStoreScale>()) scaleStorer.storeScale();
-		foreach(IStoreRotation rotStorer in ans.GetComponentsInChildren<IStoreRotation>()) rotStorer.storeRotation();
-		foreach(ObjectInitializer initializer in ans.GetComponentsInChildren<ObjectInitializer>()) initializer.initialize();
-
-		//	Return
-		return ans;
-
+		return initialize(GameObject.Instantiate(prefab, (Vector3) position, Quaternion.Euler(0, 0, rotation)));
 	}
 	static public GameObject instantiate(GameObject prefab, Transform parent){
+		return initialize(GameObject.Instantiate(prefab, parent));
+	}
 
-		//	Variable: Instantiated game object
-		GameObject ans = GameObject.Instantiate(prefab, parent);
+	//	Initialize
+	private void Start(){
+		initialize(gameObject);
+	}
+	static private GameObject initialize(GameObject obj){
+
+		//	Set up each transformation storer
+		foreach(IStoreTransform storer in obj.GetComponentsInChildren<IStoreTransform>()) storer.storeTransform();
 
 		//	Set up each initializer
-		foreach(ObjectInitializer initializer in ans.GetComponentsInChildren<ObjectInitializer>()) initializer.initialize();
+		foreach(ObjectInitializer initializer in obj.GetComponentsInChildren<ObjectInitializer>()) initializer.initialize();
 
 		//	Return
-		return ans;
+		return obj;
 
 	}
 
-	//	Helper
+	//	Helpers
 	private void initialize(){
 
+		//	Check and set `initialized`
+		if(initialized) return;
+		initialized = true;
+
+		//	Variable: Parent layer to reset to
+		Transform resetLayer = getParentByLayer(transform, positionRootLayer);
+
 		//	Set up position
-		gameObject.addPosition(position);
+		if(resetLayer == null) transform.position = new Vector3(0, 0, 0);
+		else transform.position = resetLayer.position;
+		gameObject.addPosition(positionOffset);
 
 		//	Set up rotation
-		if(rotationAsOffset) gameObject.addRotation(rotation);
-		else gameObject.setRotation(rotation);
+		resetLayer = getParentByLayer(transform, rotationRootLayer);
+		if(resetLayer == null) transform.rotation = Quaternion.identity;
+		else transform.rotation = resetLayer.rotation;
+		gameObject.addRotation(rotationOffset);
 
 		//	Set up scale
-		if(scaleAsOffset) gameObject.addScale(scale);
-		else gameObject.setScale(scale);
+		if(scaleReset) gameObject.setScale(scaleOffset);
+		else gameObject.addScale(scaleOffset);
 
+	}
+	static private Transform getParentByLayer(Transform transform, int layer){
+		if(layer < 0 || transform == null) return transform;
+		return getParentByLayer(transform.parent, layer - 1);
 	}
 
 }
