@@ -193,8 +193,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1841444197
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -361,8 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3306b6a5c4d4f3c4a95a297fc5d9befd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectInitializer
-  position: {x: 0, y: 0}
-  rotation: 180
-  rotationAsOffset: 0
-  scale: {x: 0, y: 0}
-  scaleAsOffset: 0
+  positionOffset: {x: 0, y: 0}
+  positionRootLayer: -1
+  rotationOffset: 180
+  rotationRootLayer: -1
+  scaleOffset: {x: 0, y: 0}
+  scaleReset: 0

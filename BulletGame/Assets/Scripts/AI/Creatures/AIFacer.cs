@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Class for managing AI facing behavior
-public class AIFacer : MonoBehaviour, IStoreScale, IStoreRotation{
+public class AIFacer : MonoBehaviour, IStoreTransform{
 
 
 	//	Flags for different ways the object should be oriented to keep the graphics consistant in the direction it is trying to face
@@ -21,17 +21,18 @@ public class AIFacer : MonoBehaviour, IStoreScale, IStoreRotation{
 
 
 	//	Set up
-	public void storeScale(){
-		origSca = transform.localScale;
-	}
-	public void storeRotation(){
+	public void storeTransform(){
 		origRot = transform.localRotation.eulerAngles.z;
+		origSca = transform.localScale;
 	}
 
 
 	//	Face `target`
 	private void Update(){
-		if(target != null) face(target.getLocation());
+		if(target != null){
+			if(transform.parent == null) face(target.getLocation() - (Vector2) transform.localPosition);
+			else face((Vector2) transform.parent.InverseTransformPoint(target.getLocation()) - (Vector2) transform.localPosition);
+		}
 	}
 
 
@@ -48,20 +49,17 @@ public class AIFacer : MonoBehaviour, IStoreScale, IStoreRotation{
 
 
 	//	Face a location
-	public void faceMovement(Vector2 newLocation){
-		if(target == null) face(newLocation);
+	public void faceMovement(Vector2 movement){
+		if(target == null) face(movement);
 	}
-	private void face(Vector2 facedLocation){
+	private void face(Vector2 direction){
 
 		//	Variable: Original rotation, possibly flipped, to use
 		float rot = origRot;
 
-		//	Convert `facedLocation` to root space
-		if(transform.parent != null) facedLocation = transform.parent.InverseTransformPoint(facedLocation);
-
 		//	Flip if necessary
 		if(Math.bitContains(correction, Correction.FLIP)){
-			if(facedLocation.x > transform.localPosition.x){
+			if(direction.x > 0){
 
 				//	Update `rot`
 				rot *= -1;
@@ -71,18 +69,12 @@ public class AIFacer : MonoBehaviour, IStoreScale, IStoreRotation{
 				else gameObject.setScale(-origSca.x, origSca.y);
 
 			}
-			else if(facedLocation.x < transform.localPosition.x) gameObject.setScale(origSca.x, origSca.y);
+			else if(direction.x < 0) gameObject.setScale(origSca.x, origSca.y);
 		}
 
 		//	Rotate if necessary
 		if(Math.bitContains(correction, Correction.ROTATE)){
-
-			//	Variable: Total displacement traveled
-			Vector2 disp = facedLocation - (Vector2) transform.localPosition;
-
-			//	Check for standstill and rotate
-			if(disp.x != 0 || disp.y != 0) gameObject.setRotation((Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg) + 180 + rot);
-
+			if(direction.x != 0 || direction.y != 0) gameObject.setRotation((Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 180 + rot);
 		}
 		else gameObject.setRotation(rot);
 

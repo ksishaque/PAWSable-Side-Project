@@ -14,7 +14,7 @@ public class DamageHandler : MonoBehaviour
 		if(modifier == null){
 
 			//	Variable: Player projectile component
-			PlayerProjectile playerProj = gameObject.GetComponent<PlayerProjectile>();
+			BasePlayerProjectile playerProj = gameObject.GetComponent<BasePlayerProjectile>();
 
 			//	Determine best modifier type
 			if(playerProj == null) modifier = new BaseDamageModifier.Enemy();

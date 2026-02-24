@@ -25,16 +25,17 @@ using NaughtyAttributes;
 	virtual public void spawnEntity(Transform origin, float angleModifier, PlayerProjectile.Data data){
 		spawnEntityInner(projectile, origin, angleModifier, data);
 	}
-	protected PlayerProjectile spawnEntityInner(GameObject prefab, Transform origin, float angleModifier, PlayerProjectile.Data data){
+	protected GameObject spawnEntityInner(GameObject prefab, Transform origin, float angleModifier, PlayerProjectile.Data data){
 
-		//	Variable: Spawned projectile component
-		PlayerProjectile projData = ObjectInitializer.instantiate(prefab, origin.position, angleModifier + origin.rotation.eulerAngles.z).GetComponent<PlayerProjectile>();
+		/*	Variable: Spawned projectile object
+		*/
+		GameObject ans = ObjectInitializer.instantiate(prefab, origin.position, angleModifier + origin.rotation.eulerAngles.z);
 
 		//	Set up `data`
-		projData.setData(data);
+		ans.GetComponent<PlayerProjectile>().setData(data);
 
 		//	Return
-		return projData;
+		return ans;
 
 	}
 

@@ -7,7 +7,18 @@ using UnityEngine;
 	[System.Serializable] public class Vector2D : InspectorVector2{
 
 		//	Variable: Vector to access
-		[SerializeField] private Vector2 vector = new Vector2();
+		[SerializeField] private Vector2 vector;
+
+		//	Constructors
+		public Vector2D(){
+			vector = new Vector2();
+		}
+		public Vector2D(Vector2 vector){
+			this.vector = vector;
+		}
+		public Vector2D(float x, float y){
+			vector = new Vector2(x, y);
+		}
 
 		//	Override
 		override public Vector2 get(){
@@ -20,8 +31,18 @@ using UnityEngine;
 	[System.Serializable] public class DirectionMagnitude : InspectorVector2{
 
 		//	Variable: Vector to access
-		[SerializeField] private float direction = 0;
-		[SerializeField] private float magnitude = 1;
+		[SerializeField] private float direction;
+		[SerializeField] private float magnitude;
+
+		//	Constructors
+		public DirectionMagnitude(){
+			direction = 0;
+			magnitude = 1;
+		}
+		public DirectionMagnitude(float direction, float magnitude){
+			this.direction = direction;
+			this.magnitude = magnitude;
+		}
 
 		//	Override
 		override public Vector2 get(){
@@ -34,8 +55,18 @@ using UnityEngine;
 	[System.Serializable] public class VectorMagnitude : InspectorVector2{
 
 		//	Variable: Vector to access
-		[SerializeField] private Vector2 direction = new Vector2();
-		[SerializeField] private float magnitude = 1;
+		[SerializeField] private Vector2 direction;
+		[SerializeField] private float magnitude;
+
+		//	Constructors
+		public VectorMagnitude(){
+			direction = new Vector2();
+			magnitude = 1;
+		}
+		public VectorMagnitude(Vector2 direction, float magnitude){
+			this.direction = direction;
+			this.magnitude = magnitude;
+		}
 
 		//	Override
 		override public Vector2 get(){
@@ -49,6 +80,6 @@ using UnityEngine;
 	static public implicit operator Vector2(InspectorVector2 vector) => vector.get();
 
 	//	Get a default
-	static public Vector2D getDefault() => new Vector2D();
+	static public InspectorVector2 getDefault() => new Vector2D();
 
 }

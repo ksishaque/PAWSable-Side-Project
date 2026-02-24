@@ -15,11 +15,11 @@ using UnityEngine;
 	[System.Serializable] public class PlayerProjectile : BaseDamageModifier{
 
 		//	Variable: Player projectile component
-		[SerializeField] private global::PlayerProjectile data;
+		[SerializeField] private BasePlayerProjectile data;
 
 		//	Constructors
 		public PlayerProjectile(){}
-		public PlayerProjectile(global::PlayerProjectile data){
+		public PlayerProjectile(BasePlayerProjectile data){
 			this.data = data;
 		}
 

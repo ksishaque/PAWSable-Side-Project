@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7485352122551364281}
   - component: {fileID: 1716161469095785161}
   - component: {fileID: 4734040299455212946}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: TestBulletEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,8 +141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
   damage: 1
-  pierce: 1
+  modifier:
+    rid: 4212330746888061019
   affects: 1
+  pierce: 1
+  killPierce: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4212330746888061019
+      type: {class: BaseDamageModifier/Enemy, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!1 &8560550779488655263
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6085794468850857157}
   - component: {fileID: 5533306157302830859}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,8 +228,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1466969291
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}

@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 280971207307635522}
   - component: {fileID: 679191970537302706}
   - component: {fileID: 3511386920230882948}
-  - component: {fileID: 524987718682985668}
+  - component: {fileID: 4158844608827143885}
+  - component: {fileID: 3340727478353473612}
   - component: {fileID: 1815628124312754166}
   - component: {fileID: 4094578387362731687}
-  - component: {fileID: 3369387853267397195}
   - component: {fileID: 1525478797372447683}
-  m_Layer: 0
-  m_Name: HelixParticleLower
+  m_Layer: 7
+  m_Name: HelixParticleSingular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
   collider: {fileID: 679191970537302706}
   bounds: 2
---- !u!114 &524987718682985668
+--- !u!114 &4158844608827143885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,10 +125,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 8484742308846957183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f5c53db0dc3e143985e62845d555f9, type: 3}
+  m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
-  kinetic: 0
+  m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
+  damage: 1
+  modifier:
+    rid: 4212330746888060996
+  affects: 2
+  pierce: 1
+  killPierce: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4212330746888060996
+      type: {class: BaseDamageModifier/PlayerProjectile, ns: , asm: Assembly-CSharp}
+      data:
+        data: {fileID: 3340727478353473612}
+--- !u!114 &3340727478353473612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484742308846957183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61452e4f634253243a09761d63747ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RemotePlayerProjectile
+  reference: {fileID: 0}
 --- !u!114 &1815628124312754166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,54 +179,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleProjectileMovement
   speedMod:
-    rid: 4212330707949453312
+    rid: 4212330746888060995
   behavior:
     rid: 4212330707949453380
   endMode: 0
   references:
     version: 2
     RefIds:
-    - rid: 4212330707949453312
-      type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
-      data:
-        data: {fileID: 524987718682985668}
     - rid: 4212330707949453380
       type: {class: MoveSerpentineBehavior, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
         forwardVelocity:
           rid: 4212330707949453381
-        amplitude: -0.5
-        wavelength: 4
+        amplitude: 0.5
+        wavelength: 8
     - rid: 4212330707949453381
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:
         vector: {x: 6, y: 0}
---- !u!114 &3369387853267397195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8484742308846957183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
-  damage: 1
-  modifier:
-    rid: 4212330707949453384
-  affects: 2
-  pierce: 1
-  killPierce: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4212330707949453384
-      type: {class: BaseDamageModifier/PlayerProjectile, ns: , asm: Assembly-CSharp}
+    - rid: 4212330746888060995
+      type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
       data:
-        data: {fileID: 524987718682985668, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
+        data: {fileID: 3340727478353473612}
 --- !u!212 &1525478797372447683
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.5019608, b: 0, a: 0.5019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

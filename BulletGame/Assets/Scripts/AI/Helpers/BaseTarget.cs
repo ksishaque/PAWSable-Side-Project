@@ -3,27 +3,6 @@ using UnityEngine;
 //	Interface for classes referencing a target
 public interface BaseTarget{
 
-	//	Class targeting a specific game object
-	[System.Serializable] public class Object : BaseTarget{
-
-		//	Variable: Object to target
-		[SerializeField] private GameObject target;
-
-		//	Constructors
-		public Object(){
-			target = null;
-		}
-		public Object(GameObject target){
-			this.target = target;
-		}
-
-		//	Override
-		public Vector2 getLocation(){
-			return target.transform.position;
-		}
-
-	}
-
 	//	Class targeting a specific world location
 	[System.Serializable] public class Location : BaseTarget{
 
@@ -55,6 +34,27 @@ public interface BaseTarget{
 	}
 
 	//	Class targeting a specific game object
+	[System.Serializable] public class Object : BaseTarget{
+
+		//	Variable: Object to target
+		[SerializeField] private GameObject target;
+
+		//	Constructors
+		public Object(){
+			target = null;
+		}
+		public Object(GameObject target){
+			this.target = target;
+		}
+
+		//	Override
+		public Vector2 getLocation(){
+			return target.transform.position;
+		}
+
+	}
+
+	//	Class targeting a specific game object
 	[System.Serializable] public class ObjectReference : BaseTarget{
 
 		//	Variable: Object to target
@@ -75,7 +75,64 @@ public interface BaseTarget{
 
 	}
 
+	//	Class targeting a specific world location
+	[System.Serializable] public class SpawnPoint : BaseTarget{
+
+		//	Variable: Object to target
+		[SerializeField] private SpawnRecord record;
+
+		//	Constructors
+		public SpawnPoint(){
+			record = null;
+		}
+		public SpawnPoint(GameObject obj){
+			record = obj.GetComponent<SpawnRecord>();
+		}
+		public SpawnPoint(SpawnRecord record){
+			this.record = record;
+		}
+
+		//	Override
+		public Vector2 getLocation(){
+			return record.position;
+		}
+
+	}
+
+	//	Modifier class that adds a static offset to a target
+	[System.Serializable] public class OffsetTarget : BaseTarget{
+
+		//	Variable: Object to target
+		[SerializeReference, SubclassSelector] private BaseTarget target;
+		[SerializeReference, SubclassSelector] private InspectorVector2 offset;
+
+		//	Constructors
+		public OffsetTarget(){
+			target = getDefault();
+			offset = InspectorVector2.getDefault();
+		}
+		public OffsetTarget(BaseTarget target, InspectorVector2 offset){
+			this.target = target;
+			this.offset = offset;
+		}
+		public OffsetTarget(BaseTarget target, Vector2 offset){
+			this.target = target;
+			this.offset = new InspectorVector2.Vector2D(offset);
+		}
+
+		//	Override
+		public Vector2 getLocation(){
+			return target.getLocation() + offset.get();
+		}
+
+	}
+
 	//	Access target
 	public Vector2 getLocation();
+
+	//	Default
+	static public BaseTarget getDefault(){
+		return new Location();
+	}
 
 }

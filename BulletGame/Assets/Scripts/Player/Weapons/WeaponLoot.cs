@@ -31,7 +31,12 @@ using UnityEngine;
 	}
 
 	//	Accessors
-	[NaughtyAttributes.ShowNativeProperty] private int projectileCount => getProjCount();
+	[NaughtyAttributes.ShowNativeProperty] private int projectileCount{
+		get{
+			if(weapon == null || weapon.GetComponent<BaseWeapon>() == null) return -1;
+			return getProjCount();
+		}
+	}
 	public int getProjCount() => weapon.GetComponent<BaseWeapon>().getProjCount();
 
 }
