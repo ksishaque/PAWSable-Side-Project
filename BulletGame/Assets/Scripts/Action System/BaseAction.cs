@@ -106,24 +106,23 @@ using UnityEngine;
 	duration: Duration of the action
 	time: Time since start of the action
 	function: Function to scale `completion` by
-	completion: Completion percentage of the action
+	completion: Completion rate of the action
+	dCompletion: Amount of completion rate covered in the last frame
+	pCompletion: Completion rate from the last frame
 	*/
 	[SerializeField] private float Duration;
-	protected float duration{
-		get{
-			return Duration;
-		}
-	}
-	protected float time{
+	protected float duration => Duration;
+	private float time = 0;
+	[SerializeReference, SubclassSelector] private BaseScalingFunction completionFunction = new StandardScalingFunction();
+	protected float completion => completionFunction.operate(time / Duration);
+	protected float dCompletion{
 		get;
 		private set;
 	} = 0;
-	[SerializeReference, SubclassSelector] private BaseScalingFunction completionFunction = new StandardScalingFunction();
-	protected float completion{
-		get{
-			return completionFunction.operate(time / Duration);
-		}
-	}
+	protected float pCompletion{
+		get;
+		private set;
+	} = 0;
 
 	//	Constructors
 	protected BaseTimedAction(){
@@ -136,10 +135,16 @@ using UnityEngine;
 	//	Overrides
 	sealed override public void update(ref float remainingTime){
 
+		//	Store `pCompletion`
+		pCompletion = completion;
+
 		//	Update `time` and `remainingTime`
 		time += remainingTime;
 		remainingTime = time - Duration;
 		if(remainingTime > 0) time = Duration;
+
+		//	Determine `dCompletion`
+		dCompletion = completion - pCompletion;
 
 		//	Update
 		update();

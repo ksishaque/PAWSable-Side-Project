@@ -1,26 +1,64 @@
 using UnityEngine;
 
-static public partial class Math{
+//	Class for scaling an index into a spread
+public class Spread{
 
-	//	Calculate each value when multiple values are spread within a range
-	static public float spread(int index, int count, float maxValue, float minValue, bool softEdge = false){
+	/*	Variables:
+	sectorSize: Distance from one index to the next
+	start: Value of index 0
+	*/
+	private float sectorSize;
+	private float start;
 
-		//	Implement soft edges
-		if(softEdge){
-			index += 1;
-			count += 1;
-		}
+	//	Constructor
+	public Spread(int indexCount, float maxValue = 1, float minValue = 0, float buffer = 0){
 
-		//	Adjust index range
-		else count -= 1;
+		//	Calculate value range
+		sectorSize = maxValue;
+		sectorSize -= minValue;
+
+		//	Determine index spread size
+		start = buffer;
+		start *= 2;
+		start += indexCount;
+		start -= 1;
+
+		//	Calculate `sectorSize`
+		sectorSize /= start;
+
+		//	Scale lower buffer
+		start = buffer;
+		start *= sectorSize;
+
+		//	Calculate `start`
+		start += minValue;
+
+	}
+
+	//	Calculate scaled index
+	public float getValue(int index) => (index * sectorSize) + start;
+	static public float getValue(int index, int count, float maxValue = 1, float minValue = 0, float buffer = 0){
 
 		//	Variable: Return value / calculated spread point
-		float ans = index / (float) count;
+		float ans = index;//(index + buffer) / (count + (2 * buffer));
 
-		//	Scale to range and return;
+		//	Add lower buffer
+		ans += buffer;
+
+		//	Determine index spread size
+		buffer *= 2;
+		buffer += count;
+		buffer -= 1;
+
+		//	Calculate spread ratio
+		ans /= buffer;
+
+		//	Scale to range;
 		maxValue -= minValue;
 		ans *= maxValue;
 		ans += minValue;
+
+		//	Return
 		return ans;
 
 	}

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Class that stores rotation for physics purposes
-public class PhysicalRotation : MonoBehaviour, IStoreTransform{
+public class PhysicalRotation : MonoBehaviour, IInitialize{
 
 	/*	Variables:
 	rotation: Public accessor/mutator variable for `rotationInner`
@@ -28,7 +28,7 @@ public class PhysicalRotation : MonoBehaviour, IStoreTransform{
 	private bool dirty = true;
 
 	//	Set up
-	public void storeTransform(){
+	public void onInitialize(){
 		rotation = transform.localRotation.eulerAngles.z;
 	}
 

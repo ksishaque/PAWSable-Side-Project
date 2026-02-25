@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
     private float currentHealth;
     [SerializeField] private Type type = Type.ENEMY;
 
-   [System.Flags] public enum Type
+   public enum Type
     {
         NONE = 0,
         PLAYER = 1 << 0,

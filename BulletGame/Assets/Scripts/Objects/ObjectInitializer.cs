@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//	Interface for behaviors that need to store the original rotation of the object before initialization
-public interface IStoreTransform{
-
-	//	Store rotation
-	abstract public void storeTransform();
-
+//	Interface for behaviors that need to run a function before the transformation is initialized
+public interface IInitialize{
+	abstract public void onInitialize();
 }
 
 
@@ -49,7 +46,7 @@ public class ObjectInitializer : MonoBehaviour{
 	static private GameObject initialize(GameObject obj){
 
 		//	Set up each transformation storer
-		foreach(IStoreTransform storer in obj.GetComponentsInChildren<IStoreTransform>()) storer.storeTransform();
+		foreach(IInitialize storer in obj.GetComponentsInChildren<IInitialize>()) storer.onInitialize();
 
 		//	Set up each initializer
 		foreach(ObjectInitializer initializer in obj.GetComponentsInChildren<ObjectInitializer>()) initializer.initialize();

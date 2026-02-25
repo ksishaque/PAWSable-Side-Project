@@ -143,13 +143,12 @@ public class PlayerWeaponHandler : MonoBehaviour{
 
 	//	Helpers
 	private void deactivateAll(){
-		foreach(BaseWeapon weapon in activeWeapons) ObjectDestroyer.destroy(weapon.gameObject, ObjectDestroyer.Cause.HIDE);
+		foreach(BaseWeapon weapon in activeWeapons) ObjectDestroyer.destroy(weapon.gameObject, ObjectDestroyer.Cause.STOW_WEAPON);
 		activeWeapons.Clear();
 	}
 
 	public void activate(int weaponIndex){
 		if(weaponSlots[weaponIndex].weapon != null) activeWeapons.Add(weaponSlots[weaponIndex].weapon.spawnEntity(weaponSlots[weaponIndex]));
-		Debug.Log("Activate gun: " + weaponIndex);
 	}
 
 	private void activate(){

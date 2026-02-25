@@ -4,7 +4,7 @@ public class DamageHandler : MonoBehaviour
 {
 	[SerializeField] private float damage = 1;
 	[SerializeReference, SubclassSelector] private BaseDamageModifier modifier;
-	[SerializeField] private Health.Type affects = Health.Type.PLAYER;
+	[SerializeField, NaughtyAttributes.EnumFlags] private Health.Type affects = Health.Type.PLAYER;
 	[SerializeField] private int pierce = 1;
 	[SerializeField] private int killPierce = 0;
 
@@ -38,7 +38,7 @@ public class DamageHandler : MonoBehaviour
 
         if (pierce == 0)
         {
-            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DESPAWN);
+            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.PROJECTILE_EXPIRE);
         }
 
     }
