@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Class for managing AI facing behavior
-public class AIFacer : MonoBehaviour, IStoreTransform{
+public class AIFacer : MonoBehaviour, IInitialize{
 
 
 	//	Flags for different ways the object should be oriented to keep the graphics consistant in the direction it is trying to face
@@ -21,7 +21,7 @@ public class AIFacer : MonoBehaviour, IStoreTransform{
 
 
 	//	Set up
-	public void storeTransform(){
+	public void onInitialize(){
 		origRot = transform.localRotation.eulerAngles.z;
 		origSca = transform.localScale;
 	}

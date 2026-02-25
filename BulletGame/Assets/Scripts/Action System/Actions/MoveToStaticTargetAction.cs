@@ -1,7 +1,8 @@
 using UnityEngine;
 
-//	Action for moving the actor to a dynamic target
-[System.Serializable] public class MoveToTargetAction : BaseTimedAction{
+//	Action for moving the actor to a static target
+//	NOTE: If used on a dynamic target, the actor will simply move to the position that the target was at at the start of the action.
+[System.Serializable] public class MoveToStaticTargetAction : BaseTimedAction{
 
 	[Header("Moving")]
 	/*	Variables:
@@ -14,16 +15,16 @@ using UnityEngine;
 	private Vector2 init;
 
 	//	Constructor
-	public MoveToTargetAction(){
+	public MoveToStaticTargetAction(){
 		target = BaseTarget.getDefault();
 	}
-	public MoveToTargetAction(MoveToTargetAction origin) : base(origin){
+	public MoveToStaticTargetAction(MoveToStaticTargetAction origin) : base(origin){
 		target = origin.target;
 	}
 
 	//	Overrides
 	override public BaseAction clone(){
-		return new MoveToTargetAction(this);
+		return new MoveToStaticTargetAction(this);
 	}
 	override protected void start(){
 

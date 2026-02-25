@@ -1,12 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//	Interface for behaviors that need to run a function before the object begins to destroy itself
+public interface IDestroy{
+	abstract public void onDestroy();
+}
+
 //	List of actions to run upon destruction
 //	NOTE: Objects must be destroyed using the custom `Destroy()` method in order for this to run
 [RequireComponent(typeof(ActionList))] public class ObjectDestroyer : MonoBehaviour{
 
 	//	Types of destruction
-	public enum Cause{DEFAULT, DEATH, HIDE, DESPAWN}
+	public enum Cause{DEFAULT = 0, DEATH = 1 << 0, STOW_WEAPON = 1 << 1, DESPAWN = 1 << 2, PROJECTILE_EXPIRE = 1 << 3}
 
 	//	Class that assigns a set of actions to run upon a certain type of destruction
 	[System.Serializable] private class OnDestroyLayer{
@@ -15,7 +20,7 @@ using UnityEngine;
 		type: Type of death to respond to
 		actions: Set of actions to respond with
 		*/
-		public Cause type = Cause.DEATH;
+		[NaughtyAttributes.EnumFlags] public Cause type = Cause.DEFAULT;
 		[SerializeReference, SubclassSelector] public List<BaseAction> actions;
 
 	}
@@ -47,13 +52,10 @@ using UnityEngine;
 		ObjectDestroyer destroyer = obj.GetComponent<ObjectDestroyer>();
 
 		//	If `destroyer` is invalid, destroy the object normally
-		if(destroyer == null){
-			GameObject.Destroy(obj);
-			return;
-		}
+		if(destroyer == null) GameObject.Destroy(obj);
 
 		//	Run `destroyer`
-		destroyer.destroy(type);
+		else destroyer.destroy(type);
 
 	}
 
@@ -91,19 +93,22 @@ using UnityEngine;
 		int i = 0;
 
 		//	Find correct destroy layer
-		while(onDestroyActions[i].type != type){
+		if(type == Cause.DEFAULT) while(Math.bitContains(onDestroyActions[i].type, type)){
 
 			//	Increment
 			i += 1;
 
 			//	Check for end of `onDestroyActions`
-			if(onDestroyActions.Count <= i){
+			if(onDestroyActions.Count <= i)  destroyInner(Cause.DEFAULT);
 
-				//	Check if type can be switched to `DEFAULT`
-				if(type == Cause.DEFAULT) return GetComponent<ActionList>();
-				return destroyInner(Cause.DEFAULT);
+		}
+		else while(onDestroyActions[i].type != Cause.DEFAULT){
 
-			}
+			//	Increment
+			i += 1;
+
+			//	Check for end of `onDestroyActions`
+			if(onDestroyActions.Count <= i)  return GetComponent<ActionList>();
 
 		}
 

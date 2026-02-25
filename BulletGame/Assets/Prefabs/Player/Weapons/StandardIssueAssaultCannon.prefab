@@ -115,6 +115,7 @@ MonoBehaviour:
   - {fileID: 1296378513480681873}
   - {fileID: 572185109275066338}
   baseInterval: 0.2
+  barrelTimerScale: 1
 --- !u!114 &6688516610143117377
 MonoBehaviour:
   m_ObjectHideFlags: 0

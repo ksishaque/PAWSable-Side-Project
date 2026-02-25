@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpawnRecord : MonoBehaviour, IStoreTransform{
+public class SpawnRecord : MonoBehaviour, IInitialize{
 
 	/*	Variables:
 	position: Original local position of the object
@@ -22,7 +22,7 @@ public class SpawnRecord : MonoBehaviour, IStoreTransform{
 
 
 	//	Set up
-	public void storeTransform(){
+	public void onInitialize(){
 		position = transform.localPosition;
 		rotation = transform.localRotation.eulerAngles.z;
 		scale = transform.localScale;

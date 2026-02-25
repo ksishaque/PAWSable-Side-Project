@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StandardIssueShotgun : BaseWeapon{
+public class GenericBlastWeapon : BaseWeapon{
 
 	[Header("References")]
 	//	Variable: Root from which the projectile fires
@@ -12,12 +12,14 @@ public class StandardIssueShotgun : BaseWeapon{
 	baseProjPerShot: Standard number of projectiles per shot, assuming a mass of 30
 	minProjPerShot: Minimum number of projectiles before excess mass begins affecting attack interval instead
 	angleRange: Maximum angle deviation
+	spread: Index scaler for the bullet spread
 	projPerShot: Number of projectiles in this shot
 	*/
 	[SerializeField] private float minInterval;
 	[SerializeField] private int baseProjPerShot;
 	[SerializeField] private int minProjPerShot;
 	[SerializeField] private float angleRange;
+	private Spread spread;
 	private int projPerShot;
 
 
@@ -39,9 +41,12 @@ public class StandardIssueShotgun : BaseWeapon{
 			projPerShot = (int) (pps + 0.5f);
 		}
 
+		//	Set up `spread`
+		spread = new Spread(projPerShot, -angleRange, angleRange, 1);
+
 	}
 	override protected void fireProjectile(){
-		for(int i = 0; i < projPerShot; i += 1) getProjectile(0).spawnEntity(barrel.transform, Math.spread(i, projPerShot, -angleRange, angleRange, true));
+		for(int i = 0; i < projPerShot; i += 1) getProjectile(0).spawnEntity(barrel.transform, spread.getValue(i));
 	}
 	override public int getProjCount() => 1;
 
