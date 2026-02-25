@@ -24,15 +24,7 @@ public class InventoryScript : MonoBehaviour
 
     public void toggleInventory()
     {
-        if (isOpen)
-        {
-            inventory.SetActive(false);
-            isOpen = false;
-        }
-        else if (!isOpen)
-        {
-            inventory.SetActive(true);
-            isOpen = true;
-        }
+        isOpen = !isOpen;
+        inventory.SetActive(isOpen);
     }
 }
