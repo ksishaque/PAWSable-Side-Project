@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Class for single behavior projectile movement
-[RequireComponent(typeof(PhysicalRotation))] public class SimpleProjectileMovement : MonoBehaviour{
+[RequireComponent(typeof(PhysicalRotation)), RequireComponent(typeof(Rigidbody2D))]  public class SimpleProjectileMovement : MonoBehaviour{
 
 	[Header("Projectile")]
 	/*	Variables:

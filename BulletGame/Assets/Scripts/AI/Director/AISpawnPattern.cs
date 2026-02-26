@@ -29,7 +29,7 @@ using UnityEngine;
 
 		//	Validate and preview
 		public void validate(){
-			if(enemy != null && enemy.GetComponent<AIBehaviorList>() == null) enemy = null;
+			Prefab.validateComponent<AIBehaviorList>(ref enemy);
 		}
 		public void preview(float imageTime, float duration){
 

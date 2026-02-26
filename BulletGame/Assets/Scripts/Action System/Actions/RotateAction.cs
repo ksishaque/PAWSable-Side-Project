@@ -4,26 +4,35 @@ using UnityEngine;
 [System.Serializable] public class RotateAction : BaseTimedAction{
 
 	//	Direction in which the actor should rotate
-	private enum Direction{STRAIGHT = 360, CLOCKWISE = -180, COUNTERCLOCKWISE = 180, FASTEST = 0};
+	public enum Direction{STRAIGHT = 360, CLOCKWISE = -180, COUNTERCLOCKWISE = 180, FASTEST = 0};
 
 	[Header("Rotating")]
 	/*	Variables:
 	rotation: Final local rotation of the actor
-	direction: Direction in which the actor should rotate
 	init: Initial local rotation of the actor
+	direction: Direction in which the actor should rotate
+	relative: If `rotation` is relative to the current rotation
 	*/
 	[SerializeField] private float rotation;
-	[SerializeField] private Direction direction;
 	private float init;
+	[SerializeField] private Direction direction;
+	[SerializeField] private bool relative;
 
 	//	Constructors
 	public RotateAction(){
 		rotation = 0;
 		direction = Direction.FASTEST;
+		relative = false;
+	}
+	public RotateAction(float rotation, Direction direction, bool relative, float duration, BaseScalingFunction completionFunction) : base(duration, completionFunction){
+		this.rotation = rotation;
+		this.direction = direction;
+		this.relative = relative;
 	}
 	public RotateAction(RotateAction origin) : base(origin){
 		rotation = origin.rotation;
 		direction = origin.direction;
+		relative = origin.relative;
 	}
 
 	//	Overrides
@@ -34,7 +43,7 @@ using UnityEngine;
 
 		//	Set up `init` and reconfigure `rotation` to be the change in rotation
 		init = actor.transform.localRotation.eulerAngles.z;
-		rotation -= init;
+		if(relative == false) rotation -= init;
 
 		//	Clamp `rotation` to the correct range
 		if(direction != Direction.STRAIGHT){
@@ -50,7 +59,7 @@ using UnityEngine;
 
 	}
 	override protected void update(){
-		actor.setRotation(init + (rotation * completion));
+		actor.setLocalRotation(init + (rotation * completion));
 	}
 
 }

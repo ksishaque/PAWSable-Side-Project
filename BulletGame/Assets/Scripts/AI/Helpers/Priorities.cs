@@ -17,9 +17,6 @@ abstract public partial class AIBasePlan{
 		[SerializeField] private float recency;
 		[SerializeField] private float playerHealth;
 		[SerializeField] private float enemyPopulation;
-#if UNITY_EDITOR
-		[SerializeField] private bool debugGuarantee = false;
-#endif
 
 		//	Constructor
 		public PrioritySet(){
@@ -48,11 +45,6 @@ abstract public partial class AIBasePlan{
 
 			//	Add `recency`
 			if(AIDirector.instance.getMaxRecency() > 0) ans += recency * pattern.recency / AIDirector.instance.getMaxRecency();
-
-#if UNITY_EDITOR
-			//	Add `debugGuarantee`
-			if(debugGuarantee) return 1000000;
-#endif
 
 			//	Return
 			return ans;

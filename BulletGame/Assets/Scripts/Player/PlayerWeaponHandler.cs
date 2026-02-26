@@ -8,8 +8,8 @@ public class PlayerWeaponHandler : MonoBehaviour{
 	[System.Serializable] public class WeaponSlot{
 
 		[SerializeField] private GameObject root;
-		public WeaponLoot weapon;
-		public List<ProjectileLoot> projectiles;
+		public WeaponLootData weapon;
+		public List<ProjectileLootData> projectiles;
 
 		//	Accessors
 		public Transform getRoot() => root.transform;
@@ -26,7 +26,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 	currentWeapon: Currently active weapon slot
 	*/
 	[SerializeField] private List<WeaponSlot> weaponSlots;
-	private List<BaseWeapon> activeWeapons = new List<BaseWeapon>();
+	private List<BasePlayerWeapon> activeWeapons = new List<BasePlayerWeapon>();
 	private int curWeapon = -1;
 
 	[Header("Inputs")]
@@ -47,7 +47,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 		foreach(WeaponSlot weaponSlot in weaponSlots) if(weaponSlot != null) {
 			if(weaponSlot.weapon == null) weaponSlot.projectiles = null;
 			else{
-				if(weaponSlot.projectiles == null) weaponSlot.projectiles = new List<ProjectileLoot>();
+				if(weaponSlot.projectiles == null) weaponSlot.projectiles = new List<ProjectileLootData>();
 				while(weaponSlot.projectiles.Count < weaponSlot.weapon.getProjCount()) weaponSlot.projectiles.Add(null);
 				while(weaponSlot.projectiles.Count > weaponSlot.weapon.getProjCount()) weaponSlot.projectiles.RemoveAt(weaponSlot.projectiles.Count - 1);
 			}
@@ -89,7 +89,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 	private void Update(){
 
 		//	Update firing
-		if(shoot.ReadValue<float>() > 0.5f) foreach(BaseWeapon weapon in activeWeapons) weapon.shoot();
+		if(shoot.ReadValue<float>() > 0.5f) foreach(BasePlayerWeapon weapon in activeWeapons) weapon.shoot();
 
 		//	Update `scroll`
 		scroll.update();
@@ -143,7 +143,7 @@ public class PlayerWeaponHandler : MonoBehaviour{
 
 	//	Helpers
 	private void deactivateAll(){
-		foreach(BaseWeapon weapon in activeWeapons) ObjectDestroyer.destroy(weapon.gameObject, ObjectDestroyer.Cause.STOW_WEAPON);
+		foreach(BasePlayerWeapon weapon in activeWeapons) ObjectDestroyer.destroy(weapon.gameObject, ObjectDestroyer.Cause.STOW_WEAPON);
 		activeWeapons.Clear();
 	}
 

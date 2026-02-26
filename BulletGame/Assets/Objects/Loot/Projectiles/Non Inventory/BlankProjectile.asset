@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9555965ec2000843871d9853444fd51, type: 3}
   m_Name: BlankProjectile
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileLoot
-  rarity: 0
+  displayName: BlankProjectile
+  description: "Static projectile \u2014 DO NOT USE"
+  rarity: 5
   projectile: {fileID: 8996257659205189177, guid: b095b118520a4134ca5c6be9b797e2c5, type: 3}
-  desc: Projectile to use when no other projectile is assigned.
   mass: 15

@@ -25,7 +25,7 @@ public class ActionList : MonoBehaviour{
 		else dt = Time.unscaledDeltaTime;
 
 		//	Run
-		BaseAction.runActions(ref actions, ref started, gameObject, ref dt);
+		BaseAction.runActions(actions, ref started, gameObject, ref dt);
 	}
 
 	//	Add to `actions`
@@ -36,7 +36,7 @@ public class ActionList : MonoBehaviour{
 		actions.Add(action.clone());
 	}
 	public void addActions<Action>(List<Action> actions) where Action : BaseAction{
-		BaseAction.addClones(ref this.actions, actions);
+		BaseAction.addClones(this.actions, actions);
 	}
 
 	//	Clear `actions`

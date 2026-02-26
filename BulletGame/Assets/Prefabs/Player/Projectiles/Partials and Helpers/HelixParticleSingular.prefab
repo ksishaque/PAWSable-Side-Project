@@ -192,8 +192,8 @@ MonoBehaviour:
         duration: 1
         forwardVelocity:
           rid: 4212330707949453381
-        amplitude: 0.5
-        wavelength: 8
+        amplitude: 0.75
+        wavelength: 4
     - rid: 4212330707949453381
       type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
       data:

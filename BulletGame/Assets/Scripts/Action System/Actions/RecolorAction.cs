@@ -18,6 +18,10 @@ using UnityEngine;
 		renderer = null;
 		color = new Color(1, 1, 1, 1);
 	}
+	public RecolorAction(SpriteRenderer renderer, Color color, float duration, BaseScalingFunction completionFunction) : base(duration, completionFunction){
+		this.renderer = renderer;
+		this.color = color;
+	}
 	public RecolorAction(RecolorAction origin) : base(origin){
 		renderer = origin.renderer;
 		color = origin.color;

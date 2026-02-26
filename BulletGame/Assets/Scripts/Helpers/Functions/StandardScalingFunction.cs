@@ -14,6 +14,10 @@ using UnityEngine;
 		smoothIn = true;
 		smoothOut = true;
 	}
+	public StandardScalingFunction(bool smoothIn, bool smoothOut){
+		this.smoothIn = smoothIn;
+		this.smoothOut = smoothOut;
+	}
 
 	//	Operation
 	override public float operate(float x){

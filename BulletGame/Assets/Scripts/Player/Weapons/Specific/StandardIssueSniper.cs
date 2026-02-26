@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StandardIssueSniper : BaseWeapon{
+public class StandardIssueSniper : BasePlayerWeapon{
 
 	[Header("References")]
 	//	Variable: Root from which the projectile fires

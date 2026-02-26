@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericMultiBarrelAssaultWeapon : BaseWeapon{
+public class GenericMultiBarrelAssaultWeapon : BasePlayerWeapon{
 
 	[Header("References")]
 	/*	Variables:
@@ -17,7 +17,7 @@ public class GenericMultiBarrelAssaultWeapon : BaseWeapon{
 	barrelTimerScale: Number of weapon intervals it takes for a barrel to cool down
 	activeBarrelCount: Number of barrels ready to fire
 	*/
-	[SerializeField] private float baseInterval;
+	[SerializeField] private float baseInterval = 0.2f;
 	[SerializeField] private int barrelTimerScale = 0;
 	private int activeBarrelCount;
 

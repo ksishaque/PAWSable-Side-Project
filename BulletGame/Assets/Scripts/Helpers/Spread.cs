@@ -6,12 +6,20 @@ public class Spread{
 	/*	Variables:
 	sectorSize: Distance from one index to the next
 	start: Value of index 0
+	indexCount: Number of valid indexes
 	*/
 	private float sectorSize;
 	private float start;
+	public int indexCount{
+		get;
+		private set;
+	}
 
 	//	Constructor
 	public Spread(int indexCount, float maxValue = 1, float minValue = 0, float buffer = 0){
+
+		//	Set `indexCount`
+		this.indexCount = indexCount;
 
 		//	Calculate value range
 		sectorSize = maxValue;

@@ -30,12 +30,12 @@ using UnityEngine;
 
 		//	Set up `init` and `delPos`
 		init = actor.transform.localPosition;
-		delPos = target.getLocation();
+		delPos = target;
 		delPos -= init;
 
 	}
 	override protected void update(){
-		actor.setPosition(init + (delPos * completion));
+		actor.setLocalPosition(init + (delPos * completion));
 	}
 
 }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9555965ec2000843871d9853444fd51, type: 3}
   m_Name: HelixParticles
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileLoot
+  displayName: Helix Particles
+  description: 
   rarity: 1
   projectile: {fileID: 7295107360070972270, guid: 721081e159058c942a2c127a6d5b8135, type: 3}
-  desc: 
   mass: 30

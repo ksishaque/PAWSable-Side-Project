@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Interface for classes referencing a target
-public interface BaseTarget{
+public abstract class BaseTarget{
 
 	//	Class targeting a specific world location
 	[System.Serializable] public class Location : BaseTarget{
@@ -22,12 +22,9 @@ public interface BaseTarget{
 		public Location(GameObject target){
 			this.target = target.transform.position;
 		}
-		public Location(BaseTarget target){
-			this.target = target.getLocation();
-		}
 
 		//	Override
-		public Vector2 getLocation(){
+		override public Vector2 getLocation(){
 			return target;
 		}
 
@@ -48,7 +45,7 @@ public interface BaseTarget{
 		}
 
 		//	Override
-		public Vector2 getLocation(){
+		override public Vector2 getLocation(){
 			return target.transform.position;
 		}
 
@@ -69,7 +66,7 @@ public interface BaseTarget{
 		}
 
 		//	Override
-		public Vector2 getLocation(){
+		override public Vector2 getLocation(){
 			return target.getReference().transform.position;
 		}
 
@@ -93,7 +90,7 @@ public interface BaseTarget{
 		}
 
 		//	Override
-		public Vector2 getLocation(){
+		override public Vector2 getLocation(){
 			return record.position;
 		}
 
@@ -121,14 +118,15 @@ public interface BaseTarget{
 		}
 
 		//	Override
-		public Vector2 getLocation(){
+		override public Vector2 getLocation(){
 			return target.getLocation() + offset.get();
 		}
 
 	}
 
 	//	Access target
-	public Vector2 getLocation();
+	abstract public Vector2 getLocation();
+	static public implicit operator Vector2(BaseTarget target) => target.getLocation();
 
 	//	Default
 	static public BaseTarget getDefault(){

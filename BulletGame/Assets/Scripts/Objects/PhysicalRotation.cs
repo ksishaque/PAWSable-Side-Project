@@ -23,7 +23,7 @@ public class PhysicalRotation : MonoBehaviour, IInitialize{
 			return matrixInner;
 		}
 	}
-	private float rotationInner;
+	[NaughtyAttributes.ShowNonSerializedField] private float rotationInner;
 	private RotationMatrix matrixInner;
 	private bool dirty = true;
 

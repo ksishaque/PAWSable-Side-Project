@@ -2,20 +2,24 @@ using UnityEngine;
 using NaughtyAttributes;
 
 //	Standard scriptable object for projectiles
-[CreateAssetMenu(fileName = "ProjectileLoot", menuName = "Loot/Projectiles/Standard Projectile")] public class ProjectileLoot : BaseLoot{
+[CreateAssetMenu(fileName = "ProjectileLoot", menuName = "Loot/Projectiles/Standard Projectile")] public class ProjectileLootData : BaseLootData{
 
 	/*	Variables:
 	projectile: Projectile indicated by this loot
 	desc: Description of the weapon
 	mass: Mass value of the projectile
 	*/
-	[SerializeField, BoxGroup("References")] protected GameObject projectile;
-	[SerializeField, BoxGroup("Visual"), ResizableTextArea] private string desc = "";
+	[SerializeField, BoxGroup("References"), Required("`projectile` must have a `PlayerProjectile` component (NOT A `RemotePlayerProjectile`!)")] protected GameObject projectile;
 	[SerializeField, BoxGroup("Data")] private int mass = 30;
 
 	//	Validation
-	virtual protected void OnValidate(){
-		if(projectile.GetComponent<PlayerProjectile>() == null) projectile = null;
+	override protected void OnValidate(){
+
+		//	Run base
+		base.OnValidate();
+
+		//	Check `projectile`
+		Prefab.validateComponent<PlayerProjectile>(ref projectile);
 	}
 
 	//	Spawning

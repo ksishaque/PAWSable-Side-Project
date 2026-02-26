@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daddba9aaa336d7498950a81a24e6314, type: 3}
-  m_Name: PrimaryDroneProtocolStream
+  m_Name: PDPCover
   m_EditorClassIdentifier: Assembly-CSharp::WeaponLoot
-  rarity: 0
-  weapon: {fileID: 876185048215219193, guid: 03fd7f37d68c7df46895ec75e1315a9f, type: 3}
-  desc: 
+  displayName: 'PDP: Cover'
+  description: 
+  rarity: 3
+  weapon: {fileID: 876185048215219193, guid: 2f05d63bcb32ef542b0bd5aa7c53ee3f, type: 3}

@@ -62,12 +62,11 @@ public interface IDestroy{
 	//	Helpers
 	private void destroy(Cause type){
 
-		//	Check and set `destroyed`
-		if(destroyed) return;
-		destroyed = true;
-
 		//	Variable: Action list found while destroying self
 		ActionList actionList = destroyInner(type);
+
+		//	Call destruction callbacks
+		foreach(IDestroy callback in GetComponentsInChildren<IDestroy>()) callback.onDestroy();
 
 		//	Destroy children
 		foreach(ObjectDestroyer child in GetComponentsInChildren<ObjectDestroyer>()) if(child != this){
@@ -86,29 +85,30 @@ public interface IDestroy{
 	}
 	private ActionList destroyInner(Cause type){
 
-		//	Check if there are any destroy layers
-		if(onDestroyActions.Count < 1) return GetComponent<ActionList>();
+		//	Check if there are any destroy layers, or if the object has already been destroyed
+		if(destroyed || onDestroyActions.Count < 1) return GetComponent<ActionList>();
+		destroyed = true;
 
 		//	Variable: Index of the correct destroy layer
 		int i = 0;
 
 		//	Find correct destroy layer
-		if(type == Cause.DEFAULT) while(Math.bitContains(onDestroyActions[i].type, type)){
-
-			//	Increment
-			i += 1;
-
-			//	Check for end of `onDestroyActions`
-			if(onDestroyActions.Count <= i)  destroyInner(Cause.DEFAULT);
-
-		}
-		else while(onDestroyActions[i].type != Cause.DEFAULT){
+		if(type == Cause.DEFAULT) while(onDestroyActions[i].type != Cause.DEFAULT){
 
 			//	Increment
 			i += 1;
 
 			//	Check for end of `onDestroyActions`
 			if(onDestroyActions.Count <= i)  return GetComponent<ActionList>();
+
+		}
+		else while(Math.bitContains(onDestroyActions[i].type, type) == false){
+
+			//	Increment
+			i += 1;
+
+			//	Check for end of `onDestroyActions`
+			if(onDestroyActions.Count <= i) return destroyInner(Cause.DEFAULT);
 
 		}
 

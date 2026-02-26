@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7007350343259563379}
+  - component: {fileID: 5604347819487275}
   - component: {fileID: -7684258357536786855}
   - component: {fileID: 31046484242291346}
   - component: {fileID: 3465725313669367306}
   - component: {fileID: 2993389417046044927}
   - component: {fileID: -3354047977403550075}
   - component: {fileID: 1855675192780047290}
-  - component: {fileID: 5604347819487275}
   - component: {fileID: 6063557149723862681}
   m_Layer: 7
   m_Name: BehaviorTestBullet
@@ -39,6 +39,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5604347819487275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cb0db14e896ea44a2ff1325d1a7b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleProjectileMovement
+  speedMod:
+    rid: 4212330694571196548
+  behavior:
+    rid: 4212330784966312017
+  endMode: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4212330694571196548
+      type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
+      data:
+        data: {fileID: -3354047977403550075}
+    - rid: 4212330784966312017
+      type: {class: MoveSerpentineBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        forwardVelocity:
+          rid: 4212330784966312018
+        amplitude: 1
+        wavelength: 3
+    - rid: 4212330784966312018
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: 6, y: 0}
 --- !u!50 &-7684258357536786855
 Rigidbody2D:
   serializedVersion: 5
@@ -166,42 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b706f7090bc9a74fa01c5813238af2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicalRotation
---- !u!114 &5604347819487275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7684355605594490202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0cb0db14e896ea44a2ff1325d1a7b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleProjectileMovement
-  speedMod:
-    rid: 4212330694571196548
-  behavior:
-    rid: 4212330707949453382
-  endMode: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4212330694571196548
-      type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
-      data:
-        data: {fileID: -3354047977403550075}
-    - rid: 4212330707949453382
-      type: {class: MoveSerpentineBehavior, ns: , asm: Assembly-CSharp}
-      data:
-        duration: 1
-        forwardVelocity:
-          rid: 4212330707949453383
-        amplitude: 0.5
-        wavelength: 3
-    - rid: 4212330707949453383
-      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
-      data:
-        vector: {x: 6, y: 0}
 --- !u!212 &6063557149723862681
 SpriteRenderer:
   m_ObjectHideFlags: 0
