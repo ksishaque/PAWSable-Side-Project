@@ -7,16 +7,24 @@ using UnityEngine;
 	/*	Variables:
 	scale: Final local scale of the actor
 	init: Initial local scale of the actor
+	relative: If `scale` is relative to the current scale
 	*/
 	[SerializeField] private Vector2 scale;
 	private Vector2 init;
+	[SerializeField] private bool relative;
 
 	//	Constructor
 	public ScaleAction(){
 		scale = new Vector2(1, 1);
+		relative = false;
+	}
+	public ScaleAction(Vector2 scale, bool relative, float duration, BaseScalingFunction completionFunction) : base(duration, completionFunction){
+		this.scale = scale;
+		this.relative = relative;
 	}
 	public ScaleAction(ScaleAction origin) : base(origin){
 		scale = origin.scale;
+		relative = origin.relative;
 	}
 
 	//	Overrides
@@ -27,11 +35,11 @@ using UnityEngine;
 
 		//	Set up `init` and reconfigure `scale` to be the change in scale
 		init = actor.transform.localScale;
-		scale -= init;
+		if(relative == false) scale -= init;
 
 	}
 	override protected void update(){
-		actor.setScale(init + (scale * completion));
+		actor.setLocalScale(init + (scale * completion));
 	}
 
 }

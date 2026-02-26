@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-    public List<BaseLoot> inventory = new List<BaseLoot>();
+    public List<BaseLootData> inventory = new List<BaseLootData>();
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         **/
     }
 
-    public void AddItem(BaseLoot baseloot)
+    public void AddItem(BaseLootData baseloot)
     {
         inventory.Add(baseloot);
         Debug.Log("Added baseloot to inventory");

@@ -2,7 +2,7 @@ using UnityEngine;
 using NaughtyAttributes;
 
 //	Scriptable object for debug projectiles
-[CreateAssetMenu(fileName = "DebugTestProjectileLoot", menuName = "Loot/Projectiles/Specific/Debug Projectile")] public class DebugTestProjectileLoot : ProjectileLoot{
+[CreateAssetMenu(fileName = "DebugTestProjectileLoot", menuName = "Loot/Projectiles/Specific/Debug Projectile")] public class DebugTestProjectileLoot : ProjectileLootData{
 
 	[SerializeField, BoxGroup("Data")] private Color color = new Color(1, 1, 1);
 	[SerializeField, BoxGroup("Data")] private bool kill = false;

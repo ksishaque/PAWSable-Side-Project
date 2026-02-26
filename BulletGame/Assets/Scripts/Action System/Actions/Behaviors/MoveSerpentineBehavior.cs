@@ -56,6 +56,7 @@ using UnityEngine;
 
 	}
 	override protected Vector2 getDelPos(float dt){
+		//return new Vector2(12 * dt, 0);
 
 		//	Variable: Change in height of the sinusoidal function
 		float dh = prevHeight;

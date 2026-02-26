@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3027774325534135063
+--- !u!1 &7684355605594490202
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 338489396600923533}
-  - component: {fileID: 6383569074922726949}
-  - component: {fileID: 1277586157106381952}
-  - component: {fileID: 7485352122551364281}
-  - component: {fileID: 1716161469095785161}
-  - component: {fileID: 4734040299455212946}
-  m_Layer: 9
-  m_Name: TestBulletEnemy
+  - component: {fileID: 7007350343259563379}
+  - component: {fileID: 2444402751710830817}
+  - component: {fileID: 3551145353760533588}
+  - component: {fileID: 7764683951287652935}
+  - component: {fileID: 3465725313669367306}
+  - component: {fileID: -3354047977403550075}
+  - component: {fileID: 1855675192780047290}
+  - component: {fileID: -5319676866182965909}
+  - component: {fileID: 6063557149723862681}
+  m_Layer: 7
+  m_Name: StandardIssueMiniBullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &338489396600923533
+--- !u!4 &7007350343259563379
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027774325534135063}
+  m_GameObject: {fileID: 7684355605594490202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.125, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6085794468850857157}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &6383569074922726949
+--- !u!50 &2444402751710830817
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027774325534135063}
+  m_GameObject: {fileID: 7684355605594490202}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -64,27 +66,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1277586157106381952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027774325534135063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d970084936e2da4469ebe179a8aac6d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestProjectile
-  speed: -12
-  lifespan: 10
---- !u!58 &7485352122551364281
+--- !u!58 &3551145353760533588
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027774325534135063}
+  m_GameObject: {fileID: 7684355605594490202}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -114,27 +102,13 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1716161469095785161
+--- !u!114 &7764683951287652935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027774325534135063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b10e6fb5d5fd8141ba91a1368b2e235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
-  collider: {fileID: 7485352122551364281}
-  bounds: 2
---- !u!114 &4734040299455212946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027774325534135063}
+  m_GameObject: {fileID: 7684355605594490202}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
@@ -142,55 +116,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
   damage: 1
   modifier:
-    rid: 4212330746888061019
-  affects: 1
+    rid: 4212330626405105735
+  affects: 2
   pierce: 1
-  killPierce: 0
+  killPierce: -1
   references:
     version: 2
     RefIds:
-    - rid: 4212330746888061019
-      type: {class: BaseDamageModifier/Enemy, ns: , asm: Assembly-CSharp}
-      data: 
---- !u!1 &8560550779488655263
-GameObject:
+    - rid: 4212330626405105735
+      type: {class: BaseDamageModifier/PlayerProjectile, ns: , asm: Assembly-CSharp}
+      data:
+        data: {fileID: -3354047977403550075}
+--- !u!114 &3465725313669367306
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6085794468850857157}
-  - component: {fileID: 5533306157302830859}
-  m_Layer: 9
-  m_Name: Circle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6085794468850857157
-Transform:
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b10e6fb5d5fd8141ba91a1368b2e235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundaryDespawner
+  collider: {fileID: 3551145353760533588}
+  bounds: 2
+--- !u!114 &-3354047977403550075
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8560550779488655263}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 338489396600923533}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5533306157302830859
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f5c53db0dc3e143985e62845d555f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
+  kinetic: 0
+--- !u!114 &1855675192780047290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b706f7090bc9a74fa01c5813238af2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhysicalRotation
+--- !u!114 &-5319676866182965909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d165977affe6284192a8cbcfde78f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantProjectileMovment
+  velocity: {x: 12, y: 0}
+  speedMod:
+    rid: 4212330626405105730
+  references:
+    version: 2
+    RefIds:
+    - rid: 4212330626405105730
+      type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
+      data:
+        data: {fileID: -3354047977403550075}
+--- !u!212 &6063557149723862681
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8560550779488655263}
+  m_GameObject: {fileID: 7684355605594490202}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -228,11 +232,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1466969291
-  m_SortingLayer: 7
+  m_SortingLayerID: 281701861
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -21,11 +21,19 @@ using UnityEngine;
 		public Branch(){
 			forceEnd = false;
 		}
+		public Branch(BaseAction action, bool forceEnd){
+			actions.Add(action);
+			this.forceEnd = forceEnd;
+		}
+		public Branch(List<BaseAction> actions, bool forceEnd){
+			addClones(this.actions, actions);
+			this.forceEnd = forceEnd;
+		}
 		public Branch(Branch origin){
 
 			//	Copy `actions`
-			if(origin.original == null) addClones(ref actions, origin.actions);
-			else addClones(ref actions, origin.original);
+			if(origin.original == null) addClones(actions, origin.actions);
+			else addClones(actions, origin.original);
 
 			//	Copy `forceEnd`
 			forceEnd = origin.forceEnd;
@@ -35,14 +43,14 @@ using UnityEngine;
 		//	Save a copy of `actions` to `original`
 		public void save(){
 			original = new List<BaseAction>();
-			addClones(ref original, actions);
+			addClones(original, actions);
 		}
 
 		//	Run the branch
 		public void run(GameObject actor, float dt, ref float remainingForced, ref float remaining){
 
 			//	Run `actions`
-			runActions(ref actions, ref started, actor, ref dt);
+			runActions(actions, ref started, actor, ref dt);
 
 			//	Check if `actions` has ended
 			if(dt < 0) remaining = -1;
@@ -66,6 +74,14 @@ using UnityEngine;
 	public ParallelAction(){}
 	public ParallelAction(ParallelAction origin){
 		foreach(Branch branch in origin.branches) branches.Add(new Branch(branch));
+	}
+
+	//	Mutator
+	public void addBranch(List<BaseAction> actions, bool forceEnd = false){
+		branches.Add(new Branch(actions, forceEnd));
+	}
+	public void addSingleBranchDirect(BaseAction action, bool forceEnd = false){
+		branches.Add(new Branch(action, forceEnd));
 	}
 
 	//	Overrides

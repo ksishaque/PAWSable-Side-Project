@@ -1,4 +1,4 @@
-#define xENABLE_MOVE_TO_DYNAMIC_TARGET_ACTION
+#define ENABLE_MOVE_TO_DYNAMIC_TARGET_ACTION
 
 using UnityEngine;
 
@@ -54,7 +54,7 @@ using UnityEngine;
 		}
 
 		//	Calculate and set the new position
-		actor.setPosition((target.getLocation() * completion) + (((pP - (target.getLocation() * pC)) * (1 - completion)) / (1 - pC)));
+		actor.setLocalPosition((target.getLocation() * completion) + (((pP - (target.getLocation() * pC)) * (1 - completion)) / (1 - pC)));
 
 	}
 

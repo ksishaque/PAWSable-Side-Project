@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daddba9aaa336d7498950a81a24e6314, type: 3}
   m_Name: StandardIssueAssaultCannon
   m_EditorClassIdentifier: Assembly-CSharp::WeaponLoot
+  displayName: Standard Issue Assault Cannon
+  description: 
   rarity: 0
   weapon: {fileID: 2351583126671403177, guid: d58846e6107a66f4586599fd90678753, type: 3}
-  desc: Standard twin fire machine gun unit. Smaller projectiles can be fired faster
-    rates.
-  projCount: 1

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daddba9aaa336d7498950a81a24e6314, type: 3}
   m_Name: StandardIssueSniperCannon
   m_EditorClassIdentifier: Assembly-CSharp::WeaponLoot
+  displayName: Standard Issue Sniper Cannon
+  description: 
   rarity: 0
   weapon: {fileID: 2351583126671403177, guid: 5d1247cf5cbd3cf4ebefca85596d6f33, type: 3}
-  desc: Standard sniper cannon unit. Smaller projectiles can be launched at faster
-    speeds.
-  projCount: 1

@@ -84,6 +84,7 @@ MonoBehaviour:
   baseProjPerShot: 3
   minProjPerShot: 2
   angleRange: 30
+  spreadEdgeBuffer: 1
 --- !u!114 &8025254833513538877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +129,7 @@ GameObject:
   - component: {fileID: 4122338805615410769}
   - component: {fileID: 3906891810877018426}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,12 +261,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4212330625336606790
+    - rid: 4212330625336606791
       type: {class: StandardScalingFunction, ns: , asm: Assembly-CSharp}
       data:
         smoothIn: 0
         smoothOut: 1
-    - rid: 4212330625336606791
+    - rid: 4212330784966312007
+      type: {class: RotateAction, ns: , asm: Assembly-CSharp}
+      data:
+        Duration: 0.25
+        completionFunction:
+          rid: 4212330784966312008
+        rotation: 0
+        direction: -180
+    - rid: 4212330784966312008
       type: {class: StandardScalingFunction, ns: , asm: Assembly-CSharp}
       data:
         smoothIn: 0
@@ -275,19 +284,11 @@ MonoBehaviour:
       data:
         branches:
         - actions:
-          - rid: 6269373711946088520
+          - rid: 4212330784966312007
           forceEnd: 0
         - actions:
           - rid: 6269373711946088521
           forceEnd: 0
-    - rid: 6269373711946088520
-      type: {class: RotateAction, ns: , asm: Assembly-CSharp}
-      data:
-        Duration: 0.25
-        completionFunction:
-          rid: 4212330625336606790
-        rotation: 0
-        direction: -180
     - rid: 6269373711946088521
       type: {class: ScaleAction, ns: , asm: Assembly-CSharp}
       data:
@@ -366,4 +367,4 @@ MonoBehaviour:
   rotationOffset: 180
   rotationRootLayer: -1
   scaleOffset: {x: 0, y: 0}
-  scaleReset: 0
+  scaleReset: 1

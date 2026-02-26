@@ -30,7 +30,7 @@ public class AIFacer : MonoBehaviour, IInitialize{
 	//	Face `target`
 	private void Update(){
 		if(target != null){
-			if(transform.parent == null) face(target.getLocation() - (Vector2) transform.localPosition);
+			if(transform.parent == null) face(target - (Vector2) transform.localPosition);
 			else face((Vector2) transform.parent.InverseTransformPoint(target.getLocation()) - (Vector2) transform.localPosition);
 		}
 	}
@@ -65,18 +65,18 @@ public class AIFacer : MonoBehaviour, IInitialize{
 				rot *= -1;
 
 				//	Flip
-				if(Math.bitContains(correction, Correction.ROTATE)) gameObject.setScale(origSca.x, -origSca.y);
-				else gameObject.setScale(-origSca.x, origSca.y);
+				if(Math.bitContains(correction, Correction.ROTATE)) transform.setLocalScale(origSca.x, -origSca.y);
+				else transform.setLocalScale(-origSca.x, origSca.y);
 
 			}
-			else if(direction.x < 0) gameObject.setScale(origSca.x, origSca.y);
+			else if(direction.x < 0) transform.setLocalScale(origSca.x, origSca.y);
 		}
 
 		//	Rotate if necessary
 		if(Math.bitContains(correction, Correction.ROTATE)){
-			if(direction.x != 0 || direction.y != 0) gameObject.setRotation((Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 180 + rot);
+			if(direction.x != 0 || direction.y != 0) transform.setLocalRotation((Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 180 + rot);
 		}
-		else gameObject.setRotation(rot);
+		else transform.setLocalRotation(rot);
 
 	}
 

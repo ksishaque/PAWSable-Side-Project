@@ -45,8 +45,8 @@ public class ObjectInitializer : MonoBehaviour{
 	}
 	static private GameObject initialize(GameObject obj){
 
-		//	Set up each transformation storer
-		foreach(IInitialize storer in obj.GetComponentsInChildren<IInitialize>()) storer.onInitialize();
+		//	Call initialization callbacks
+		foreach(IInitialize callback in obj.GetComponentsInChildren<IInitialize>()) callback.onInitialize();
 
 		//	Set up each initializer
 		foreach(ObjectInitializer initializer in obj.GetComponentsInChildren<ObjectInitializer>()) initializer.initialize();
@@ -69,17 +69,17 @@ public class ObjectInitializer : MonoBehaviour{
 		//	Set up position
 		if(resetLayer == null) transform.position = new Vector3(0, 0, 0);
 		else transform.position = resetLayer.position;
-		gameObject.addPosition(positionOffset);
+		transform.addLocalPosition(positionOffset);
 
 		//	Set up rotation
 		resetLayer = getParentByLayer(transform, rotationRootLayer);
 		if(resetLayer == null) transform.rotation = Quaternion.identity;
 		else transform.rotation = resetLayer.rotation;
-		gameObject.addRotation(rotationOffset);
+		transform.addLocalRotation(rotationOffset);
 
 		//	Set up scale
-		if(scaleReset) gameObject.setScale(scaleOffset);
-		else gameObject.addScale(scaleOffset);
+		if(scaleReset) transform.setLocalScale(scaleOffset);
+		else transform.addLocalScale(scaleOffset);
 
 	}
 	static private Transform getParentByLayer(Transform transform, int layer){

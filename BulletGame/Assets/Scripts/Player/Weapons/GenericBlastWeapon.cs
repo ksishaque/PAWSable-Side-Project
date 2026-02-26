@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class GenericBlastWeapon : BaseWeapon{
+public interface IHasBlastSpread{
+	public Spread getBlastSpread();
+}
+
+public class GenericBlastWeapon : BasePlayerWeapon, IHasBlastSpread{
 
 	[Header("References")]
 	//	Variable: Root from which the projectile fires
@@ -12,15 +16,20 @@ public class GenericBlastWeapon : BaseWeapon{
 	baseProjPerShot: Standard number of projectiles per shot, assuming a mass of 30
 	minProjPerShot: Minimum number of projectiles before excess mass begins affecting attack interval instead
 	angleRange: Maximum angle deviation
+	spreadEdgeBuffer: Number of potential projectile spawn rotations to use as a buffer before each edge
 	spread: Index scaler for the bullet spread
 	projPerShot: Number of projectiles in this shot
 	*/
-	[SerializeField] private float minInterval;
-	[SerializeField] private int baseProjPerShot;
-	[SerializeField] private int minProjPerShot;
-	[SerializeField] private float angleRange;
+	[SerializeField] private float minInterval = 0.6f;
+	[SerializeField] private int baseProjPerShot = 3;
+	[SerializeField] private int minProjPerShot = 2;
+	[SerializeField] private float angleRange = 30;
+	[SerializeField] private float spreadEdgeBuffer = 1;
 	private Spread spread;
-	private int projPerShot;
+	public int projPerShot{
+		get;
+		private set;
+	}
 
 
 	//	Overrides
@@ -42,12 +51,13 @@ public class GenericBlastWeapon : BaseWeapon{
 		}
 
 		//	Set up `spread`
-		spread = new Spread(projPerShot, -angleRange, angleRange, 1);
+		spread = new Spread(projPerShot, -angleRange, angleRange, spreadEdgeBuffer);
 
 	}
 	override protected void fireProjectile(){
 		for(int i = 0; i < projPerShot; i += 1) getProjectile(0).spawnEntity(barrel.transform, spread.getValue(i));
 	}
 	override public int getProjCount() => 1;
+	public Spread getBlastSpread() => spread;
 
 }

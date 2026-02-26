@@ -36,7 +36,7 @@ using UnityEngine;
 	virtual public void update(ref float remainingTime){}
 
 	//	Helper functions for managing a list of actions
-	static public void runActions(ref List<BaseAction> actions, ref bool started, GameObject actor, ref float remainingTime){
+	static public void runActions(List<BaseAction> actions, ref bool started, GameObject actor, ref float remainingTime){
 
 		//	Check `actions`
 		if(actions.Count < 1) started = false;
@@ -77,7 +77,7 @@ using UnityEngine;
 		}
 
 	}
-	static public void addClones<Action>(ref List<BaseAction> actions, List<Action> additives) where Action : BaseAction{
+	static public void addClones<Action>(List<BaseAction> actions, List<Action> additives) where Action : BaseAction{
 		foreach(Action additive in additives) actions.Add(additive.clone());
 	}
 
@@ -128,8 +128,13 @@ using UnityEngine;
 	protected BaseTimedAction(){
 		Duration = 1;
 	}
+	protected BaseTimedAction(float duration, BaseScalingFunction completionFunction){
+		Duration = duration;
+		this.completionFunction = completionFunction;
+	}
 	protected BaseTimedAction(BaseTimedAction origin){
 		Duration = origin.Duration;
+		completionFunction = origin.completionFunction;
 	}
 
 	//	Overrides

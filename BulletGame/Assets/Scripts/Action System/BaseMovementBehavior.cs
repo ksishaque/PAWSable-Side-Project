@@ -5,10 +5,12 @@ using UnityEngine;
 
 	/*	Variables:
 	facer: Facer of `actor`
+	physics: Physics component of `actor`
 	rotation: Physical rotation affecting movements
 	rotMatrix: Rotation matrix for `rotation`
 	*/
 	private AIFacer facer;
+	private Rigidbody2D physics;
 	protected PhysicalRotation rotation;
 	protected RotationMatrix rotMatrix{
 		get{
@@ -45,6 +47,7 @@ using UnityEngine;
 
 		//	Set members
 		facer = actor.GetComponent<AIFacer>();
+		physics = actor.GetComponent<Rigidbody2D>();
 		rotation = actor.GetComponent<PhysicalRotation>();
 
 		//	Calculate children members
@@ -56,7 +59,7 @@ using UnityEngine;
 		//	Check `endless`
 		if(endless){
 			time += remainingTime;
-			updatePos(getDelPos(remainingTime));
+			updatePos(remainingTime);
 			remainingTime = -1;
 		}
 		else{
@@ -70,12 +73,12 @@ using UnityEngine;
 
 			//	Check for ending
 			if(remainingTime >= 0){
-				updatePos(getDelPos(spentTime - remainingTime));
+				updatePos(spentTime - remainingTime);
 				onEnd();
 			}
 
 			//	Update position
-			else updatePos(getDelPos(spentTime));
+			else updatePos(spentTime);
 
 		}
 
@@ -129,9 +132,26 @@ using UnityEngine;
 	}
 
 	//	Helper function for updating position
-	private void updatePos(Vector2 dPos){
-		actor.addPosition(dPos * rotMatrix);
-		if(facer != null) facer.faceMovement(dPos);
+	private void updatePos(float dt){
+
+		//	Variable: Direction vector to send to `facer`
+		Vector2 direction;
+
+		//	Check if physical movement is not viable
+		if(physics == null){
+			direction = getDelPos(dt);
+			actor.addLocalPosition(direction * rotMatrix);
+		}
+		else{
+			direction = getVelocity(dt);
+			//TODO: Probably make this look/feel better
+			if(actor.transform.parent == null) physics.linearVelocity = direction * rotMatrix;
+			else physics.linearVelocity = actor.transform.parent.TransformVector(direction * rotMatrix);
+		}
+
+		//	Send facing data
+		if(facer != null) facer.faceMovement(direction);
+
 	}
 
 	//	Functions for starting and stopping the movement
@@ -143,7 +163,7 @@ using UnityEngine;
 		return getVelocity(dt) * dt;
 	}
 	virtual protected Vector2 getVelocity(float dt){
-		return new Vector2(0, 0);
+		return getDelPos(dt) / dt;
 	}
 
 }

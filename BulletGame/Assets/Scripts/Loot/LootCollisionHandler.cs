@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LootHandler : MonoBehaviour
 {
-    [SerializeField] private BaseLoot baseloot;
+    [SerializeField] private BaseLootData baseloot;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
