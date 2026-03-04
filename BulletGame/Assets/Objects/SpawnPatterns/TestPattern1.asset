@@ -26,17 +26,35 @@ MonoBehaviour:
     - rid: 6269373971478610601
     endMode: 0
   - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
-    delay: 1
-    spawnPosition: {x: 10, y: 2}
+    delay: 1.5
+    spawnPosition: {x: 10, y: 0}
     behavior:
     - rid: 6269373971478610602
-    endMode: 2
+    endMode: 0
   - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
-    delay: 1
-    spawnPosition: {x: 10, y: -2}
+    delay: 3
+    spawnPosition: {x: 10, y: 0}
     behavior:
     - rid: 6269373971478610603
-    endMode: 1
+    endMode: 0
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
+    delay: 4.5
+    spawnPosition: {x: 10, y: 0}
+    behavior:
+    - rid: 6269373971478610603
+    endMode: 0
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
+    delay: 6
+    spawnPosition: {x: 10, y: 0}
+    behavior:
+    - rid: 6269373971478610603
+    endMode: 0
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
+    delay: 7.5
+    spawnPosition: {x: 10, y: 0}
+    behavior:
+    - rid: 6269373971478610603
+    endMode: 0
   duration: 12
   references:
     version: 2

@@ -15,7 +15,6 @@ MonoBehaviour:
   displayName: DEBUG
   description: "Debug Testing \u2014 DO NOT USE"
   rarity: 5
-  projectile: {fileID: 7684355605594490202, guid: d3c72c05437e2ef48af2857faf5a5f38, type: 3}
-  mass: 1
+  projectile: {fileID: 7684355605594490202, guid: f9e6d3430ad320545803dbbaf8969fb0, type: 3}
+  mass: 0
   color: {r: 1, g: 0, b: 0, a: 1}
-  kill: 1

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7774112998960370454}
-  - component: {fileID: 3367606648320103686}
+  - component: {fileID: 1729918624267127923}
   - component: {fileID: 1454459128768483506}
   m_Layer: 0
   m_Name: HelixParticles
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 2137886188970664489}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3367606648320103686
+--- !u!114 &1729918624267127923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f5c53db0dc3e143985e62845d555f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
+  fullPierce: 0
+  deathPierce: 0
   kinetic: 0
 --- !u!114 &1454459128768483506
 MonoBehaviour:
@@ -76,10 +78,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.5019608
       objectReference: {fileID: 0}
-    - target: {fileID: 3340727478353473612, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
+    - target: {fileID: 3995820241769323022, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
       propertyPath: reference
       value: 
-      objectReference: {fileID: 3367606648320103686}
+      objectReference: {fileID: 1729918624267127923}
     - target: {fileID: 4094578387362731687, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
       propertyPath: managedReferences[4212330707949453380].amplitude
       value: -0.75
@@ -162,10 +164,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3340727478353473612, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
+    - target: {fileID: 3995820241769323022, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
       propertyPath: reference
       value: 
-      objectReference: {fileID: 3367606648320103686}
+      objectReference: {fileID: 1729918624267127923}
     - target: {fileID: 6426189055176417856, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -210,7 +212,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Positive
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3340727478353473612, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
