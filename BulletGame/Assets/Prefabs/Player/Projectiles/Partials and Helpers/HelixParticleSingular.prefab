@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 679191970537302706}
   - component: {fileID: 3511386920230882948}
   - component: {fileID: 4158844608827143885}
-  - component: {fileID: 3340727478353473612}
+  - component: {fileID: 3995820241769323022}
+  - component: {fileID: 633033491651058841}
   - component: {fileID: 1815628124312754166}
   - component: {fileID: 4094578387362731687}
   - component: {fileID: 1525478797372447683}
@@ -132,16 +133,29 @@ MonoBehaviour:
   modifier:
     rid: 4212330746888060996
   affects: 2
-  pierce: 1
-  killPierce: 0
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 633033491651058841}
+        m_TargetAssemblyTypeName: ProjectilePierceHandler, Assembly-CSharp
+        m_MethodName: onHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   references:
     version: 2
     RefIds:
     - rid: 4212330746888060996
       type: {class: BaseDamageModifier/PlayerProjectile, ns: , asm: Assembly-CSharp}
       data:
-        data: {fileID: 3340727478353473612}
---- !u!114 &3340727478353473612
+        data: {fileID: 3995820241769323022}
+--- !u!114 &3995820241769323022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,6 +168,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RemotePlayerProjectile
   reference: {fileID: 0}
+--- !u!114 &633033491651058841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484742308846957183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f436f5e5bd3c139488398b31ea6282d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectilePierceHandler
+  projectile: {fileID: 3995820241769323022}
 --- !u!114 &1815628124312754166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +228,7 @@ MonoBehaviour:
     - rid: 4212330746888060995
       type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
       data:
-        data: {fileID: 3340727478353473612}
+        data: {fileID: 0}
 --- !u!212 &1525478797372447683
 SpriteRenderer:
   m_ObjectHideFlags: 0

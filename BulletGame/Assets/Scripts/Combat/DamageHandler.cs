@@ -1,12 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageHandler : MonoBehaviour
 {
 	[SerializeField] private float damage = 1;
 	[SerializeReference, SubclassSelector] private BaseDamageModifier modifier;
 	[SerializeField, NaughtyAttributes.EnumFlags] private Health.Type affects = Health.Type.PLAYER;
-	[SerializeField] private int pierce = 1;
-	[SerializeField] private int killPierce = 0;
+	[SerializeField] private UnityEvent<Health> onHit = new UnityEvent<Health>();
 
 	private void OnValidate(){
 
@@ -32,14 +32,16 @@ public class DamageHandler : MonoBehaviour
         if ((healthOfCollider != null) && ((healthOfCollider.getType() & affects) != Health.Type.NONE))
         {
             healthOfCollider.TakeDamage(damage * modifier.getDamageModifier());
-			if(healthOfCollider.isAlive() || killPierce == 0) pierce -= 1;
-			else killPierce -= 1;
-        }
 
-        if (pierce == 0)
-        {
-            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.PROJECTILE_EXPIRE);
+			//	Call `onClick` event on `healthOfCollider`
+			onHit.Invoke(healthOfCollider);
+
         }
 
     }
+
+	public void destroyProjectile(Health health){
+		ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.PROJECTILE_EXPIRE);
+	}
+
 }

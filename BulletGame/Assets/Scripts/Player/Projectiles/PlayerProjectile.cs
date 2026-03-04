@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 //	Base class for holding player projectile information
 public abstract class BasePlayerProjectile : MonoBehaviour{
@@ -6,6 +7,8 @@ public abstract class BasePlayerProjectile : MonoBehaviour{
 	//	Accessors
 	abstract public float getSpeedModifier();
 	abstract public float getDamageModifier();
+	abstract public int getFullPierce();
+	abstract public int getDeathPierce();
 
 }
 
@@ -39,9 +42,15 @@ public class PlayerProjectile : BasePlayerProjectile{
 
 	/*	Variables:
 	data: Data information about the projectile
+	fullPierce: Number of enemies that the projectile can pierce, regardless of kill
+		NOTE: A value of -1 is considered infinite.
+	deathPierce: Number of enemies that the projectile can pierce on kill
+		NOTE: A value of -1 is considered infinite.
 	kinetic: If the projectile deals more damage based on the speed multiplier
 	*/
 	private Data data;
+	[SerializeField, MinValue(-1)] private int fullPierce = 0;
+	[SerializeField, MinValue(-1)] private int deathPierce = 0;
 	[SerializeField] private bool kinetic = true;
 
 	//	Mutator
@@ -60,5 +69,7 @@ public class PlayerProjectile : BasePlayerProjectile{
 		return data.intensity;
 
 	}
+	override public int getFullPierce() => fullPierce;
+	override public int getDeathPierce() => deathPierce;
 
 }

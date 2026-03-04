@@ -14,12 +14,11 @@ GameObject:
   - component: {fileID: 7764683951287652935}
   - component: {fileID: 3465725313669367306}
   - component: {fileID: -3354047977403550075}
-  - component: {fileID: 3090828974713430949}
   - component: {fileID: 1855675192780047290}
   - component: {fileID: -5319676866182965909}
   - component: {fileID: 6063557149723862681}
   m_Layer: 7
-  m_Name: StandardIssueMiniBullets
+  m_Name: DebugKillBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.125, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +101,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.375
+  m_Radius: 0.5
 --- !u!114 &7764683951287652935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,25 +114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb20ed9a255ac834bab0de59eb2762c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
-  damage: 1.5
+  damage: 1000000
   modifier:
     rid: 4212330626405105735
   affects: 2
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3090828974713430949}
-        m_TargetAssemblyTypeName: ProjectilePierceHandler, Assembly-CSharp
-        m_MethodName: onHit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   references:
     version: 2
     RefIds:
@@ -167,22 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f5c53db0dc3e143985e62845d555f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
-  fullPierce: 0
+  fullPierce: -1
   deathPierce: 0
-  kinetic: 1
---- !u!114 &3090828974713430949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7684355605594490202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f436f5e5bd3c139488398b31ea6282d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectilePierceHandler
-  projectile: {fileID: -3354047977403550075}
+  kinetic: 0
 --- !u!114 &1855675192780047290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d165977affe6284192a8cbcfde78f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantProjectileMovment
-  velocity: {x: 12, y: 0}
+  velocity: {x: 6, y: 0}
   speedMod:
     rid: 4212330626405105730
   references:
@@ -265,7 +239,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

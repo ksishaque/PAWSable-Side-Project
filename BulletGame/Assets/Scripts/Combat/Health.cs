@@ -3,7 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 { 
     [SerializeField] private float maxHealth = 10;
-    private float currentHealth;
+    [NaughtyAttributes.ShowNonSerializedField] private float currentHealth;
     [SerializeField] private Type type = Type.ENEMY;
 
    public enum Type
