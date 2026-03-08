@@ -1,5 +1,9 @@
 using UnityEngine;
 
+public interface IHasBlastSpread{
+	public Spread getBlastSpread();
+}
+
 public class BlastWeaponBarrelSpawner : MonoBehaviour{
 
 	/*	Variables:

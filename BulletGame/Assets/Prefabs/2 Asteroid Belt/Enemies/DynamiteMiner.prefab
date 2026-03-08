@@ -26,11 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2555537885781707224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1875, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6432636075550227818}
   m_Father: {fileID: 7928969255536822707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4119959967483970934
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -351165057
   m_SortingLayer: 3
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -6598022201239354207, guid: 2ca5e7e11941fe4498b0ff3d879456e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,6 +116,64 @@ MonoBehaviour:
         target:
           rid: 4212330434358412241
     - rid: 4212330434358412241
+      type: {class: GlobalReferences/Player, ns: , asm: Assembly-CSharp}
+      data: 
+--- !u!1 &3736729287218217287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6432636075550227818}
+  - component: {fileID: 8174281388545911599}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6432636075550227818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736729287218217287}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.125, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7381997219393684308}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8174281388545911599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736729287218217287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69407f5f32737f042b2a2939e6c08917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIFacer
+  target:
+    rid: 138378133680422979
+  correction: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: 138378133680422979
+      type: {class: BaseTarget/ObjectReference, ns: , asm: Assembly-CSharp}
+      data:
+        target:
+          rid: 138378133680422980
+    - rid: 138378133680422980
       type: {class: GlobalReferences/Player, ns: , asm: Assembly-CSharp}
       data: 
 --- !u!1 &4292958115550031967
@@ -250,8 +309,9 @@ MonoBehaviour:
   modifier:
     rid: 4212330694571196510
   affects: 1
-  pierce: -1
-  killPierce: 0
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   references:
     version: 2
     RefIds:
@@ -389,7 +449,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -351165057
   m_SortingLayer: 3
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -4061019301566882121, guid: 49558b2e03eda7c4ab42075e4024313d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -479,7 +539,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -351165057
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2984690894287775835, guid: 10f457801a0002b42adbeac7a1caa19d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

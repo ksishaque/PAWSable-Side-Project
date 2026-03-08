@@ -1,13 +1,10 @@
 using UnityEngine;
-
-public interface IHasBlastSpread{
-	public Spread getBlastSpread();
-}
+using NaughtyAttributes;
 
 public class GenericBlastWeapon : BasePlayerWeapon, IHasBlastSpread{
 
 	[Header("References")]
-	//	Variable: Root from which the projectile fires
+	//	Variable: Root from which the projectiles fire
 	[SerializeField] private GameObject barrel;
 
 	[Header("Configuration")]
@@ -20,11 +17,11 @@ public class GenericBlastWeapon : BasePlayerWeapon, IHasBlastSpread{
 	spread: Index scaler for the bullet spread
 	projPerShot: Number of projectiles in this shot
 	*/
-	[SerializeField] private float minInterval = 0.6f;
-	[SerializeField] private int baseProjPerShot = 3;
-	[SerializeField] private int minProjPerShot = 2;
-	[SerializeField] private float angleRange = 30;
-	[SerializeField] private float spreadEdgeBuffer = 1;
+	[SerializeField, MinValue(0)] private float minInterval = 0.6f;
+	[SerializeField, MinValue(0)] private int baseProjPerShot = 3;
+	[SerializeField, MinValue(1)] private int minProjPerShot = 2;
+	[SerializeField, MinValue(0)] private float angleRange = 30;
+	[SerializeField, MinValue(0)] private float spreadEdgeBuffer = 1;
 	private Spread spread;
 	public int projPerShot{
 		get;

@@ -15,7 +15,7 @@ using UnityEngine;
 	private ActionList actionList;
 	[SerializeField] private SpriteRenderer indicator;
 	[SerializeField] private Color inactiveColor = new Color(0, 0, 0, 0.5f);
-	[SerializeField] private float duration = 0.25f;
+	[SerializeField, NaughtyAttributes.MinValue(0)] private float repositionDuration = 0.25f;
 	private bool hasBeenCalled = false;
 
 	//	Set up
@@ -99,11 +99,11 @@ Debug.Log("Released");
 		StandardScalingFunction compFunc = new StandardScalingFunction(hasBeenCalled, !dissappear);
 
 		//	Set up transition actions
-		actions.addSingleBranchDirect(new MoveAction(new Vector2(0, 0), false, duration, compFunc));
-		actions.addSingleBranchDirect(new RotateAction(0, RotateAction.Direction.FASTEST, false, duration, compFunc));
-		if(dissappear) actions.addSingleBranchDirect(new ScaleAction(new Vector2(), false, duration, compFunc));
-		else actions.addSingleBranchDirect(new ScaleAction(new Vector2(1, 1), false, duration, compFunc));
-		actions.addSingleBranchDirect(new RecolorAction(indicator, indicatorColor, duration, new StandardScalingFunction()));
+		actions.addSingleBranchDirect(new MoveAction(new Vector2(0, 0), false, repositionDuration, compFunc));
+		actions.addSingleBranchDirect(new RotateAction(0, RotateAction.Direction.FASTEST, false, repositionDuration, compFunc));
+		if(dissappear) actions.addSingleBranchDirect(new ScaleAction(new Vector2(), false, repositionDuration, compFunc));
+		else actions.addSingleBranchDirect(new ScaleAction(new Vector2(1, 1), false, repositionDuration, compFunc));
+		actions.addSingleBranchDirect(new RecolorAction(indicator, indicatorColor, repositionDuration, new StandardScalingFunction()));
 
 		//	Add `actions` to `actionList`
 		actionList.clearActions();

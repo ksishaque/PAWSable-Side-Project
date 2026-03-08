@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWeapon : MonoBehaviour
+public class DepricatedEnemyWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject barrel1;
     private float attackTimer = 0;

@@ -3,13 +3,24 @@ using UnityEngine;
 
 public abstract class BasePlayerWeapon : MonoBehaviour{
 
-    private float attackTimer = 0;
+	/*	Variables:
+	projectiles: Projectile data to use
+	attackInterval: Interval between each attack
+	attackTimer: Time until the next attack
+	*/
 	private List<ProjectileLootData> projectiles;
 	[HideInInspector] public float attackInterval{
 		get;
 		protected set;
 	}
+	private float attackTimer = 0;
+
+	/*	Variables:
+	drawPlayerPreview: If preview of player size should be drawn
+	projectileCount: Number of projectiles needed for the weapon
+	*/
 	[SerializeField] private bool drawPlayerPreview = true;
+	[NaughtyAttributes.ShowNativeProperty] private float projectileCount => getProjCount();
 
 	//	Preview
 	private void OnDrawGizmos(){
@@ -42,7 +53,7 @@ public abstract class BasePlayerWeapon : MonoBehaviour{
 	}
 
 	//	Firing
-    abstract protected void fireProjectile();
+	abstract protected void fireProjectile();
 	protected ProjectileLootData getProjectile(int index){
 		if(index < projectiles.Count && projectiles[index] != null) return projectiles[index];
 		return GlobalReferences.instance.blankProjectileLoot;
