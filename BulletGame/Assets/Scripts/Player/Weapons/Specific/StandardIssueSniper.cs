@@ -1,5 +1,7 @@
 using UnityEngine;
+using NaughtyAttributes;
 
+//	Class for Standard Issue Sniper
 public class StandardIssueSniper : BasePlayerWeapon{
 
 	[Header("References")]
@@ -14,10 +16,10 @@ public class StandardIssueSniper : BasePlayerWeapon{
 	maxProjSpeed: Maximum speed of projectile, assuming 0 mass
 	projData: projectile data to use
 	*/
-	[SerializeField] private float interval;
-	[SerializeField] private float intensity;
-	[SerializeField] private float baseProjSpeed;
-	[SerializeField] private float minProjSpeed;
+	[SerializeField, MinValue(0)] private float interval;
+	[SerializeField, MinValue(1)] private float intensity;
+	[SerializeField, MinValue(1)] private float baseProjSpeed;
+	[SerializeField, MinValue(1)] private float minProjSpeed;
 	private PlayerProjectile.Data projData;
 
 

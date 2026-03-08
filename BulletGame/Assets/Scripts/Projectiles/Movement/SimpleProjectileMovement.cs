@@ -46,6 +46,7 @@ using UnityEngine;
 
 			//	Add projectile speed effects
 			dt *= speedMod.getSpeedModifier();
+dt *= 0.25f;
 
 			//	Run `behavior`
 			behavior.update(ref dt);

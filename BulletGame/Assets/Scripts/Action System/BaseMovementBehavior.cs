@@ -138,6 +138,7 @@ using UnityEngine;
 		Vector2 direction;
 
 		//	Check if physical movement is not viable
+		/*
 		if(physics == null){
 			direction = getDelPos(dt);
 			actor.addLocalPosition(direction * rotMatrix);
@@ -148,6 +149,10 @@ using UnityEngine;
 			if(actor.transform.parent == null) physics.linearVelocity = direction * rotMatrix;
 			else physics.linearVelocity = actor.transform.parent.TransformVector(direction * rotMatrix);
 		}
+		/*/
+		direction = getDelPos(dt);
+		actor.addLocalPosition(direction * rotMatrix);
+		//*/
 
 		//	Send facing data
 		if(facer != null) facer.faceMovement(direction);
