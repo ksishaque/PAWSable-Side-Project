@@ -21,10 +21,7 @@ public partial class EnemyCannon : BaseEnemyAutoWeapon{
 
 	}
 	private void spawnEntity(float angleModifier){
-
-		//	Variable: Spawned projectile object
-		GameObject ans = ObjectInitializer.instantiate(projectile, barrel.transform.position, angleModifier + barrel.transform.getScaledRotation());
-
+		ObjectInitializer.instantiate(projectile, barrel.transform.position, angleModifier + barrel.transform.getScaledRotation());
 	}
 
 }

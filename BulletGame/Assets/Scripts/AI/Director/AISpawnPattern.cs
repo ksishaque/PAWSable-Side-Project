@@ -29,8 +29,14 @@ using UnityEngine;
 
 		//	Validate and preview
 		public void validate(){
+
+			//	Validate `enemy`
 			Prefab.validateComponent<AIBehaviorList>(ref enemy);
+
+			//	Validate `behavior`
+			if(enemy != null) foreach(BaseBehavior behaviorNode in behavior) if(behaviorNode != null) behaviorNode.validate(enemy);
 		}
+#if FALSE
 		public void preview(float imageTime, float duration){
 
 			//	Validate, to be safe
@@ -79,6 +85,7 @@ using UnityEngine;
 			}
 
 		}
+#endif
 
 		//	Spawn `enemy`
 		public void spawn(){

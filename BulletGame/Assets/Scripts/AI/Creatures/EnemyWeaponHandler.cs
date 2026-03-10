@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 //	Class that stores references to multiple enemy weapons
 public class EnemyWeaponHandler : MonoBehaviour{
@@ -8,9 +9,36 @@ public class EnemyWeaponHandler : MonoBehaviour{
 	[SerializeField] private List<BaseEnemyWeapon> weapons = new List<BaseEnemyWeapon>();
 
 
-	//	Accessor
+	//	Accessors
 	public BaseEnemyWeapon getWeapon(int index){
 		return weapons[index];
+	}
+	public BaseEnemyWeapon getWeaponSafe(ref int index){
+
+		//	Check `weapons`
+		if(weapons.Count < 1) return null;
+
+		//	Check for a valid index
+		if(index < 0 || index >= weapons.Count){
+			index = 0;
+			return getWeaponSafe(ref index);
+		}
+
+		//	Return
+		return weapons[index];
+
+	}
+	public DropdownList<int> getWeaponsDropdown(){
+
+		//	Variable: Return value / dropdown menu of weapon names
+		DropdownList<int> ans = new DropdownList<int>();
+
+		//	Copy each weapon's name
+		for(int i = 0; i < weapons.Count; i += 1) ans.Add(weapons[i].name, i);
+
+		//	Return
+		return ans;
+
 	}
 
 

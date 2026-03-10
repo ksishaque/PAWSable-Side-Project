@@ -14,6 +14,11 @@ public class ActionList : MonoBehaviour{
 	[SerializeField] private bool timeScaled = true;
 	private bool started = false;
 
+	//	Validate
+	private void OnValidate(){
+		foreach(BaseAction action in actions) action.validate(gameObject);
+	}
+
 	//	Run `actions`
 	private void Update(){
 
