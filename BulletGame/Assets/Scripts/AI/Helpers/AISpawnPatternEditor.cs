@@ -58,7 +58,7 @@ using NaughtyAttributes;
 		instance = this;
 
 		//	Preview each spawn
-		if(pattern != null) foreach(AISpawnPattern.Spawn spawn in pattern.getSpawns()) spawn.preview(imageTime / imageTimeScale, pattern.getDuration());
+		//if(pattern != null) foreach(AISpawnPattern.Spawn spawn in pattern.getSpawns()) spawn.preview(imageTime / imageTimeScale, pattern.getDuration());
 
 		//	Clean up `instance`, just to be safe
 		instance = original;

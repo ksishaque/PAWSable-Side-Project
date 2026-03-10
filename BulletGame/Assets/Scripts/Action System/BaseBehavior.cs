@@ -9,7 +9,7 @@ using UnityEngine;
 	}
 
 	//	Draw preview
-	abstract public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless = false);
+	//abstract public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless = false);
 	protected void drawImage(Vector2 position, float imageRadius){
 		Gizmos.DrawSphere(position, imageRadius);
 	}

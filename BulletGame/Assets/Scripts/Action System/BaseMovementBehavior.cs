@@ -87,8 +87,8 @@ using UnityEngine;
 		this.endless = endless;
 		return true;
 	}
-	sealed override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){
 #if FALSE
+	sealed override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){
 
 		/*	Variables:
 		totalTime: Total amount of time simulated since the start of the preview
@@ -128,8 +128,8 @@ using UnityEngine;
 		timeUntilImage -= duration;
 		timeUntilDurationImage -= duration;
 
-#endif
 	}
+#endif
 
 	//	Helper function for updating position
 	private void updatePos(float dt){
