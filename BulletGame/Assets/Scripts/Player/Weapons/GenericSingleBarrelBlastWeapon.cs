@@ -1,7 +1,7 @@
 using UnityEngine;
 using NaughtyAttributes;
 
-public class GenericBlastWeapon : BasePlayerWeapon, IHasBlastSpread{
+public class GenericSingleBarrelBlastWeapon : BasePlayerWeapon, IHasBlastSpread{
 
 	[Header("References")]
 	//	Variable: Root from which the projectiles fire

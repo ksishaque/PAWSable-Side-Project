@@ -183,6 +183,7 @@ MonoBehaviour:
         completionFunction:
           rid: 4212330771766050909
         scale: {x: 0.75, y: 0.75}
+        relative: 0
     - rid: 4212330771766050909
       type: {class: StandardScalingFunction, ns: , asm: Assembly-CSharp}
       data:
@@ -219,6 +220,7 @@ MonoBehaviour:
         completionFunction:
           rid: 4212330771766050912
         scale: {x: 0, y: 0}
+        relative: 0
     - rid: 4212330771766050912
       type: {class: StandardScalingFunction, ns: , asm: Assembly-CSharp}
       data:
@@ -303,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca087795c2f1d8468772060c2220e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenericBlastWeapon
+  drawPlayerPreview: 1
   barrel: {fileID: 6928118038249342510}
   minInterval: 0.6
   baseProjPerShot: 6
@@ -336,12 +339,13 @@ MonoBehaviour:
     - rid: 4212330784966312003
       type: {class: MultiRotationAction, ns: , asm: Assembly-CSharp}
       data:
-        Duration: 7.2
+        Duration: 48
         completionFunction:
           rid: 4212330784966312004
         rotationCount: 1
         finalRotation: 0
         direction: -360
+        relative: 0
     - rid: 4212330784966312004
       type: {class: StandardScalingFunction, ns: , asm: Assembly-CSharp}
       data:

@@ -128,8 +128,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6432636075550227818}
   - component: {fileID: 8174281388545911599}
+  - component: {fileID: 1862262260176707349}
   m_Layer: 0
-  m_Name: Barrel
+  m_Name: Dynamite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +146,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.125, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7381997219393684308}
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIFacer
   target:
     rid: 138378133680422979
-  correction: -1
+  correction: 2
   references:
     version: 2
     RefIds:
@@ -176,6 +177,22 @@ MonoBehaviour:
     - rid: 138378133680422980
       type: {class: GlobalReferences/Player, ns: , asm: Assembly-CSharp}
       data: 
+--- !u!114 &1862262260176707349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736729287218217287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04109ae6610a6a54697a350ab942d717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCannon
+  attackInterval: 3
+  firing: 1
+  barrel: {fileID: 3736729287218217287}
+  projectile: {fileID: 7684355605594490202, guid: a921d6aeaf377ff4f93d6dced4efef45, type: 3}
 --- !u!1 &4292958115550031967
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +209,7 @@ GameObject:
   - component: {fileID: 3327044467622863601}
   - component: {fileID: -5239081258017961977}
   - component: {fileID: 6393678234285343524}
+  - component: {fileID: 5120246368253105579}
   m_Layer: 8
   m_Name: DynamiteMiner
   m_TagString: Untagged
@@ -371,6 +389,20 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+--- !u!114 &5120246368253105579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292958115550031967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838d210736d2b1948b02df6a2a8de188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeaponHandler
+  weapons:
+  - {fileID: 1862262260176707349}
 --- !u!1 &6064634187329097731
 GameObject:
   m_ObjectHideFlags: 0

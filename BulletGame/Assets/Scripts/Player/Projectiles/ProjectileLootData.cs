@@ -32,7 +32,7 @@ using NaughtyAttributes;
 	protected GameObject spawnEntityInner(GameObject prefab, Transform origin, float angleModifier, PlayerProjectile.Data data){
 
 		//	Variable: Spawned projectile object
-		GameObject ans = ObjectInitializer.instantiate(prefab, origin.position, angleModifier + origin.rotation.eulerAngles.z);
+		GameObject ans = ObjectInitializer.instantiate(prefab, origin.position, angleModifier + origin.getScaledRotation());
 
 		//	Set up `data`
 		ans.GetComponent<PlayerProjectile>().setData(data);
