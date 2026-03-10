@@ -8,7 +8,7 @@ public abstract class BaseEnemyWeapon : MonoBehaviour{
 	abstract public void fire(int mode = 0);
 
 	//	Access inspector dropdown options for firing modes
-	virtual public DropdownList<int> getModesDropdown() => new DropdownList<int>(){{"Fire", 0 }};
+	virtual public DropdownList<int> getModesDropdown() => new DropdownList<int>(){{"Fire", 0}};
 
 }
 
@@ -37,7 +37,7 @@ public abstract class BaseEnemyAutoWeapon : BaseEnemyWeapon{
 		if(attackTimer > 0) attackTimer -= Time.deltaTime;
 
 		//	Fire if necessary
-		if(firing){
+		else if(firing){
 			fireInstance();
 			attackTimer = attackInterval;
 		}
@@ -49,10 +49,10 @@ public abstract class BaseEnemyAutoWeapon : BaseEnemyWeapon{
 		switch(mode){
 
 		//	Automatic mode
-		case 1:
+		case 0:
 			firing = true;
 			break;
-		case 2:
+		case 1:
 			firing = false;
 			break;
 
@@ -70,9 +70,9 @@ public abstract class BaseEnemyAutoWeapon : BaseEnemyWeapon{
 
 	//	Accessor
 	override public DropdownList<int> getModesDropdown() => new DropdownList<int>(){
-		{"Fire Instant", 0},
-		{"Start Firing", 1},
-		{"Stop Firing", 2}
+		{"Fire Instant", -1},
+		{"Start Firing", 0},
+		{"Stop Firing", 1}
 	};
 
 }

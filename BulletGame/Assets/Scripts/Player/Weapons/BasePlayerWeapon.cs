@@ -24,8 +24,10 @@ public abstract class BasePlayerWeapon : MonoBehaviour{
 
 	//	Preview
 	private void OnDrawGizmos(){
-		Gizmos.color = new Color(0, 1, 0);
-		Gizmos.DrawWireCube(new Vector3(), new Vector3(1, 1));
+		if(drawPlayerPreview){
+			Gizmos.color = new Color(0, 1, 0);
+			Gizmos.DrawWireCube(new Vector3(), new Vector3(1, 1));
+		}
 	}
 
 	//	Set up

@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: weaponSlots.Array.data[2].weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 33d6b8711561cce40a44bb5f58134550, type: 2}
+      objectReference: {fileID: 11400000, guid: eb0c2ed8f3066c24bb4f93f10c91ef76, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: weaponSlots.Array.data[3].weapon
       value: 
@@ -444,7 +444,7 @@ MonoBehaviour:
     - rid: 6269373878689071171
       type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}
       data:
-        weight: 1
+        weight: 0
         pattern: {fileID: 11400000, guid: 200d4d48b96ac934485b1a7789e7d031, type: 2}
     - rid: 6269373878689071172
       type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}

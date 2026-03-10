@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using NaughtyAttributes;
 
 public class DamageHandler : MonoBehaviour
 {
 	[SerializeField] private float damage = 1;
 	[SerializeReference, SubclassSelector] private BaseDamageModifier modifier;
-	[SerializeField, NaughtyAttributes.EnumFlags] private Health.Type affects = Health.Type.PLAYER;
+	[SerializeField, EnumFlags] private Health.Type affects = Health.Type.PLAYER;
 	[SerializeField] private UnityEvent<Health> onHit = new UnityEvent<Health>();
 
 	private void OnValidate(){
@@ -42,6 +43,10 @@ public class DamageHandler : MonoBehaviour
 
 	public void destroyProjectile(Health health){
 		ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.PROJECTILE_EXPIRE);
+	}
+
+	[Button("Set up Projectile Despawning")] private void setUpProjectile(){
+		UnityEditor.Events.UnityEventTools.AddPersistentListener(onHit, destroyProjectile);
 	}
 
 }
