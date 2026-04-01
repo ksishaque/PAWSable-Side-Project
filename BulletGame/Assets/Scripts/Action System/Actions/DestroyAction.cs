@@ -29,7 +29,7 @@ using UnityEngine;
 		return new DestroyAction(target, cause);
 	}
 	override public void update(ref float remainingTime){
-		if(target == null) ObjectDestroyer.destroy(actor, cause);
+		if(target == null) bActor.destroySelf();
 		else ObjectDestroyer.destroy(target, cause);
 	}
 

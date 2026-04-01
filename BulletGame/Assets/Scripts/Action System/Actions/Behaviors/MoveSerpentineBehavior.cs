@@ -35,7 +35,7 @@ using UnityEngine;
 	override public BaseAction clone(){
 		return new MoveSerpentineBehavior(this);
 	}
-	override protected void onStart(){
+	override protected void start(){
 
 		//	Variable: Speed of `forwardVelocity`
 		float speed = forwardVelocity.get().magnitude;

@@ -1,23 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 //	Action for timed enemy movement
 [System.Serializable] abstract public class BaseMovementBehavior : BaseBehavior{
 
-	/*	Variables:
-	facer: Facer of `actor`
-	physics: Physics component of `actor`
-	rotation: Physical rotation affecting movements
-	rotMatrix: Rotation matrix for `rotation`
-	*/
+	//	Variable: Facer of `actor`
 	private AIFacer facer;
-	private Rigidbody2D physics;
-	protected PhysicalRotation rotation;
-	protected RotationMatrix rotMatrix{
-		get{
-			if(rotation == null) return RotationMatrix.IDENTITY;
-			return rotation.matrix;
-		}
-	}
 
 	[Header("Timing")]
 	/*	Variables
@@ -43,15 +31,13 @@ using UnityEngine;
 	}
 
 	//	Overrides
-	sealed override protected void start(){
+	sealed override public void initialize(GameObject actor, List<BaseAction> list){
 
 		//	Set members
 		facer = actor.GetComponent<AIFacer>();
-		physics = actor.GetComponent<Rigidbody2D>();
-		rotation = actor.GetComponent<PhysicalRotation>();
 
-		//	Calculate children members
-		onStart();
+		//	Base call
+		base.initialize(actor, list);
 
 	}
 	sealed override public void update(ref float remainingTime){
@@ -74,7 +60,7 @@ using UnityEngine;
 			//	Check for ending
 			if(remainingTime >= 0){
 				updatePos(spentTime - remainingTime);
-				onEnd();
+				exit();
 			}
 
 			//	Update position
@@ -87,81 +73,23 @@ using UnityEngine;
 		this.endless = endless;
 		return true;
 	}
-#if FALSE
-	sealed override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){
-
-		/*	Variables:
-		totalTime: Total amount of time simulated since the start of the preview
-		totalDuration: Total amount of time to simulate by the end
-		newPos: Next position along the simulated path
-		start: Position at which the simulated path starts
-		*/
-		float totalTime = AISpawnPatternEditor.getTimeStep(), totalDuration = duration;
-		Vector2 newPos, start = position;
-
-		//	Update `totalDuration` based on `endless`
-		if(endless) totalDuration = AISpawnPatternEditor.getEndlessDuration();
-
-		//	Draw the path
-		while(totalTime < totalDuration){
-
-			//	Find `newPos` and draw path
-			newPos = predictPosition(start, totalTime);
-			Gizmos.DrawLine(position, newPos);
-
-			//	Increment `totalTime` and update `position`
-			totalTime += AISpawnPatternEditor.getTimeStep();
-			position = newPos;
-
-		}
-
-		//	Draw the final step and finalize `position`
-		newPos = predictPosition(start, totalDuration);
-		Gizmos.DrawLine(position, newPos);
-		position = newPos;
-
-		//	Draw the images, if necessary
-		if(timeUntilImage < totalDuration && timeUntilImage >= 0) drawImage(predictPosition(start, timeUntilImage), imageRadius);
-		if(timeUntilDurationImage < totalDuration && timeUntilDurationImage >= 0) drawDurationImage(predictPosition(start, timeUntilDurationImage), imageRadius);
-
-		//	Finalize times
-		timeUntilImage -= duration;
-		timeUntilDurationImage -= duration;
-
-	}
-#endif
 
 	//	Helper function for updating position
 	private void updatePos(float dt){
 
 		//	Variable: Direction vector to send to `facer`
-		Vector2 direction;
+		Vector2 displacement = getDelPos(dt);
 
-		//	Check if physical movement is not viable
-		/*
-		if(physics == null){
-			direction = getDelPos(dt);
-			actor.addLocalPosition(direction * rotMatrix);
-		}
-		else{
-			direction = getVelocity(dt);
-			//TODO: Probably make this look/feel better
-			if(actor.transform.parent == null) physics.linearVelocity = direction * rotMatrix;
-			else physics.linearVelocity = actor.transform.parent.TransformVector(direction * rotMatrix);
-		}
-		/*/
-		direction = getDelPos(dt);
-		actor.addLocalPosition(direction * rotMatrix);
-		//*/
+		//	Add `displacement`
+		bActor.addLocalPosition(displacement);
 
 		//	Send facing data
-		if(facer != null) facer.faceMovement(direction);
+		if(facer != null) facer.faceMovement(displacement);
 
 	}
 
-	//	Functions for starting and stopping the movement
-	virtual protected void onStart(){}
-	virtual protected void onEnd(){}
+	//	Functions for stopping the movement
+	virtual protected void exit(){}
 
 	//	Determine position and velocity
 	virtual protected Vector2 getDelPos(float dt){

@@ -24,7 +24,7 @@ using UnityEngine;
 	virtual public void validate(GameObject actor){}
 
 	//	Initialize members, then start
-	public void initialize(GameObject actor, List<BaseAction> list){
+	virtual public void initialize(GameObject actor, List<BaseAction> list){
 
 		//	Set members
 		this.actor = actor;

@@ -16,7 +16,7 @@ public class ActionList : MonoBehaviour{
 
 	//	Validate
 	private void OnValidate(){
-		foreach(BaseAction action in actions) action.validate(gameObject);
+		foreach(BaseAction action in actions) if(action != null) action.validate(gameObject);
 	}
 
 	//	Run `actions`

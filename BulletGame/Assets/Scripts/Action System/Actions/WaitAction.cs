@@ -26,18 +26,5 @@ using UnityEngine;
 		time += remainingTime;
 		remainingTime = time - duration;
 	}
-	/*
-	override public void drawPreview(ref Vector2 position, ref float timeUntilImage, ref float timeUntilDurationImage, float imageRadius, bool endless){
-
-		//	Draw the image, if necessary
-		if(timeUntilImage < duration && timeUntilImage >= 0) drawImage(position, imageRadius);
-		if(timeUntilDurationImage < duration && timeUntilDurationImage >= 0) drawDurationImage(position, imageRadius);
-
-		//	Finalize times
-		timeUntilImage -= duration;
-		timeUntilDurationImage -= duration;
-
-	}
-	*/
 
 }
