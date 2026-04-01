@@ -83,6 +83,7 @@ MonoBehaviour:
     spawnPosition: {x: 5, y: 0}
     behavior:
     - rid: 4212330658805580053
+    - rid: 138378498197946435
     - rid: 4212330658805580040
     endMode: 0
   duration: 18
@@ -100,6 +101,11 @@ MonoBehaviour:
         weapon: 0
         mode: 0
     - rid: 138378179635839047
+      type: {class: FireWeaponBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: 0
+        mode: 0
+    - rid: 138378498197946435
       type: {class: FireWeaponBehavior, ns: , asm: Assembly-CSharp}
       data:
         weapon: 0

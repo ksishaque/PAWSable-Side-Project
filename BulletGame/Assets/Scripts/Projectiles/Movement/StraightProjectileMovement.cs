@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Class for constant speed, constant direction projectile movement
-[RequireComponent(typeof(PhysicalRotation)), RequireComponent(typeof(Rigidbody2D))] public class StraightProjectileMovement : MonoBehaviour{
+[RequireComponent(typeof(CustomPhysics)), RequireComponent(typeof(Rigidbody2D))] public class StraightProjectileMovement : MonoBehaviour{
 
 	/*	Variables:
 	velocity: Constant velocity to move at
@@ -11,7 +11,7 @@ using UnityEngine;
 	*/
 	[SerializeField] private Vector2 velocity = new Vector2(1, 0);
 	[SerializeReference, SubclassSelector] private BaseProjectileSpeedModifier speedMod;
-	private PhysicalRotation rotation;
+	private CustomPhysics rotation;
 	private Rigidbody2D physics;
 
 	//	Validation
@@ -21,13 +21,13 @@ using UnityEngine;
 
 	//	Set up
 	private void Start(){
-		rotation = GetComponent<PhysicalRotation>();
+		rotation = GetComponent<CustomPhysics>();
 		physics = GetComponent<Rigidbody2D>();
 	}
 
 	//	Update movement
 	private void Update(){
-		physics.linearVelocity = (velocity * rotation.matrix) * speedMod.getSpeedModifier();
+		physics.linearVelocity = (velocity * rotation.rotationMatrix) * speedMod.getSpeedModifier();
 	}
 
 }

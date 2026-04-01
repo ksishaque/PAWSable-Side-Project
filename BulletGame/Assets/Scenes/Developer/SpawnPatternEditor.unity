@@ -349,6 +349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalReferences
   player: {fileID: 755706624}
+  blankProjectileLoot: {fileID: 11400000, guid: 3c3836f6245f55d43ab45c385baa038d, type: 2}
+  playerDronePrefab: {fileID: 9196405769501993316, guid: ae6d1d3c31809d4499e8cfa14c665598, type: 3}
 --- !u!1 &755706624
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +416,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1637755875
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -6893326603507580621, guid: 66a489ebecfe7d845b9d8af02a2010f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

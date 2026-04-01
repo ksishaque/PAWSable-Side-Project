@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AIBehaviorList : ActionList{
+[RequireComponent(typeof(CustomPhysics))] public class AIBehaviorList : ActionList{
 
 	//	Enumeration for different ways the behavior list could end
 	public enum EndMode{ENDLESS, DESPAWN, STOP}
