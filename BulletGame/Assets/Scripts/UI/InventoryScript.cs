@@ -26,5 +26,13 @@ public class InventoryScript : MonoBehaviour
     {
         isOpen = !isOpen;
         inventory.SetActive(isOpen);
+        if (Time.timeScale == 1f)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 }
