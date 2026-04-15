@@ -18,6 +18,10 @@ public class LootHandler : MonoBehaviour
             Debug.Log("Collision Loot Detected 2");
             Destroy(gameObject);
         }
+        else
+        {
+            Debug.Log("Collision Loot Failed");
+        }
 
     }
 
