@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(InventorySlot))]
-public class GridInteract : MonoBehaviour
+public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     InventoryController inventoryController;
     InventorySlot inventorySlot;
 
     private void Awake()
     {
-        inventoryController = FindAnyObjectByType(typeof(InventoryController)) as InventoryController;
+        inventoryController = FindFirstObjectByType(typeof(InventoryController)) as InventoryController;
         inventorySlot = GetComponent<InventorySlot>();
     }
     public void OnPointerEnter(PointerEventData eventData)

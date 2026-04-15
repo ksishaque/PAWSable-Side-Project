@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour
 {
-    const float tileSizeWidth = 32;
-    const float tileSizeHeight = 32;
+    const float tileSizeWidth = 64;
+    const float tileSizeHeight = 64;
 
     RectTransform rectTransform;
 
@@ -24,6 +24,8 @@ public class InventorySlot : MonoBehaviour
 
         tileGridPosition.x = (int)(positionOnTheGrid.x / tileSizeWidth);
         tileGridPosition.y = (int)(positionOnTheGrid.y / tileSizeHeight);
+
+        Debug.Log(tileGridPosition);
 
         return tileGridPosition;
     }

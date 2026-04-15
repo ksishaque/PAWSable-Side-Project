@@ -71,7 +71,7 @@ using UnityEngine;
 			//	Clear `posDirty`
 			posDirty = false;
 
-			Debug.Log("Physics Movement");
+			//Debug.Log("Physics Movement");
 
 		}
 
