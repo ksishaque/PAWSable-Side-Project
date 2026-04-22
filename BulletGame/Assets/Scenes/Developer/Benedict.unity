@@ -497,6 +497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa12c36806c69bb44bb8492d4897837c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlot
+  gridSizeWidth: 20
+  gridSizeHeight: 10
+  inventoryItemPrefab: {fileID: 8459680302806152396, guid: 2a5dae5361c30df438230f90812bccc8, type: 3}
 --- !u!114 &969642458
 MonoBehaviour:
   m_ObjectHideFlags: 0
