@@ -36,11 +36,11 @@ using UnityEngine;
 	override protected void update(){
 
 		//	Add base actions
-		if(interruptTarget) target.clearActions();
-		target.addActions(actions);
+		if(interruptTarget) target.getInstance().clearActions();
+		target.getInstance().addActions(actions);
 
 		//	Add remote callback, if necessary
-		if(waitForCompletion) list.Insert(1, new WaitForCallbackAction(ref target));
+		if(waitForCompletion) instance.addActionNextDirect(new WaitForCallbackAction(ref target));
 
 	}
 

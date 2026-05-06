@@ -1,18 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 //	Basic multi-purpose action node
-[System.Serializable] abstract public class BaseAction{
+[System.Serializable] abstract public partial class BaseAction{
 
-	/*	Variables:
-	actor: Game object executing the action
-	list: List from which the action is being executed
-	*/
-	protected GameObject actor{
-		get;
-		private set;
-	}
-	protected List<BaseAction> list{
+	//	Variable: Running instance of the list
+	protected Runner instance{
 		get;
 		private set;
 	}
@@ -24,65 +16,25 @@ using UnityEngine;
 	virtual public void validate(GameObject actor){}
 
 	//	Initialize members, then start
-	virtual public void initialize(GameObject actor, List<BaseAction> list){
+	virtual protected void initialize(Runner runner){
 
 		//	Set members
-		this.actor = actor;
-		this.list = list;
+		instance = runner;
 
 		//	Run `start()`
 		start();
+
 	}
 
 	//	Initial and update steps of action
 	virtual protected void start(){}
-	virtual public void update(ref float remainingTime){}
+	virtual protected void update(ref float remainingTime){}
 
-	//	Helper functions for managing a list of actions
-	static public void runActions(List<BaseAction> actions, ref bool started, GameObject actor, ref float remainingTime){
-
-		//	Check `actions`
-		if(actions.Count < 1) started = false;
-		else{
-
-			//	Check if the list has started
-			if(started == false){
-
-				//	Start the list
-				actions[0].initialize(actor, actions);
-				started = true;
-
-			}
-
-			//	Update and continue to next
-			while(remainingTime >= 0){
-
-				//	Update
-				actions[0].update(ref remainingTime);
-
-				//	If there is time left, remove the current node
-				if(remainingTime >= 0){
-					actions.RemoveAt(0);
-
-					//	If possible, start the next action
-					if(actions.Count > 0) actions[0].initialize(actor, actions);
-
-					//	Forcefully pause the action list
-					else{
-						started = false;
-						break;
-					}
-
-				}
-
-			}
-
-		}
-
+	//	Manage behaviors
+	virtual public bool setEndless(bool endless = true){
+		return false;
 	}
-	static public void addClones<Action>(List<BaseAction> actions, List<Action> additives) where Action : BaseAction{
-		foreach(Action additive in additives) actions.Add(additive.clone());
-	}
+	virtual protected bool isPreviewSafe() => false;
 
 }
 
@@ -91,7 +43,7 @@ using UnityEngine;
 
 	//	Overrides
 	sealed override protected void start(){}
-	sealed override public void update(ref float remainingTime){
+	sealed override protected void update(ref float remainingTime){
 		update();
 	}
 
@@ -141,7 +93,7 @@ using UnityEngine;
 	}
 
 	//	Overrides
-	sealed override public void update(ref float remainingTime){
+	sealed override protected void update(ref float remainingTime){
 
 		//	Store `pCompletion`
 		pCompletion = completion;

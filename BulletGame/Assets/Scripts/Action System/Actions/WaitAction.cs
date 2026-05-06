@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Action for waiting a period of time and doing nothing
-[System.Serializable] public class WaitAction : BaseBehavior{
+[System.Serializable] public class WaitAction : BaseAction{
 
 	/*	Variables:
 	duration: Duration of the wait action
@@ -22,7 +22,7 @@ using UnityEngine;
 	override public BaseAction clone(){
 		return new WaitAction(duration);
 	}
-	override public void update(ref float remainingTime){
+	override protected void update(ref float remainingTime){
 		time += remainingTime;
 		remainingTime = time - duration;
 	}

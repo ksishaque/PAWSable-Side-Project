@@ -63,4 +63,16 @@ public class RotationMatrix{
 		return matrix.inverseRotate(vector);
 	}
 
+	//	Mutate
+	public float set(float angle){
+
+		//	Set members
+		cos = Mathf.Cos(angle);
+		sin = Mathf.Sin(angle);
+
+		//	Return
+		return angle;
+
+	}
+
 }

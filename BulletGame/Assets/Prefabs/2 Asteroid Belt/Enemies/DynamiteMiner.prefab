@@ -389,13 +389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ceb739776c8ca40b624a54fc2426d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIBehaviorList
-  actions: []
-  timeScaled: 1
-  projectionColor: {r: 0.9960785, g: 0.3647059, b: 0, a: 1}
+  ProjectionColor: {r: 0.9960785, g: 0.3647059, b: 0, a: 1}
   projectionDiameter: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &-5239081258017961977
 MonoBehaviour:
   m_ObjectHideFlags: 0

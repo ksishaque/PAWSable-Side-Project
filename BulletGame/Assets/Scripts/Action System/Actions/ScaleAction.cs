@@ -34,12 +34,12 @@ using UnityEngine;
 	override protected void start(){
 
 		//	Set up `init` and reconfigure `scale` to be the change in scale
-		init = actor.transform.localScale;
+		init = instance.actor.getScale();
 		if(relative == false) scale -= init;
 
 	}
 	override protected void update(){
-		actor.setLocalScale(init + (scale * completion));
+		instance.actor.setScale(init + (scale * completion));
 	}
 
 }

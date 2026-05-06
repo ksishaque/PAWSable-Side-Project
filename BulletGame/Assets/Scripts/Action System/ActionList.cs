@@ -8,11 +8,11 @@ public class ActionList : MonoBehaviour{
 	/*	Variables:
 	actions: List of actions left to run
 	timeScaled: If the action list utilizes scaled delta time
-	started: If the first action in `actions` has started
+	runner: Runner for the action list
 	*/
 	[SerializeReference, SubclassSelector] protected List<BaseAction> actions = new List<BaseAction>();
 	[SerializeField] private bool timeScaled = true;
-	private bool started = false;
+	private BaseAction.Runner runner;
 
 	//	Validate
 	private void OnValidate(){
@@ -20,6 +20,9 @@ public class ActionList : MonoBehaviour{
 	}
 
 	//	Run `actions`
+	private void Start(){
+		runner = actions.start(gameObject);
+	}
 	private void Update(){
 
 		//	Variable: Duration of the current frame
@@ -30,24 +33,12 @@ public class ActionList : MonoBehaviour{
 		else dt = Time.unscaledDeltaTime;
 
 		//	Run
-		BaseAction.runActions(actions, ref started, gameObject, ref dt);
+		runner.update(ref dt);
+
 	}
 
-	//	Add to `actions`
-	public void addActionDirect(BaseAction action){
-		actions.Add(action);
-	}
-	public void addAction(BaseAction action){
-		actions.Add(action.clone());
-	}
-	public void addActions<Action>(List<Action> actions) where Action : BaseAction{
-		BaseAction.addClones(this.actions, actions);
-	}
 
-	//	Clear `actions`
-	public void clearActions(){
-		actions.Clear();
-		started = false;
-	}
+	//	Accessor
+	public BaseAction.Runner getInstance() => runner;
 
 }

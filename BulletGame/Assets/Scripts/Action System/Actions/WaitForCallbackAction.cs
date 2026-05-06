@@ -33,7 +33,7 @@ public class WaitForCallbackAction : BaseAction{
 		actions.Add(new CallbackAction(this));
 	}
 	public WaitForCallbackAction(ref ActionList actions){
-		actions.addActionDirect(new CallbackAction(this));
+		actions.getInstance().addActionDirect(new CallbackAction(this));
 	}
 	public WaitForCallbackAction(out BaseAction callback){
 		callback = new CallbackAction(this);
@@ -43,7 +43,7 @@ public class WaitForCallbackAction : BaseAction{
 	override public BaseAction clone(){
 		return new ErrorAction("Callback actions should not be cloned!");
 	}
-	override public void update(ref float remainingTime){
+	override protected void update(ref float remainingTime){
 		if(waiting) remainingTime = -1;
 	}
 
