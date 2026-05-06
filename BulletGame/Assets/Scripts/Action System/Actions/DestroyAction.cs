@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Class that destroys an object
-[System.Serializable] public class DestroyAction : BaseBehavior{
+[System.Serializable] public class DestroyAction : BaseInstantAction{
 
 	/*	Variables
 	target: Object to destroy (`actor` if `null`)
@@ -28,8 +28,8 @@ using UnityEngine;
 	override public BaseAction clone(){
 		return new DestroyAction(target, cause);
 	}
-	override public void update(ref float remainingTime){
-		if(target == null) bActor.destroySelf();
+	override protected void update(){
+		if(target == null) instance.actor.destroySelf(cause);
 		else ObjectDestroyer.destroy(target, cause);
 	}
 

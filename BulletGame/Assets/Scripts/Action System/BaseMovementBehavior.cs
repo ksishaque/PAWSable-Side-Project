@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 //	Action for timed enemy movement
-[System.Serializable] abstract public class BaseMovementBehavior : BaseBehavior{
+[System.Serializable] abstract public class BaseMovementBehavior : BaseAction{
 
 	//	Variable: Facer of `actor`
 	private AIFacer facer;
@@ -31,16 +30,16 @@ using UnityEngine;
 	}
 
 	//	Overrides
-	sealed override public void initialize(GameObject actor, List<BaseAction> list){
+	override protected void initialize(Runner instance){
 
 		//	Set members
-		facer = actor.GetComponent<AIFacer>();
+		facer = instance.actor.getComponent<AIFacer>();
 
 		//	Base call
-		base.initialize(actor, list);
+		base.initialize(instance);
 
 	}
-	sealed override public void update(ref float remainingTime){
+	sealed override protected void update(ref float remainingTime){
 
 		//	Check `endless`
 		if(endless){
@@ -81,7 +80,7 @@ using UnityEngine;
 		Vector2 displacement = getDelPos(dt);
 
 		//	Add `displacement`
-		bActor.addLocalPosition(displacement);
+		instance.actor.move(displacement);
 
 		//	Send facing data
 		if(facer != null) facer.faceMovement(displacement);

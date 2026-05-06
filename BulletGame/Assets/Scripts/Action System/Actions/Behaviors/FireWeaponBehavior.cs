@@ -2,7 +2,7 @@ using UnityEngine;
 using NaughtyAttributes;
 
 //	Behavior for setting a firing mode immediately
-[System.Serializable] public class FireWeaponBehavior : BaseBehavior{
+[System.Serializable] public class FireWeaponBehavior : BaseAction{
 
 	[Header("Firing")]
 	//	Variable: Velocity to set
@@ -62,7 +62,7 @@ using NaughtyAttributes;
 		}
 	}
 	override protected void start(){
-		actor.GetComponent<EnemyWeaponHandler>().getWeapon(weapon).fire(mode);
+		//actor.GetComponent<EnemyWeaponHandler>().getWeapon(weapon).fire(mode);
 	}
 
 }

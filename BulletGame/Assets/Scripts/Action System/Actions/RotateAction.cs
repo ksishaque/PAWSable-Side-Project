@@ -42,7 +42,7 @@ using UnityEngine;
 	override protected void start(){
 
 		//	Set up `init` and reconfigure `rotation` to be the change in rotation
-		init = actor.transform.localRotation.eulerAngles.z;
+		init = instance.actor.getVisualRotation();
 		if(relative == false) rotation -= init;
 
 		//	Clamp `rotation` to the correct range
@@ -59,7 +59,7 @@ using UnityEngine;
 
 	}
 	override protected void update(){
-		actor.setLocalRotation(init + (rotation * completion));
+		instance.actor.setVisualRotation(init + (rotation * completion));
 	}
 
 }

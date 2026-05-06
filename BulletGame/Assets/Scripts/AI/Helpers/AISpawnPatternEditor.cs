@@ -10,6 +10,7 @@ using NaughtyAttributes;
 	[Header("Preview")]
 	//	Variable: Time at which to display the preview image
 	[SerializeField, MinValue(0.0f)] private float imageTime = 0;
+	private List<BasePreviewImage> images = new List<BasePreviewImage>();
 
 	[Header("Pattern")]
 	/*	Variables:
@@ -22,12 +23,12 @@ using NaughtyAttributes;
 	[Header("Configuration")]
 	/*	Variables:
 	timeStep: Duration of each frame to simulate in the preview path
-	endlessCutoff: Duration of any endless behavior
+	previewDuration: Time before the preview is forcefully ended
 	imageTimeScale: Scale to affect `imageTime` by
 	*/
-	[SerializeField] private float timeStep = 1.0f / 120;
-	[SerializeField] private float endlessCutoff = 30;
-	[SerializeField] private float imageTimeScale = 6;
+	[SerializeField, MinValue(1.0f / 120)] private float timeStep = 1.0f / 30;
+	[SerializeField, MaxValue(60)] private float previewDuration = 30;
+	[SerializeField] private float imageTimeScale = 25;
 
 
 	//	Manage `instance`
@@ -57,16 +58,49 @@ using NaughtyAttributes;
 		//	Set up `instance` in case behaviors access it
 		instance = this;
 
-		//	Preview each spawn
-		//if(pattern != null) foreach(AISpawnPattern.Spawn spawn in pattern.getSpawns()) spawn.preview(imageTime / imageTimeScale, pattern.getDuration());
+		//	Variable: List of spawns left to preview
+		List<AISpawnPattern.Spawn> spawns = pattern.getSpawnsClone();
 
-		//	Clean up `instance`, just to be safe
+		//	Update preview
+		for(float time = 0; time < previewDuration && (spawns.Count > 0 || images.Count > 0); time += timeStep){
+
+			//	Update `images`
+			foreach(BasePreviewImage image in images) image.update(timeStep);
+
+			//	Check new spawns
+			for(int i = 0; i < spawns.Count; i += 1) if(spawns[i].preview(time)){
+				spawns.RemoveAt(i);
+				i -= 1;
+			}
+
+			//	Check if images need to be drawn
+			if(time <= imageTime * imageTimeScale * 0.01f && time + timeStep > imageTime * imageTimeScale * 0.01f) foreach(BasePreviewImage image in images) image.drawImage();
+			else if(time <= pattern.getDuration() && time + timeStep > pattern.getDuration()) foreach(BasePreviewImage image in images) image.drawDurationImage();
+
+		}
+
+		//	Clean up `instance` and `images`, just to be safe
 		instance = original;
+		images.Clear();
 
 	}
 
 	//	Accessors
 	static public float getTimeStep() => instance.timeStep;
-	static public float getEndlessDuration() => instance.endlessCutoff;
+	static public float getEndlessDuration() => instance.previewDuration;
+
+	//	Preview Management
+	static public int addImage(BasePreviewImage image){
+
+		//	Add `image` to `images`
+		instance.images.Add(image);
+
+		//	Return index
+		return instance.images.Count - 1;
+
+	}
+	static public void removeImage(int index){
+		instance.images[index] = null;
+	}
 
 }

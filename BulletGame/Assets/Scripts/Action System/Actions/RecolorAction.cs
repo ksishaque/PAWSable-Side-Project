@@ -34,7 +34,7 @@ using UnityEngine;
 	override protected void start(){
 
 		//	Set up `renderer` if needed
-		if(renderer == null) renderer = actor.GetComponent<SpriteRenderer>();
+		if(renderer == null) renderer = instance.actor.getComponent<SpriteRenderer>();
 
 		//	Set up `init` and reconfigure `rotation` to be the added rotation
 		init = renderer.color;

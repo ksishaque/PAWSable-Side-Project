@@ -33,7 +33,7 @@ public interface IDestroy{
 			return new ErrorAction("Runtime constructed actions should not be cloned!");
 		}
 		override protected void update(){
-			GameObject.Destroy(actor);
+			instance.actor.destroySelfDirect();
 		}
 
 	}
@@ -75,12 +75,12 @@ public interface IDestroy{
 			ActionList childActionList = child.destroyInner(type);
 
 			//	Add callback
-			actionList.addActionDirect(new WaitForCallbackAction(ref childActionList));
+			actionList.getInstance().addActionDirect(new WaitForCallbackAction(ref childActionList));
 
 		}
 
 		//	Properly destroy the game object
-		actionList.addActionDirect(new DestroyAction());
+		actionList.getInstance().addActionDirect(new DestroyAction());
 
 	}
 	private ActionList destroyInner(Cause type){
@@ -116,8 +116,8 @@ public interface IDestroy{
 		ActionList ans = GetComponent<ActionList>();
 
 		//	Add `actions` to `ans`
-		ans.clearActions();
-		ans.addActions(onDestroyActions[i].actions);
+		ans.getInstance().clearActions();
+		ans.getInstance().addActions(onDestroyActions[i].actions);
 
 		//	Return
 		return ans;

@@ -10,12 +10,12 @@ using UnityEngine;
 		/*	Variables:
 		actions: List of actions left to run
 		original: Original list of actions, saved for cloning
-		started: If the first action in `actions` has started
+		runner: Runner of the action list
 		*/
 		[SerializeReference, SubclassSelector] private List<BaseAction> actions = new List<BaseAction>();
 		private List<BaseAction> original = null;
 		[SerializeField] private bool forceEnd;
-		private bool started = false;
+		private Runner runner;
 
 		//	Constructors
 		public Branch(){
@@ -26,31 +26,36 @@ using UnityEngine;
 			this.forceEnd = forceEnd;
 		}
 		public Branch(List<BaseAction> actions, bool forceEnd){
-			addClones(this.actions, actions);
+			this.actions.addClones(actions);
 			this.forceEnd = forceEnd;
 		}
 		public Branch(Branch origin){
 
 			//	Copy `actions`
-			if(origin.original == null) addClones(actions, origin.actions);
-			else addClones(actions, origin.original);
+			if(origin.original == null) actions.addClones(origin.actions);
+			else actions.addClones(origin.original);
 
 			//	Copy `forceEnd`
 			forceEnd = origin.forceEnd;
 
 		}
 
-		//	Save a copy of `actions` to `original`
-		public void save(){
+		//	Prepare the branch
+		public void start(IActor actor){
+
+			//	Save a copy of `actions` to `original`
 			original = new List<BaseAction>();
-			addClones(original, actions);
+			original.addClones(actions);
+
+			//	Set up `runner`
+			runner = new Runner(actor, actions);
 		}
 
 		//	Run the branch
-		public void run(GameObject actor, float dt, ref float remainingForced, ref float remaining){
+		public void run(float dt, ref float remainingForced, ref float remaining){
 
 			//	Run `actions`
-			runActions(actions, ref started, actor, ref dt);
+			runner.update(ref dt);
 
 			//	Check if `actions` has ended
 			if(dt < 0) remaining = -1;
@@ -89,9 +94,9 @@ using UnityEngine;
 		return new ParallelAction(this);
 	}
 	override protected void start(){
-		foreach(Branch branch in branches) branch.save();
+		foreach(Branch branch in branches) branch.start(instance.actor);
 	}
-	override public void update(ref float dt){
+	override protected void update(ref float dt){
 
 		/*	Variables:
 		remainingForced: Amount of time remaining after the fastest forced branch
@@ -101,7 +106,7 @@ using UnityEngine;
 		float remaining = dt;
 
 		//	Run each branch
-		foreach(Branch branch in branches) branch.run(actor, dt, ref remainingForced, ref remaining);
+		foreach(Branch branch in branches) branch.run(dt, ref remainingForced, ref remaining);
 
 		//	Set `dt` to the fastest remaining time
 		if(remainingForced > remaining) dt = remainingForced;

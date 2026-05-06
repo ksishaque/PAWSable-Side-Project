@@ -24,7 +24,7 @@ using UnityEngine;
 		behavior: Behavior/path to set for the spawned enemy
 		endMode: Type of ending to use
 		*/
-		[SerializeReference, SubclassSelector] private List<BaseBehavior> behavior = new List<BaseBehavior>();
+		[SerializeReference, SubclassSelector] private List<BaseAction> behavior = new List<BaseAction>();
 		[SerializeField] private AIBehaviorList.EndMode endMode = AIBehaviorList.EndMode.ENDLESS;
 
 		//	Validate and preview
@@ -34,58 +34,23 @@ using UnityEngine;
 			Prefab.validateComponent<AIBehaviorList>(ref enemy);
 
 			//	Validate `behavior`
-			if(enemy != null) foreach(BaseBehavior behaviorNode in behavior) if(behaviorNode != null) behaviorNode.validate(enemy);
+			if(enemy != null) foreach(BaseAction behaviorNode in behavior) if(behaviorNode != null) behaviorNode.validate(enemy);
 		}
-#if FALSE
-		public void preview(float imageTime, float duration){
+
+		public bool preview(float time){
 
 			//	Validate, to be safe
 			validate();
-			if(enemy == null) return;
+			if(enemy == null) return true;
 
-			/*	Variables:
-			radius: Radius of `enemy`
-			position: Current position of the preview
-			*/
-			float radius = enemy.GetComponent<AIBehaviorList>().setUpPreview();
-			Vector2 position = spawnPosition;
-
-			//	Draw spawn point and set up times
-			Gizmos.DrawWireSphere(spawnPosition, radius);
-			imageTime -= delay;
-			duration -= delay;
-
-			//	Check `endMode`
-			if(endMode == AIBehaviorList.EndMode.ENDLESS){
-				if(behavior.Count > 0){
-
-					//	Preview all but one normally
-					for(int i = 0; i < behavior.Count - 1; i += 1) behavior[i].drawPreview(ref position, ref imageTime, ref duration, radius);
-
-					//	Preview the last one endlessly
-					behavior[behavior.Count - 1].drawPreview(ref position, ref imageTime, ref duration, radius, true);
-
-				}
+			//	Create preview image
+			if(time >= delay){
+				new BehaviorListPreviewImage(enemy.GetComponent<AIBehaviorList>(), spawnPosition, behavior, endMode);
+				return true;
 			}
-			else{
-
-				//	Preview each behavior node
-				foreach(BaseBehavior behaviorNode in behavior) behaviorNode.drawPreview(ref position, ref imageTime, ref duration, radius);
-
-				//	Draw the end point, if necessary
-				if(endMode == AIBehaviorList.EndMode.DESPAWN){
-					Gizmos.DrawLine(new Vector3(position.x + radius, position.y + radius, 0), new Vector3(position.x - radius, position.y - radius, 0));
-					Gizmos.DrawLine(new Vector3(position.x - radius, position.y + radius, 0), new Vector3(position.x + radius, position.y - radius, 0));
-				}
-				else{
-					if(imageTime >= 0) Gizmos.DrawSphere(position, radius);
-					if(duration >= 0) Gizmos.DrawWireCube(position, new Vector3(radius * 2, radius * 2, 0));
-				}
-
-			}
+			return false;
 
 		}
-#endif
 
 		//	Spawn `enemy`
 		public void spawn(){
@@ -94,7 +59,7 @@ using UnityEngine;
 			AIBehaviorList behaviorList = ObjectInitializer.instantiate(enemy, spawnPosition).GetComponent<AIBehaviorList>();
 
 			//	Set up behavior list
-			behaviorList.addBehaviors(behavior, true, endMode);
+			behaviorList.addBehaviors(behavior, endMode);
 
 		}
 
@@ -155,6 +120,18 @@ using UnityEngine;
 
 	//	Accessor
 	public List<Spawn> getSpawns() => spawns;
+	public List<Spawn> getSpawnsClone(){
+
+		//	Variable: Return value / list of clones from `spawns`
+		List<Spawn> ans = new List<Spawn>(spawns.Count);
+
+		//	Clone `actions` into `ans`
+		foreach(Spawn spawn in spawns) ans.Add(spawn);
+
+		//	Return
+		return ans;
+
+	}
 	public float getDuration() => duration;
 
 }

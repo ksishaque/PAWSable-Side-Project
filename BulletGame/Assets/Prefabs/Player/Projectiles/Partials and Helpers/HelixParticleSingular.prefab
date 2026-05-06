@@ -207,28 +207,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleProjectileMovement
   speedMod:
     rid: 4212330746888060995
-  behavior:
-    rid: 4212330707949453380
+  actions:
+  - rid: 8600302562710913091
   endMode: 0
+  ProjectionColor: {r: 1, g: 0, b: 0, a: 1}
+  projectionDiameter: 1
   references:
     version: 2
     RefIds:
-    - rid: 4212330707949453380
-      type: {class: MoveSerpentineBehavior, ns: , asm: Assembly-CSharp}
-      data:
-        duration: 1
-        forwardVelocity:
-          rid: 4212330707949453381
-        amplitude: 0.75
-        wavelength: 4
-    - rid: 4212330707949453381
-      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
-      data:
-        vector: {x: 6, y: 0}
     - rid: 4212330746888060995
       type: {class: BaseProjectileSpeedModifier/Player, ns: , asm: Assembly-CSharp}
       data:
         data: {fileID: 3995820241769323022}
+    - rid: 8600302562710913091
+      type: {class: MoveSerpentineBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        forwardVelocity:
+          rid: 8600302562710913092
+        amplitude: 0.6
+        wavelength: 4
+    - rid: 8600302562710913092
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: 8, y: 0}
 --- !u!212 &1525478797372447683
 SpriteRenderer:
   m_ObjectHideFlags: 0

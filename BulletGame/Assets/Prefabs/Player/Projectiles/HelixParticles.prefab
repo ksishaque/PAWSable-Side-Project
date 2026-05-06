@@ -86,6 +86,10 @@ PrefabInstance:
       propertyPath: managedReferences[4212330707949453380].amplitude
       value: -0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 4094578387362731687, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
+      propertyPath: managedReferences[8600302562710913091].amplitude
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6426189055176417856, guid: d8445fda69f6e074899c5e1a022cd4ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

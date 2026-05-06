@@ -18,14 +18,14 @@ using UnityEngine;
 	public LoopAction(List<BaseAction> actions, int loops){
 
 		//	Copy members
-		addClones(this.actions, actions);
+		this.actions.addClones(actions);
 		this.loops = loops;
 
 	}
 	public LoopAction(LoopAction origin){
 
 		//	Copy members
-		addClones(actions, origin.actions);
+		actions.addClones(origin.actions);
 		loops = origin.loops;
 
 	}
@@ -40,10 +40,10 @@ using UnityEngine;
 		if(loops == 0) return;
 
 		//	Add `actions`
-		addClones(list, actions);
+		instance.addActions(actions);
 
 		//	Add next loop action
-		list.Add(new LoopAction(actions, loops - 1));
+		instance.addActionDirect(new LoopAction(actions, loops - 1));
 
 	}
 

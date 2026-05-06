@@ -29,13 +29,13 @@ using UnityEngine;
 	override protected void start(){
 
 		//	Set up `init` and `delPos`
-		init = actor.transform.localPosition;
+		init = instance.actor.getPosition();
 		delPos = target;
 		delPos -= init;
 
 	}
 	override protected void update(){
-		actor.setLocalPosition(init + (delPos * completion));
+		instance.actor.setPosition(init + (delPos * completion));
 	}
 
 }

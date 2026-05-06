@@ -38,7 +38,6 @@ Debug.Log("Called");
 
 	//	Release the drone from a caller
 	public void release(PlayerDroneCaller caller){
-Debug.Log("Released");
 
 		//	Check if `caller` still has ownership
 		if(caller == this.caller){
@@ -48,7 +47,7 @@ Debug.Log("Released");
 
 			//	Transition
 			transitionTo(GlobalReferences.instance.player.transform, inactiveColor, true);
-			actionList.addActionDirect(new DestroyAction(ObjectDestroyer.Cause.STOW_WEAPON));
+			actionList.getInstance().addActionDirect(new DestroyAction(ObjectDestroyer.Cause.STOW_WEAPON));
 
 		}
 
@@ -106,8 +105,8 @@ Debug.Log("Released");
 		actions.addSingleBranchDirect(new RecolorAction(indicator, indicatorColor, repositionDuration, new StandardScalingFunction()));
 
 		//	Add `actions` to `actionList`
-		actionList.clearActions();
-		actionList.addActionDirect(actions);
+		actionList.getInstance().clearActions();
+		actionList.getInstance().addActionDirect(actions);
 
 	}
 

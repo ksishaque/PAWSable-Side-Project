@@ -34,12 +34,12 @@ using UnityEngine;
 	override protected void start(){
 
 		//	Set up `init` and reconfigure `position` to be the change in position
-		init = actor.transform.localPosition;
+		init = instance.actor.getPosition();
 		if(relative == false) position -= init;
 
 	}
 	override protected void update(){
-		actor.setLocalPosition(init + (position * completion));
+		instance.actor.setPosition(init + (position * completion));
 	}
 
 }
