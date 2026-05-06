@@ -8,9 +8,23 @@ using UnityEngine.InputSystem;
 
 public class InventoryItem : MonoBehaviour//, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public ItemData itemData;
 
-    public int sizeWidth = 1;
-    public int sizeHeight = 1;
+    public int onGridPositionX;
+    public int onGridPositionY;
+
+    internal void Set(ItemData itemData)
+    {
+        this.itemData = itemData;
+
+        GetComponent<Image>().sprite = itemData.itemIcon;
+
+        Vector2 size = new Vector2();
+        size.x = itemData.width * InventorySlot.tileSizeWidth;
+        size.y = itemData.height * InventorySlot.tileSizeHeight;
+        GetComponent<RectTransform>().sizeDelta = size;
+    }
+
 
 //    [Header("UI")]
 //    public Image image;
