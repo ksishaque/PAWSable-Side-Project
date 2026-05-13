@@ -53,7 +53,7 @@ using NaughtyAttributes;
 			weaponDropdown = handler.getWeaponsDropdown();
 
 			//	Variable: Specific current weapon
-			BaseEnemyWeapon curWeapon = handler.getWeaponSafe(ref weapon);
+			BaseEnemyWeapon curWeapon = handler.validateIndex(ref weapon);
 
 			//	Check and set `modeDropdown`
 			if(curWeapon == null) modeDropdown = new DropdownList<int>{{"INVALID", 0}};
@@ -62,7 +62,7 @@ using NaughtyAttributes;
 		}
 	}
 	override protected void start(){
-		//actor.GetComponent<EnemyWeaponHandler>().getWeapon(weapon).fire(mode);
+		instance.actor.fireWeapon(weapon, mode);
 	}
 
 }

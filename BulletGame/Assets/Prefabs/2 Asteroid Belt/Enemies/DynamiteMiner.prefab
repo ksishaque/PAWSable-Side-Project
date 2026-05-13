@@ -127,8 +127,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6432636075550227818}
-  - component: {fileID: 8174281388545911599}
-  - component: {fileID: 1862262260176707349}
   m_Layer: 0
   m_Name: Dynamite
   m_TagString: Untagged
@@ -151,48 +149,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7381997219393684308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8174281388545911599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3736729287218217287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69407f5f32737f042b2a2939e6c08917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AIFacer
-  target:
-    rid: 138378133680422979
-  correction: 2
-  references:
-    version: 2
-    RefIds:
-    - rid: 138378133680422979
-      type: {class: BaseTarget/ObjectReference, ns: , asm: Assembly-CSharp}
-      data:
-        target:
-          rid: 138378133680422980
-    - rid: 138378133680422980
-      type: {class: GlobalReferences/Player, ns: , asm: Assembly-CSharp}
-      data: 
---- !u!114 &1862262260176707349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3736729287218217287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04109ae6610a6a54697a350ab942d717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCannon
-  attackInterval: 3
-  firing: 0
-  barrel: {fileID: 3736729287218217287}
-  projectile: {fileID: 7684355605594490202, guid: a921d6aeaf377ff4f93d6dced4efef45, type: 3}
 --- !u!1 &4292958115550031967
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +394,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWeaponHandler
   weapons:
-  - {fileID: 1862262260176707349}
+  - rid: 3468956199688339524
+  references:
+    version: 2
+    RefIds:
+    - rid: 3468956199688339524
+      type: {class: EnemyCannon, ns: , asm: Assembly-CSharp}
+      data:
+        name: Dynamite
+        attackInterval: 6
+        firing: 0
+        barrel: {fileID: 3736729287218217287}
+        projectile: {fileID: 7684355605594490202, guid: a921d6aeaf377ff4f93d6dced4efef45, type: 3}
+        target:
+          rid: 3468956199688339525
+        angleOffset: 0
+    - rid: 3468956199688339525
+      type: {class: BaseTarget/ObjectReference, ns: , asm: Assembly-CSharp}
+      data:
+        target:
+          rid: 3468956199688339526
+    - rid: 3468956199688339526
+      type: {class: GlobalReferences/Player, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!1 &6064634187329097731
 GameObject:
   m_ObjectHideFlags: 0
