@@ -186,16 +186,16 @@ public class BehaviorListPreviewImage : BasePreviewImage, BaseAction.IActor{
 	public void setScale(Vector2 scale){
 		radius = (scale.x + scale.y) / 4;
 	}
-	public Component getComponent<Component>(){
-		return default;
-	}
 	public void destroySelf(ObjectDestroyer.Cause cause){
 		destroySelf();
 	}
 	public void destroySelfDirect(){
 		destroySelf();
 	}
-
-
+	public Component getComponent<Component>(){
+		return default;
+	}
+	public void fireWeapon(int weapon, int mode){
+	}
 
 }

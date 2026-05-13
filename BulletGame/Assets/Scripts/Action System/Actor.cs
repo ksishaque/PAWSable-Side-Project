@@ -60,6 +60,9 @@ public partial class BaseAction{
 			public Component getComponent<Component>(){
 				return actor.GetComponent<Component>();
 			}
+			public void fireWeapon(int weapon, int mode){
+				actor.GetComponent<EnemyWeaponHandler>().getWeapon(weapon).fire(mode);
+			}
 
 		}
 
@@ -87,6 +90,10 @@ public partial class BaseAction{
 
 		//	Component access
 		public Component getComponent<Component>();
+
+
+		//	Enemy behaviors
+		public void fireWeapon(int weapon, int mode);
 
 	}
 	

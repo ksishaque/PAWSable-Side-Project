@@ -55,8 +55,9 @@ using NaughtyAttributes;
 		//	Variable: Original value of `instance`
 		AISpawnPatternEditor original = instance;
 
-		//	Set up `instance` in case behaviors access it
+		//	Set up `instance` and `images` in case behaviors access it
 		instance = this;
+		images.Clear();
 
 		//	Variable: List of spawns left to preview
 		List<AISpawnPattern.Spawn> spawns = pattern.getSpawnsClone();

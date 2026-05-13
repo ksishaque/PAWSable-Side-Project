@@ -2,18 +2,37 @@ using UnityEngine;
 using NaughtyAttributes;
 
 //	Base class for all possible enemy weapons (because not all weapons are cannons)
-public abstract class BaseEnemyWeapon : MonoBehaviour{
+[System.Serializable] public abstract class BaseEnemyWeapon{
 
-	//	Fire the weapon
+	//	Variable: Name of the weapon
+	[SerializeField] private string name;
+	protected BaseAction.IActor actor{
+		get;
+		private set;
+	}
+
+
+	//	Set up
+	public void bindActor(BaseAction.IActor actor){
+		this.actor = actor;
+	}
+
+
+	//	Fire and maintain the weapon
 	abstract public void fire(int mode = 0);
 
-	//	Access inspector dropdown options for firing modes
+	virtual public void update(float dt){}
+
+
+	//	Accessors
+	public string getName() => name;
+
 	virtual public DropdownList<int> getModesDropdown() => new DropdownList<int>(){{"Fire", 0}};
 
 }
 
 //	Base class for all possible enemy weapons that autofire
-public abstract class BaseEnemyAutoWeapon : BaseEnemyWeapon{
+[System.Serializable] public abstract class BaseEnemyAutoWeapon : BaseEnemyWeapon{
 
 	[Header("Auto Firing")]
 	/*	Variables:
@@ -31,10 +50,10 @@ public abstract class BaseEnemyAutoWeapon : BaseEnemyWeapon{
 
 
 	//	Firing
-	virtual protected void Update(){
+	override public void update(float dt){
 
 		//	Increment `attackTimer`
-		if(attackTimer > 0) attackTimer -= Time.deltaTime;
+		if(attackTimer > 0) attackTimer -= dt;
 
 		//	Fire if necessary
 		else if(firing){

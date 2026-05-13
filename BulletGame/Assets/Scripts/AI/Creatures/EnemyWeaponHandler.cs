@@ -6,14 +6,32 @@ using NaughtyAttributes;
 public class EnemyWeaponHandler : MonoBehaviour{
 
 	//	Variable: References to all of the enemy's weapons
-	[SerializeField] private List<BaseEnemyWeapon> weapons = new List<BaseEnemyWeapon>();
+	[SerializeReference, SubclassSelector] private List<BaseEnemyWeapon> weapons = new List<BaseEnemyWeapon>();
+
+
+	//	Set up and update `weapons`
+	private void Start(){
+
+		//	Variable: Dummy actor to be bound to all weapons
+		BaseAction.IActor.Nonphysical actor = new BaseAction.IActor.Nonphysical(gameObject);
+
+		//	Bind `actor` to `weapons` and initialize
+		foreach(BaseEnemyWeapon weapon in weapons){
+			weapon.bindActor(actor);
+			weapon.start();
+		}
+
+	}
+	private void Update(){
+		foreach(BaseEnemyWeapon weapon in weapons) weapon.update(Time.deltaTime);
+	}
 
 
 	//	Accessors
 	public BaseEnemyWeapon getWeapon(int index){
 		return weapons[index];
 	}
-	public BaseEnemyWeapon getWeaponSafe(ref int index){
+	public BaseEnemyWeapon validateIndex(ref int index){
 
 		//	Check `weapons`
 		if(weapons.Count < 1) return null;
@@ -21,7 +39,7 @@ public class EnemyWeaponHandler : MonoBehaviour{
 		//	Check for a valid index
 		if(index < 0 || index >= weapons.Count){
 			index = 0;
-			return getWeaponSafe(ref index);
+			return validateIndex(ref index);
 		}
 
 		//	Return
@@ -34,25 +52,10 @@ public class EnemyWeaponHandler : MonoBehaviour{
 		DropdownList<int> ans = new DropdownList<int>();
 
 		//	Copy each weapon's name
-		for(int i = 0; i < weapons.Count; i += 1) ans.Add(weapons[i].name, i);
+		for(int i = 0; i < weapons.Count; i += 1) ans.Add(weapons[i].getName(), i);
 
 		//	Return
 		return ans;
-
-	}
-
-
-	//	Automatic weapon finder
-	[NaughtyAttributes.Button("Automatically find all Weapons")] private void findWeapons(){
-
-		//	Clear `weapons`
-		weapons.Clear();
-
-		//	Variable: `weapons` as an array
-		BaseEnemyWeapon[] weaArr = GetComponentsInChildren<BaseEnemyWeapon>();
-
-		//	Copy `weaArr` to `weapons`
-		for(int i = 0; i < weaArr.Length; i += 1) weapons.Add(weaArr[i]);
 
 	}
 
