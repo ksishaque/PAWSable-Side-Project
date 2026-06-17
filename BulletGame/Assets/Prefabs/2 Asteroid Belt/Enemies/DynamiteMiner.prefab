@@ -403,7 +403,6 @@ MonoBehaviour:
       data:
         name: Dynamite
         attackInterval: 6
-        firing: 0
         barrel: {fileID: 3736729287218217287}
         projectile: {fileID: 7684355605594490202, guid: a921d6aeaf377ff4f93d6dced4efef45, type: 3}
         target:

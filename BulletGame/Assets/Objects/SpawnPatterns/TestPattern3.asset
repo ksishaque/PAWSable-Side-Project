@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a90d3cb25bc3194fa8e3d4a9fb490e7, type: 3}
+  m_Name: TestPattern3
+  m_EditorClassIdentifier: Assembly-CSharp::AISpawnPattern
+  priority:
+    baseValue: -1
+    randomness: 0
+    recency: 0
+    playerHealth: 0
+    enemyPopulation: 0
+  spawns:
+  - enemy: {fileID: 4292958115550031967, guid: 722f9ef34d5364c41a57591ee704d413, type: 3}
+    delay: 0
+    spawnPosition: {x: 1, y: 2}
+    behavior:
+    - rid: 3468956516567482441
+    endMode: 0
+  duration: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: 3468956516567482441
+      type: {class: FireWeaponBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: 0
+        mode: 0

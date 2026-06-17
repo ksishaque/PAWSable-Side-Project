@@ -10,18 +10,6 @@ public class EnemyWeaponHandler : MonoBehaviour{
 
 
 	//	Set up and update `weapons`
-	private void Start(){
-
-		//	Variable: Dummy actor to be bound to all weapons
-		BaseAction.IActor.Nonphysical actor = new BaseAction.IActor.Nonphysical(gameObject);
-
-		//	Bind `actor` to `weapons` and initialize
-		foreach(BaseEnemyWeapon weapon in weapons){
-			weapon.bindActor(actor);
-			weapon.start();
-		}
-
-	}
 	private void Update(){
 		foreach(BaseEnemyWeapon weapon in weapons) weapon.update(Time.deltaTime);
 	}
@@ -57,6 +45,13 @@ public class EnemyWeaponHandler : MonoBehaviour{
 		//	Return
 		return ans;
 
+	}
+
+
+	//	Set up previews
+	public void fillPreviews(ref List<BaseEnemyWeapon> previewList, BasePreviewImage image){
+		previewList.Clear();
+		foreach(BaseEnemyWeapon weapon in weapons) previewList.Add(weapon.preview(image));
 	}
 
 }
