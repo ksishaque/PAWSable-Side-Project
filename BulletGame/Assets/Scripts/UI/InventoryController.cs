@@ -9,11 +9,20 @@ using UnityEngine.InputSystem;
 public class InventoryController : MonoBehaviour
 {
 
-    [HideInInspector] public InventorySlot selectedInventorySlot;
+    [HideInInspector] private InventorySlot selectedInventorySlot;
+
+    public InventorySlot SelectedInventorySlot { 
+        get => selectedInventorySlot; 
+        set
+        {
+            selectedInventorySlot = value;
+            inventoryHighlight.SetParent(value);
+        }
+    }
+
 
     InventoryItem selectedItem;
     InventoryItem overlapItem;
-    InventoryItem itemToHighlight;
     RectTransform rectTransform;
 
     [SerializeField] List<ItemData> items;
@@ -42,6 +51,7 @@ public class InventoryController : MonoBehaviour
         //Debug.Log("InventoryController is Updating");
         if (selectedInventorySlot == null)
         {
+            inventoryHighlight.Show(false);
             //Debug.Log("InventoryController doesn't have a Selected Inventory Slot");
             return;
         }
@@ -56,22 +66,41 @@ public class InventoryController : MonoBehaviour
 
     }
 
+    Vector2Int oldPosition;
+    InventoryItem itemToHighlight;
+
     private void HandleHighlight()
     {
         Vector2Int positionOnGrid = GetTileGridPosition();
+        if(oldPosition == positionOnGrid) { return; }
+
+        oldPosition = positionOnGrid;
         if (selectedItem == null)
         {
             itemToHighlight = selectedInventorySlot.GetItem(positionOnGrid.x, positionOnGrid.y);
 
             if (itemToHighlight != null)
             {
+                inventoryHighlight.Show(true);
                 inventoryHighlight.SetSize(itemToHighlight);
                 inventoryHighlight.SetPosition(selectedInventorySlot, itemToHighlight);
+            }
+            else
+            {
+                inventoryHighlight.Show(false);
             }
         }
         else
         {
+            inventoryHighlight.Show(selectedInventorySlot.BoundaryCheck(
+                positionOnGrid.x,
+                positionOnGrid.y,
+                selectedItem.itemData.width,
+                selectedItem.itemData.height)
+                );
 
+            inventoryHighlight.SetSize(selectedItem);
+            inventoryHighlight.SetPosition(selectedInventorySlot, selectedItem, positionOnGrid.x, positionOnGrid.y);
         }
     }
 
