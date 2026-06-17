@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static System.Math;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -45,11 +46,6 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
-    internal InventoryItem GetItem(int x, int y)
-    {
-        return inventoryItemSlot[x, y];
-    }
-
     private void Init(int width, int height)
     {
         inventoryItemSlot = new InventoryItem[width, height];
@@ -57,10 +53,19 @@ public class InventorySlot : MonoBehaviour
         rectTransform.sizeDelta = size;
     }
 
+    internal InventoryItem GetItem(int x, int y)
+    {
+        return inventoryItemSlot[x, y];
+    }
+
     Vector2 positionOnTheGrid = new Vector2();
     Vector2Int tileGridPosition = new Vector2Int();
     public Vector2Int GetTileGridPosition(Vector2 mousePosition)
     {
+        if (tileGridPosition.x < 0) { tileGridPosition.x = 0; }
+        if (tileGridPosition.y < 0) { tileGridPosition.y = 0; }
+
+
         positionOnTheGrid.x = mousePosition.x - rectTransform.position.x;
         positionOnTheGrid.y = rectTransform.position.y - mousePosition.y;
 
@@ -90,6 +95,13 @@ public class InventorySlot : MonoBehaviour
             CleanGridReference(overlapItem);
         }
 
+        PlaceItem(inventoryItem, posX, posY);
+
+        return true;
+    }
+
+    public void PlaceItem(InventoryItem inventoryItem, int posX, int posY)
+    {
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(this.rectTransform);
 
@@ -103,15 +115,12 @@ public class InventorySlot : MonoBehaviour
 
         inventoryItem.onGridPositionX = posX;
         inventoryItem.onGridPositionY = posY;
-
-        Vector2 position = CalaculatePositionOnGrid(inventoryItem, posX, posY);
+        Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
 
         rectTransform.localPosition = position;
-
-        return true;
     }
 
-    public Vector2 CalaculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)
+    public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)
     {
         Vector2 position = new Vector2();
         position.x = posX * tileSizeWidth + tileSizeWidth * inventoryItem.itemData.width / 2;
@@ -125,7 +134,7 @@ public class InventorySlot : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (inventoryItemSlot[posX+x, posY+y] != null)
+                if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
                     if (overlapItem == null)
                     {
@@ -161,7 +170,7 @@ public class InventorySlot : MonoBehaviour
         return true;
     }
 
-    bool BoundaryCheck(int posX, int posY, int width, int height)
+    public bool BoundaryCheck(int posX, int posY, int width, int height)
     {
         if (PositionCheck(posX, posY) == false) { return false; }
 

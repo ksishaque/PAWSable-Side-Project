@@ -17,12 +17,12 @@ public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("POINTER ENTER");
-        inventoryController.selectedInventorySlot = inventorySlot;
+        inventoryController.SelectedInventorySlot = inventorySlot;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("POINTER EXIT");
-        inventoryController.selectedInventorySlot = null;
+        inventoryController.SelectedInventorySlot = null;
     }
 }

@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 1, y: 1, z: 1, w: 1}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1474,7 +1474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2df6ae91aa3e640997a5eb4524aafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  selectedInventorySlot: {fileID: 0}
   items:
   - {fileID: 11400000, guid: 7b17ea591e3368d4383834c9d96d66d1, type: 2}
   - {fileID: 11400000, guid: a4656a23b2155234faa9c23827baff27, type: 2}
