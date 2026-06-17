@@ -76,7 +76,7 @@ MonoBehaviour:
     behavior:
     - rid: 4212330658805580051
     - rid: 4212330658805580052
-    - rid: 4212330658805580040
+    - rid: 3468956358332907589
     endMode: 0
   - enemy: {fileID: 4292958115550031967, guid: 722f9ef34d5364c41a57591ee704d413, type: 3}
     delay: 3.5
@@ -110,6 +110,16 @@ MonoBehaviour:
       data:
         weapon: 0
         mode: 0
+    - rid: 3468956358332907589
+      type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        velocity:
+          rid: 3468956358332907590
+    - rid: 3468956358332907590
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: -1, y: 0}
     - rid: 4212330658805580038
       type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
       data:

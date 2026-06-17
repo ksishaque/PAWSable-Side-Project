@@ -46,9 +46,12 @@ public class GlobalReferences : MonoBehaviour{
         if(instance != null) GameObject.Destroy(this);
 		else instance = this;
     }
-	private void OnDestroy(){
+	public void OnDestroy(){
 		if(instance == this) instance = null;
 	}
+
+	//	Manage for previewing
+	public void startPreview() => instance = this;
 
 	//	Validate prefabs
 	private void OnValidate(){

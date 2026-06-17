@@ -8,8 +8,13 @@ using NaughtyAttributes;
 	static public AISpawnPatternEditor instance = null;
 
 	[Header("Preview")]
-	//	Variable: Time at which to display the preview image
+	/*	Variablse:
+	imageTime: Time at which to display the preview image
+	showProjectilePaths: If projectile paths should be shown
+	images: Preview images to manage
+	*/
 	[SerializeField, MinValue(0.0f)] private float imageTime = 0;
+	[SerializeField] private bool showProjectilePaths = true;
 	private List<BasePreviewImage> images = new List<BasePreviewImage>();
 
 	[Header("Pattern")]
@@ -22,10 +27,12 @@ using NaughtyAttributes;
 
 	[Header("Configuration")]
 	/*	Variables:
+	globalReferences: Global reference component to use while previewing
 	timeStep: Duration of each frame to simulate in the preview path
 	previewDuration: Time before the preview is forcefully ended
 	imageTimeScale: Scale to affect `imageTime` by
 	*/
+	[SerializeField] private GlobalReferences globalReferences;
 	[SerializeField, MinValue(1.0f / 120)] private float timeStep = 1.0f / 30;
 	[SerializeField, MaxValue(60)] private float previewDuration = 30;
 	[SerializeField] private float imageTimeScale = 25;
@@ -55,9 +62,10 @@ using NaughtyAttributes;
 		//	Variable: Original value of `instance`
 		AISpawnPatternEditor original = instance;
 
-		//	Set up `instance` and `images` in case behaviors access it
+		//	Set up `instance`, `images` and `GlobalReferences` in case behaviors access it
 		instance = this;
 		images.Clear();
+		globalReferences.startPreview();
 
 		//	Variable: List of spawns left to preview
 		List<AISpawnPattern.Spawn> spawns = pattern.getSpawnsClone();
@@ -66,7 +74,7 @@ using NaughtyAttributes;
 		for(float time = 0; time < previewDuration && (spawns.Count > 0 || images.Count > 0); time += timeStep){
 
 			//	Update `images`
-			foreach(BasePreviewImage image in images) image.update(timeStep);
+			for(int i = 0; i < images.Count; i += 1) images[i].update(timeStep);
 
 			//	Check new spawns
 			for(int i = 0; i < spawns.Count; i += 1) if(spawns[i].preview(time)){
@@ -80,15 +88,17 @@ using NaughtyAttributes;
 
 		}
 
-		//	Clean up `instance` and `images`, just to be safe
+		//	Clean up `instance`, `images` and `globalReferences`, just to be safe
 		instance = original;
 		images.Clear();
+		globalReferences.OnDestroy();
 
 	}
 
 	//	Accessors
 	static public float getTimeStep() => instance.timeStep;
 	static public float getEndlessDuration() => instance.previewDuration;
+	static public bool hidePath(bool isProjectile) => !instance.showProjectilePaths && isProjectile;
 
 	//	Preview Management
 	static public int addImage(BasePreviewImage image){

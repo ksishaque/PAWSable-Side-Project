@@ -6,22 +6,12 @@ using NaughtyAttributes;
 
 	//	Variable: Name of the weapon
 	[SerializeField] private string name;
-	protected BaseAction.IActor actor{
-		get;
-		private set;
-	}
-
-
-	//	Set up
-	public void bindActor(BaseAction.IActor actor){
-		this.actor = actor;
-	}
 
 
 	//	Fire and maintain the weapon
 	abstract public void fire(int mode = 0);
-
 	virtual public void update(float dt){}
+	abstract public BaseEnemyWeapon preview(BasePreviewImage image);
 
 
 	//	Accessors
@@ -42,11 +32,20 @@ using NaughtyAttributes;
 	*/
 	[SerializeField, MinValue(0)] private float attackInterval = 1;
 	private float attackTimer = 0;
-	//*
+	/*
 	[SerializeField] private bool firing = false;
 	/*/
 	[ShowNonSerializedField] private bool firing = false;
 	//*/
+
+
+	//	Cosntructors
+	protected BaseEnemyAutoWeapon(){
+		attackInterval = 1;
+	}
+	protected BaseEnemyAutoWeapon(BaseEnemyAutoWeapon source){
+		attackInterval = source.attackInterval;
+	}
 
 
 	//	Firing

@@ -303,10 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7060512b73e1e409ca57298b04c1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AISpawnPatternEditor
-  imageTime: 0
-  showProjectilePaths: 0
+  imageTime: 50.09
   pattern: {fileID: 11400000, guid: 4a378f033253b28489589fc7f55de678, type: 2}
-  globalReferences: {fileID: 731320150}
   timeStep: 0.033333335
   previewDuration: 30
   imageTimeScale: 25
