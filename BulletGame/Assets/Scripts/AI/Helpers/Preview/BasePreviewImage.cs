@@ -62,28 +62,21 @@ public abstract class BasePreviewImage : ITransformable{
 		pos += displacement * getRot();
 
 		//	Draw preview path
-		if(AISpawnPatternEditor.hidePath(isProjectile)) return;
-		Gizmos.color = color;
+		Gizmos.color = getProjPathColor();
 		Gizmos.DrawLine(prevPos, pos);
 
 	}
 	public void setPosition(Vector2 position){
 
-		//	Check projectile hiding
-		if(AISpawnPatternEditor.hidePath(isProjectile)) pos = position;
-		else{
+		//	Draw preview path
+		Gizmos.color = getProjPathColor();
+		Gizmos.DrawWireSphere(pos, radius / 5);
 
-			//	Draw preview path
-			Gizmos.color = color;
-			Gizmos.DrawWireSphere(pos, radius / 5);
+		//	Update `pos`
+		pos = position;
 
-			//	Update `pos`
-			pos = position;
-
-			//	Finish drawing preview path
-			Gizmos.DrawWireSphere(pos, radius / 5);
-
-		}
+		//	Finish drawing preview path
+		Gizmos.DrawWireSphere(pos, radius / 5);
 
 	}
 	public void destroySelf(){
@@ -118,13 +111,13 @@ public abstract class BasePreviewImage : ITransformable{
 		drawForward();
 	}
 	public void drawDespawnImage(){
-		if(AISpawnPatternEditor.hidePath(isProjectile)) return;
+		if(isProjectile && AISpawnPatternEditor.hideProjPath()) return;
 		Gizmos.color = color;
 		Gizmos.DrawLine(pos + new Vector2(radius, radius), pos - new Vector2(radius, radius));
 		Gizmos.DrawLine(pos + new Vector2(radius, -radius), pos - new Vector2(radius, -radius));
 	}
 	public void drawDurationImage(){
-		if(AISpawnPatternEditor.hidePath(isProjectile)) return;
+		if(isProjectile && AISpawnPatternEditor.hideProjPath()) return;
 		Gizmos.color = color;
 		Gizmos.DrawWireCube(pos, new Vector3(radius * 2, radius * 2, 0));
 	}
@@ -139,6 +132,10 @@ public abstract class BasePreviewImage : ITransformable{
 		if(rotDirty) rotMat.set(rot);
 		else if(rotMat == null) return RotationMatrix.IDENTITY;
 		return rotMat;
+	}
+	private Color getProjPathColor(){
+		if(!isProjectile) return color;
+		return AISpawnPatternEditor.getProjPathColor(color);
 	}
 
 }

@@ -304,11 +304,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AISpawnPatternEditor
   imageTime: 0
-  showProjectilePaths: 0
+  projectilePathDisplayMode: 2
   pattern: {fileID: 11400000, guid: 4a378f033253b28489589fc7f55de678, type: 2}
   globalReferences: {fileID: 731320150}
   timeStep: 0.033333335
   previewDuration: 30
+  projectilePulseDuration: {x: 2, y: 5}
   imageTimeScale: 25
 --- !u!114 &731320148
 MonoBehaviour:
