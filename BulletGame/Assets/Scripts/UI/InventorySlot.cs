@@ -24,6 +24,11 @@ public class InventorySlot : MonoBehaviour
         Init(gridSizeWidth, gridSizeHeight);
     }
 
+    /*
+     * Pick Up Item
+     * @param x The x position
+     * @param y The y position
+     */
     public InventoryItem PickUpItem(int x, int y)
     {
         InventoryItem toReturn = inventoryItemSlot[x, y];
@@ -60,6 +65,11 @@ public class InventorySlot : MonoBehaviour
 
     Vector2 positionOnTheGrid = new Vector2();
     Vector2Int tileGridPosition = new Vector2Int();
+
+    /*
+     * Gets the grid tile position of where the mouse is hovering.
+     * @param mousePosition The current position of the mouse.
+     */
     public Vector2Int GetTileGridPosition(Vector2 mousePosition)
     {
         if (tileGridPosition.x < 0) { tileGridPosition.x = 0; }
@@ -77,6 +87,13 @@ public class InventorySlot : MonoBehaviour
         return tileGridPosition;
     }
 
+    /*
+     * Code to handle placing an item.
+     * @param inventoryItem The item to be placed
+     * @param posX The X position
+     * @param posY The Y position
+     * @param overlapItem The overlapped item
+     */
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem overlapItem)
     {
         if (BoundaryCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height) == false)
@@ -99,7 +116,12 @@ public class InventorySlot : MonoBehaviour
 
         return true;
     }
-
+    /*
+     * Code to handle placing an item.
+     * @param inventoryItem The item to be placed
+     * @param posX The X position
+     * @param posY The Y position
+     */
     public void PlaceItem(InventoryItem inventoryItem, int posX, int posY)
     {
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
@@ -120,6 +142,12 @@ public class InventorySlot : MonoBehaviour
         rectTransform.localPosition = position;
     }
 
+    /**
+     * Calculates the position of an item on the grid.
+     * @param inventoryItem The item which position must be calculated for
+     * @param posX The X position
+     * @param posY The Y position
+     */
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)
     {
         Vector2 position = new Vector2();
@@ -155,6 +183,12 @@ public class InventorySlot : MonoBehaviour
         return true;
     }
 
+
+    /*
+     * Checks for if the position is out of the grid.
+     * @param posX The X position
+     * @param posY The Y position
+     */
     bool PositionCheck(int posX, int posY)
     {
         if (posX < 0 || posY < 0)
@@ -170,6 +204,14 @@ public class InventorySlot : MonoBehaviour
         return true;
     }
 
+
+    /*
+     * Checks if the item is within the bounds of the grid.
+     * @param posX The X position
+     * @param posY The Y position
+     * @param width The width of the item
+     * @param height The height of the item
+     */
     public bool BoundaryCheck(int posX, int posY, int width, int height)
     {
         if (PositionCheck(posX, posY) == false) { return false; }

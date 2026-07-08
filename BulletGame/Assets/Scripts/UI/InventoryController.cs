@@ -69,6 +69,9 @@ public class InventoryController : MonoBehaviour
     Vector2Int oldPosition;
     InventoryItem itemToHighlight;
 
+    /**
+     * Controls the highlighting
+     */
     private void HandleHighlight()
     {
         Vector2Int positionOnGrid = GetTileGridPosition();
@@ -115,6 +118,9 @@ public class InventoryController : MonoBehaviour
         inventoryItem.Set(items[selectedItemID]);
     }
 
+    /*
+     * Places/Picks-up an item after left-clicking on the item at the tileGridPosition.
+     */
     private void LeftMouseButtonPress()
     {
         Vector2Int tileGridPosition = GetTileGridPosition();
@@ -136,6 +142,9 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    /*
+     * Gets the current position of the mouse
+     */
     private Vector2Int GetTileGridPosition()
     {
         Vector2 position = Mouse.current.position.ReadValue();
