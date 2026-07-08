@@ -59,4 +59,11 @@ public class EnemyWeaponHandler : MonoBehaviour{
 
 	}
 
+
+	//	Set up previews
+	public void fillPreviews(ref List<BaseEnemyWeapon> previewList, BasePreviewImage image){
+		previewList.Clear();
+		foreach(BaseEnemyWeapon weapon in weapons) previewList.Add(weapon.preview(image));
+	}
+
 }

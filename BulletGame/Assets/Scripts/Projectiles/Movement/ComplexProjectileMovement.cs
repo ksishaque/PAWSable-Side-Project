@@ -33,6 +33,13 @@ using UnityEngine;
 	public float projectionRadius => projectionDiameter;
 
 
+	//	Preview `projectionDiameter`
+	private void OnDrawGizmosSelected(){
+		Gizmos.color = projectionColor;
+		Gizmos.DrawWireSphere(transform.position, projectionDiameter / 2);
+	}
+
+
 	//	Validation
 	private void OnValidate(){
 		if(speedMod == null) speedMod = BaseProjectileSpeedModifier.getDefault(gameObject);
