@@ -10,7 +10,8 @@ public class InventoryScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        toggleInventory();
+        toggleInventory();
     }
 
     // Update is called once per frame
@@ -22,6 +23,7 @@ public class InventoryScript : MonoBehaviour
        }
     }
 
+    // Toggles the inventory to show or hide
     public void toggleInventory()
     {
         isOpen = !isOpen;
