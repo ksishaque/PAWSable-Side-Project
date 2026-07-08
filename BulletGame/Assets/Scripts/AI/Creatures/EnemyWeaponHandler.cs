@@ -17,7 +17,7 @@ public class EnemyWeaponHandler : MonoBehaviour{
 
 		//	Bind `actor` to `weapons` and initialize
 		foreach(BaseEnemyWeapon weapon in weapons){
-			weapon.bindActor(actor);
+			//weapon.bindActor(actor);
 			//weapon.start();
 		}
 
