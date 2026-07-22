@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[0].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 3c889ec661208c14c9f8dbe1a6d6c785, type: 2}
+      objectReference: {fileID: 11400000, guid: 32db69cbcd894a743ba1e7e3a522ab19, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[0].projectiles.Array.data[1]'
       value: 
@@ -371,11 +371,11 @@ PrefabInstance:
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[1].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 3c889ec661208c14c9f8dbe1a6d6c785, type: 2}
+      objectReference: {fileID: 11400000, guid: e2494e4bb454a5e418547bf93c48b76f, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[2].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 3c889ec661208c14c9f8dbe1a6d6c785, type: 2}
+      objectReference: {fileID: 11400000, guid: e2494e4bb454a5e418547bf93c48b76f, type: 2}
     - target: {fileID: 8411414496584098917, guid: a5fc71f0a31295d4a8927988d00a81ec, type: 3}
       propertyPath: 'weaponSlots.Array.data[3].projectiles.Array.data[0]'
       value: 
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIDirector
   plans:
   - rid: 6269373878689071171
+  - rid: 6269373878689071172
   delay: 1
   durationScale: 1
   lockInterval: 0
@@ -443,8 +444,13 @@ MonoBehaviour:
     - rid: 6269373878689071171
       type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}
       data:
+        weight: 0
+        pattern: {fileID: 11400000, guid: 200d4d48b96ac934485b1a7789e7d031, type: 2}
+    - rid: 6269373878689071172
+      type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}
+      data:
         weight: 1
-        pattern: {fileID: 11400000, guid: bf22532f5c9dd434bbc3fa34f5fd8e74, type: 2}
+        pattern: {fileID: 11400000, guid: 4a378f033253b28489589fc7f55de678, type: 2}
 --- !u!114 &1079701729
 MonoBehaviour:
   m_ObjectHideFlags: 0
