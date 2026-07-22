@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 943739931572978994}
   - component: {fileID: 2372102226955279307}
   - component: {fileID: 7458152793327783874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1466969291
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -4003982261762975687, guid: cf94889095c95d94e8fef9e309de0a0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 3465725313669367306}
   - component: {fileID: 1855675192780047290}
   - component: {fileID: -5319676866182965909}
+  - component: {fileID: 3214753022916913210}
   m_Layer: 9
   m_Name: Dynamite
   m_TagString: Untagged
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7684355605594490202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d165977affe6284192a8cbcfde78f9b, type: 3}
   m_Name: 
@@ -315,3 +316,38 @@ MonoBehaviour:
     - rid: 138378133680422981
       type: {class: BaseProjectileSpeedModifier/Enemy, ns: , asm: Assembly-CSharp}
       data: 
+--- !u!114 &3214753022916913210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684355605594490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cb0db14e896ea44a2ff1325d1a7b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ComplexProjectileMovement
+  speedMod:
+    rid: 7367357230090551363
+  actions:
+  - rid: 7367357230090551364
+  endMode: 0
+  ProjectionColor: {r: 0.70980394, g: 0.16470589, b: 0.19215688, a: 1}
+  projectionDiameter: 0.375
+  references:
+    version: 2
+    RefIds:
+    - rid: 7367357230090551363
+      type: {class: BaseProjectileSpeedModifier/Enemy, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 7367357230090551364
+      type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        velocity:
+          rid: 7367357230090551365
+    - rid: 7367357230090551365
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: -2, y: 0}

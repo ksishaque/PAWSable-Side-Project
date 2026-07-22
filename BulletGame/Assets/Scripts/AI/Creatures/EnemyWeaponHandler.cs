@@ -17,7 +17,7 @@ public class EnemyWeaponHandler : MonoBehaviour{
 
 		//	Bind `actor` to `weapons` and initialize
 		foreach(BaseEnemyWeapon weapon in weapons){
-			weapon.bindActor(actor);
+			//weapon.bindActor(actor);
 			//weapon.start();
 		}
 
@@ -57,6 +57,13 @@ public class EnemyWeaponHandler : MonoBehaviour{
 		//	Return
 		return ans;
 
+	}
+
+
+	//	Set up previews
+	public void fillPreviews(ref List<BaseEnemyWeapon> previewList, BasePreviewImage image){
+		previewList.Clear();
+		foreach(BaseEnemyWeapon weapon in weapons) previewList.Add(weapon.preview(image));
 	}
 
 }
