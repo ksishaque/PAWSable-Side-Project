@@ -21,6 +21,7 @@ using UnityEngine;
 	//	Set up
 	public void onInitialize(){
 		actionList = GetComponent<ActionList>();
+		actionList.Start();
 	}
 
 	//	Call the drone to a caller
@@ -86,6 +87,8 @@ Debug.Log("Called");
 	}
 	static private PlayerDrone createDrone() =>  ObjectInitializer.instantiate(GlobalReferences.instance.playerDronePrefab, GlobalReferences.instance.player.transform).GetComponent<PlayerDrone>();
 	private void transitionTo(Transform parent, Color indicatorColor, bool dissappear = false){
+
+		//	Check if started
 
 		//	Reparent transform
 		transform.SetParent(parent);

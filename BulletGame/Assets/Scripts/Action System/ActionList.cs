@@ -20,8 +20,8 @@ public class ActionList : MonoBehaviour{
 	}
 
 	//	Run `actions`
-	private void Start(){
-		runner = actions.start(gameObject);
+	public void Start(){
+		if(runner == null) runner = actions.start(gameObject);
 	}
 	private void Update(){
 
