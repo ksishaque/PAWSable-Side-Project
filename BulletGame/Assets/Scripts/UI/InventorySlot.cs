@@ -42,9 +42,10 @@ public class InventorySlot : MonoBehaviour
 
     private void CleanGridReference(InventoryItem item)
     {
+
         for (int ix = 0; ix < item.itemData.width; ix++)
         {
-            for (int iy = 0; iy < item.itemData.width; iy++)
+            for (int iy = 0; iy < item.itemData.height; iy++)
             {
                 inventoryItemSlot[item.onGridPositionX + ix, item.onGridPositionY + iy] = null;
             }
