@@ -101,7 +101,7 @@ Debug.Log("Called");
 		StandardScalingFunction compFunc = new StandardScalingFunction(hasBeenCalled, !dissappear);
 
 		//	Set up transition actions
-		actions.addSingleBranchDirect(new MoveAction(new Vector2(0, 0), false, repositionDuration, compFunc));
+		actions.addSingleBranchDirect(new MoveUIAction(new Vector2(0, 0), false, repositionDuration, compFunc));
 		actions.addSingleBranchDirect(new RotateAction(0, RotateAction.Direction.FASTEST, false, repositionDuration, compFunc));
 		if(dissappear) actions.addSingleBranchDirect(new ScaleAction(new Vector2(), false, repositionDuration, compFunc));
 		else actions.addSingleBranchDirect(new ScaleAction(new Vector2(1, 1), false, repositionDuration, compFunc));

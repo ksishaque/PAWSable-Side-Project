@@ -74,7 +74,7 @@ static public partial class Helpers{
 		if(list.Count > 0 && endMode == AIBehaviorList.EndMode.ENDLESS) list[list.Count - 1].setEndless();
 
 		//	Add despawning action
-		else if(endMode == AIBehaviorList.EndMode.DESPAWN) list.Add(new DestroyAction(ObjectDestroyer.Cause.DESPAWN));
+		else if(endMode == AIBehaviorList.EndMode.DESPAWN) list.Add(new DestroyAction(ObjectDestroyer.Cause.TIME_DESPAWN));
 
 	}
 

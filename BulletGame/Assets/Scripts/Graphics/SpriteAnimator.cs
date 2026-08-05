@@ -2,72 +2,99 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //	Component for rendering and synchronizing sprite sheet animations
-public class SpriteAnimator : MonoBehaviour{
+public partial class SpriteAnimator : MonoBehaviour{
+
 
 	//	Layer of animations for one renderer
-	[System.Serializable] private class SpriteLayer{
+	[System.Serializable] private class LayerAnimator{
+
 
 		/*	Variables:
-		renderer: Reference to renderer to update with the animation
-		frames: List of frames to loop through
+		instant: Current instant animation layer playing
+		state: Current animation state layer playing
+		baseAnimation: Base idle animation for this layer
 		frameIndex: Index of current frame being rendered
-		updateRate: Number of animator ticks between each frame update, typically 1
 		updateTimer: Number of animator ticks since the last frame update
 		*/
-		public SpriteRenderer renderer;
-		public List<Sprite> frames;
-		private int frameIndex;
-		public int updateRate;
-		private int updateTimer;
+		private AnimationLayer instant = null;
+		private AnimationLayer state = null;
+		private AnimationLayer baseAnimation;
+		private int frameIndex = 0;
+		private int updateTimer = 0;
+
 
 		//	Constructor
-		public void validate(){
-
-			//	Set up defaults
-			if(frames == null) frames = new List<Sprite>();
-			if(updateRate < 1) updateRate = 1;
-
-			//	Update `renderer`
-			if(renderer != null && frames.Count > 0 && frames[0] != null) renderer.sprite = frames[0];
-
+		public LayerAnimator(AnimationLayer baseAnimation){
+			this.baseAnimation = baseAnimation;
 		}
+
 
 		//	Update per tick
 		public void update(){
 
-			//	Update `updateTimer`
-			updateTimer += 1;
-			if(updateTimer >= updateRate){
+			//	Variable: Animation layer to use
+			AnimationLayer animation = instant;
 
-				//	Update `frameIndex`
-				frameIndex += 1;
-				if(frameIndex >= frames.Count) frameIndex -= frames.Count;
-
-				//	Update `renderer`
-				renderer.sprite = frames[frameIndex];
-
-				//	Reset `updateTimer`
-				updateTimer -= updateRate;
-
+			//	Find `animation`
+			if(animation == null){
+				animation = state;
+				if(animation == null) animation = baseAnimation;
 			}
 
+			//	Update `updateTimer`
+			animation.update(ref frameIndex, ref updateTimer);
+
+		}
+
+
+		//	Mutate animations
+		public void setState(AnimationLayer layer){
+			state = layer;
+		}
+
+		public void setInstant(AnimationLayer layer){
+			instant = layer;
 		}
 
 	}
 
+
+	[Header("Configuration")]
 	/*	Variables:
+	layers: List of animated sprite layers with their base animations
+	animators: List of synchronized sprite animators for each layer
 	frameRate: Number of animator ticks per second
 	tickTimer: Timer for each tick
-	layers: List of synchronized sprite animation layers
 	*/
+	[SerializeField] private List<AnimationLayer> layers = new List<AnimationLayer>();
+	private List<LayerAnimator> animators;
 	[SerializeField] private float frameRate = 8;
 	private float tickTimer = 0;
-	[SerializeField] private List<SpriteLayer> layers = new List<SpriteLayer>();
 
-	//	Run validation and set frame 1 for preview
+
+	[Header("Animations")]
+	/*	Variables:
+	states: Animation states
+	instants: Instant animations
+	currentState: Index of current state (-1 if in base state)
+	*/
+	[SerializeField] private List<Animation.State> states = new List<Animation.State>();
+	[NaughtyAttributes.ShowNonSerializedField] private int currentState = -1;
+
+
+	//	Run validations and set frame 1 for preview
 	private void OnValidate(){
-		foreach(SpriteLayer layer in layers) layer.validate();
+		foreach(AnimationLayer layer in layers) layer.validateAsBase();
+		foreach(Animation.State state in states) state.validate(layers);
 	}
+
+
+	//	Initialize `animators`
+	private void Start(){
+		animators = new List<LayerAnimator>();
+		foreach(AnimationLayer layer in layers) animators.Add(new LayerAnimator(layer));
+	}
+
 
 	//	Update animations
 	private void Update(){
@@ -77,7 +104,7 @@ public class SpriteAnimator : MonoBehaviour{
 		while(tickTimer >= 1){
 
 			//	Update each layer
-			foreach(SpriteLayer layer in layers) layer.update();
+			foreach(LayerAnimator layer in animators) layer.update();
 
 			//	Reset `tickTimer`
 			tickTimer -= 1;
@@ -85,5 +112,47 @@ public class SpriteAnimator : MonoBehaviour{
 		}
 
 	}
+
+
+	//	Call a new animation
+	public void callAnimation(int animationIndex){
+
+		//	Check for return to base
+		if(animationIndex < 0){
+
+			//	TODO: Get and run current animation's to-idle transition
+
+			//	Clear instants and states
+			foreach(LayerAnimator layer in animators) layer.setState(null);
+
+			//	Update `currentState`
+			currentState = -1;
+
+		}
+
+		//	Run and set state animations
+		else if(animationIndex < states.Count){
+			states[animationIndex].run(this);
+			currentState = animationIndex;
+		}
+
+		//	Handle instant animations
+		else{
+		}
+
+	}
+
+
+	//	Set animation layers
+	private void setLayerState(AnimationLayer animation, int layerIndex){
+		animators[layerIndex].setState(animation);
+	}
+	private void setLayerInstant(AnimationLayer animation, int layerIndex){
+		animators[layerIndex].setInstant(animation);
+	}
+
+
+	//	Accessors
+	private int getCurrentStateIndex() => currentState;
 
 }

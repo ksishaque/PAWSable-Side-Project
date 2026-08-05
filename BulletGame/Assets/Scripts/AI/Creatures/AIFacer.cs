@@ -14,7 +14,7 @@ public class AIFacer : MonoBehaviour, IInitialize{
 	target: Target to look at
 	correction: Correction to use after facing `target`
 	*/
-	private Vector2 origSca = Boundary.VECTOR_NULL;
+	private Vector2 origSca = new Vector2(1, 1);
 	private float origRot = 0;
 	[SerializeReference, SubclassSelector] private BaseTarget target = null;
 	[SerializeField] private Correction correction = Correction.FLIP;

@@ -32,7 +32,7 @@ using NaughtyAttributes;
 	*/
 	[SerializeField, MinValue(0)] private float attackInterval = 1;
 	private float attackTimer = 0;
-	/*
+	//*
 	[SerializeField] private bool firing = false;
 	/*/
 	[ShowNonSerializedField] private bool firing = false;

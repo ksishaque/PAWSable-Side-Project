@@ -93,7 +93,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -111,15 +111,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1347ed2479ac84f4c9b3f376921af44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteAnimator
-  frameRate: 8
   layers:
-  - renderer: {fileID: -5861093911066426482}
+  - layer: {fileID: -5861093911066426482}
     frames:
     - {fileID: 2387350858834263329, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
     - {fileID: 90159223660372620, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
     - {fileID: 6715373034654554454, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
     - {fileID: -5429878846525375592, guid: 0c57fa045f049e848a6fb38993ab8546, type: 3}
     updateRate: 1
+  frameRate: 8
+  states: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!50 &3922202191667363167
 Rigidbody2D:
   serializedVersion: 5

@@ -70,10 +70,7 @@ using UnityEngine;
 	private float time = 0;
 	[SerializeReference, SubclassSelector] private BaseScalingFunction completionFunction = new StandardScalingFunction();
 	protected float completion => completionFunction.operate(time / Duration);
-	protected float dCompletion{
-		get;
-		private set;
-	} = 0;
+	protected float dCompletion => completion - pCompletion;
 	protected float pCompletion{
 		get;
 		private set;
@@ -102,9 +99,6 @@ using UnityEngine;
 		time += remainingTime;
 		remainingTime = time - Duration;
 		if(remainingTime > 0) time = Duration;
-
-		//	Determine `dCompletion`
-		dCompletion = completion - pCompletion;
 
 		//	Update
 		update();

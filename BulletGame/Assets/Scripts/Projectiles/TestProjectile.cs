@@ -20,7 +20,7 @@ using UnityEngine;
         lifespan -= Time.deltaTime;
         if (lifespan <= 0)
         {
-            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DESPAWN);
+            ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.TIME_DESPAWN);
         }
     }
 
