@@ -11,7 +11,7 @@ public interface IDestroy{
 [RequireComponent(typeof(ActionList))] public class ObjectDestroyer : MonoBehaviour{
 
 	//	Types of destruction
-	public enum Cause{DEFAULT = 0, DEATH = 1 << 0, STOW_WEAPON = 1 << 1, DESPAWN = 1 << 2, PROJECTILE_EXPIRE = 1 << 3}
+	public enum Cause{DEFAULT = 0, DEATH = 1 << 0, STOW_WEAPON = 1 << 1, BOUNDARY_DESPAWN = 1 << 2, TIME_DESPAWN = 1 << 3, PROJECTILE_EXPIRE = 1 << 4}
 
 	//	Class that assigns a set of actions to run upon a certain type of destruction
 	[System.Serializable] private class OnDestroyLayer{

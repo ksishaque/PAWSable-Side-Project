@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //	Action for moving the actor
-[System.Serializable] public class MoveAction : BaseTimedAction{
+[System.Serializable] public class MoveUIAction : BaseTimedAction{
 
 	[Header("Moving")]
 	/*	Variables:
@@ -14,22 +14,22 @@ using UnityEngine;
 	[SerializeField] private bool relative;
 
 	//	Constructor
-	public MoveAction(){
+	public MoveUIAction(){
 		position = new Vector2(0, 0);
 		relative = false;
 	}
-	public MoveAction(Vector2 position, bool relative, float duration, BaseScalingFunction completionFunction) : base(duration, completionFunction){
+	public MoveUIAction(Vector2 position, bool relative, float duration, BaseScalingFunction completionFunction) : base(duration, completionFunction){
 		this.position = position;
 		this.relative = relative;
 	}
-	public MoveAction(MoveAction origin) : base(origin){
+	public MoveUIAction(MoveUIAction origin) : base(origin){
 		position = origin.position;
 		relative = origin.relative;
 	}
 
 	//	Overrides
 	override public BaseAction clone(){
-		return new MoveAction(this);
+		return new MoveUIAction(this);
 	}
 	override protected void start(){
 

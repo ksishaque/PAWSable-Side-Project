@@ -22,9 +22,37 @@ MonoBehaviour:
   - enemy: {fileID: 4292958115550031967, guid: faae7f8366e7f004194eb1c283f8baef, type: 3}
     delay: 0
     spawnPosition: {x: 0, y: 0}
-    behavior: []
+    behavior:
+    - rid: 2732494333959209032
     endMode: 0
-  duration: 10
+  duration: 600
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2732494333959209032
+      type: {class: LoopAction, ns: , asm: Assembly-CSharp}
+      data:
+        actions:
+        - rid: 2732494333959209033
+        - rid: 2732494333959209034
+        - rid: 2732494333959209035
+        - rid: 2732494333959209036
+        loops: -1
+    - rid: 2732494333959209033
+      type: {class: WaitAction, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 2
+    - rid: 2732494333959209034
+      type: {class: AnimateAction, ns: , asm: Assembly-CSharp}
+      data:
+        animator: {fileID: 0}
+        animation: 0
+    - rid: 2732494333959209035
+      type: {class: WaitAction, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 8
+    - rid: 2732494333959209036
+      type: {class: AnimateAction, ns: , asm: Assembly-CSharp}
+      data:
+        animator: {fileID: 0}
+        animation: -1

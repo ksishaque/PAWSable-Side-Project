@@ -63,6 +63,9 @@ public partial class BaseAction{
 			public void fireWeapon(int weapon, int mode){
 				actor.GetComponent<EnemyWeaponHandler>().getWeapon(weapon).fire(mode);
 			}
+			public void animate(int animationIndex){
+				actor.GetComponent<SpriteAnimator>().callAnimation(animationIndex);
+			}
 
 		}
 
@@ -83,17 +86,21 @@ public partial class BaseAction{
 		public void setScale(Vector2 scale);
 
 
-		//	Destruction
-		public void destroySelf(ObjectDestroyer.Cause cause);
-		public void destroySelfDirect();
+		//	Animation
+		public void animate(int animationIndex);
+
+
+		//	Enemy behaviors
+		public void fireWeapon(int weapon, int mode);
 
 
 		//	Component access
 		public Component getComponent<Component>();
 
 
-		//	Enemy behaviors
-		public void fireWeapon(int weapon, int mode);
+		//	Destruction
+		public void destroySelf(ObjectDestroyer.Cause cause);
+		public void destroySelfDirect();
 
 	}
 	

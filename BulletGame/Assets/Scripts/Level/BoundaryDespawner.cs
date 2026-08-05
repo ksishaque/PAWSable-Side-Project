@@ -17,7 +17,7 @@ public class BoundaryDespawner : MonoBehaviour{
 
 	//	Check and destroy
 	private void Update(){
-		if(Boundary.instance.checkBounds(bounds, transform.position, Physics.getRadius(collider))) ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.DESPAWN);
+		if(Boundary.instance.checkBounds(bounds, transform.position, Physics.getRadius(collider))) ObjectDestroyer.destroy(gameObject, ObjectDestroyer.Cause.BOUNDARY_DESPAWN);
 	}
 
 }

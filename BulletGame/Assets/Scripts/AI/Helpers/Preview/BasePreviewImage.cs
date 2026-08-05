@@ -218,6 +218,7 @@ public class BehaviorListPreviewImage : BasePreviewImage, BaseAction.IActor{
 	public void fireWeapon(int weapon, int mode){
 		weaponPreviews[weapon].fire(mode);
 	}
+	public void animate(int animationIndex){}
 
 
 	//	Helper

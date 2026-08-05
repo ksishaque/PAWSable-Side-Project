@@ -5,7 +5,10 @@ using NaughtyAttributes;
 [System.Serializable] public class FireWeaponBehavior : BaseAction{
 
 	[Header("Firing")]
-	//	Variable: Velocity to set
+	/*	Variables:
+	weaponDropdown: Weapon to update
+	modeDropdown: Firing mode to set
+	*/
 	[SerializeField, Dropdown("weaponDropdown")] private int weapon = 0;
 	[SerializeField, Dropdown("modeDropdown")] private int mode = 0;
 
