@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a90d3cb25bc3194fa8e3d4a9fb490e7, type: 3}
+  m_Name: Miner00
+  m_EditorClassIdentifier: Assembly-CSharp::AISpawnPattern
+  priority:
+    baseValue: 1
+    randomness: 0.5
+    recency: -2
+    playerHealth: 0
+    enemyPopulation: 0
+  spawns:
+  - enemy: {fileID: 4292958115550031967, guid: c87d79259dc22254392960e81e7106c4, type: 3}
+    delay: 0
+    spawnPosition: {x: 7, y: 0}
+    behavior:
+    - rid: 8505002233352683602
+    - rid: 8505002233352683608
+    endMode: 0
+  duration: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: 8505002233352683602
+      type: {class: MoveConstantBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        velocity:
+          rid: 8505002233352683603
+    - rid: 8505002233352683603
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: -1, y: 0}
+    - rid: 8505002233352683608
+      type: {class: MoveSerpentineBehavior, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        forwardVelocity:
+          rid: 8505002233352683609
+        amplitude: 1
+        wavelength: 1
+    - rid: 8505002233352683609
+      type: {class: InspectorVector2/Vector2D, ns: , asm: Assembly-CSharp}
+      data:
+        vector: {x: -1, y: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 
+// TODO: How Items are storing data should be updated to be able to store non-rectangle shapes, have item descriptions, etc...
 public class ItemData : ScriptableObject
 {
     public int width = 1;
