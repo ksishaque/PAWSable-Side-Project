@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 //	Component for rendering and synchronizing sprite sheet animations
 public partial class SpriteAnimator : MonoBehaviour{
@@ -79,7 +80,7 @@ public partial class SpriteAnimator : MonoBehaviour{
 	currentState: Index of current state (-1 if in base state)
 	*/
 	[SerializeField] private List<Animation.State> states = new List<Animation.State>();
-	[NaughtyAttributes.ShowNonSerializedField] private int currentState = -1;
+	[ShowNonSerializedField] private int currentState = -1;
 
 
 	//	Run validations and set frame 1 for preview
@@ -154,5 +155,27 @@ public partial class SpriteAnimator : MonoBehaviour{
 
 	//	Accessors
 	private int getCurrentStateIndex() => currentState;
+	public DropdownList<int> getAnimationIndexDropdown(){
+
+		/*	Variables:
+		ans: Return value / dropdown menu of animations
+		i: Next index value to set
+		*/
+		DropdownList<int> ans = new DropdownList<int>();
+		int i = -1;
+
+		//	Set base as -1
+		ans.Add("[Base]", i);
+
+		//	Copy each state animation
+		foreach(Animation.State state in states){
+			i += 1;
+			ans.Add(state.getName(), i);
+		}
+
+		//	Return
+		return ans;
+
+	}
 
 }
