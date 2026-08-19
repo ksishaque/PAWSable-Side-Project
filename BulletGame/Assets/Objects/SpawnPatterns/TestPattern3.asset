@@ -36,7 +36,7 @@ MonoBehaviour:
         - rid: 2732494333959209033
         - rid: 2732494333959209034
         - rid: 2732494333959209035
-        - rid: 2732494333959209036
+        - rid: 2732494651285045319
         loops: -1
     - rid: 2732494333959209033
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
@@ -45,14 +45,12 @@ MonoBehaviour:
     - rid: 2732494333959209034
       type: {class: AnimateAction, ns: , asm: Assembly-CSharp}
       data:
-        animator: {fileID: 0}
-        animation: 0
+        animation: -2
     - rid: 2732494333959209035
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
         duration: 8
-    - rid: 2732494333959209036
+    - rid: 2732494651285045319
       type: {class: AnimateAction, ns: , asm: Assembly-CSharp}
       data:
-        animator: {fileID: 0}
-        animation: -1
+        animation: -2

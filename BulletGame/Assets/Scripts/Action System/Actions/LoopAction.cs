@@ -34,6 +34,9 @@ using UnityEngine;
 	override public BaseAction clone(){
 		return new LoopAction(this);
 	}
+	override public void validate(GameObject actor){
+		foreach(BaseAction action in actions) action.validate(actor);
+	}
 	override protected void update(){
 
 		//	Check `loops`

@@ -1,27 +1,28 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 //	Action for moving the actor
 [System.Serializable] public class AnimateAction : BaseInstantAction{
 
-	[Header("Moving")]
+	[Header("Animation")]
 	/*	Variables:
-	animator: Animator to update
 	animation: Index of animation to call
 	*/
-	[SerializeField] private SpriteAnimator animator;
-	[SerializeField] private int animation;
+	[SerializeField, Dropdown("dropdown")] private int animation;
+
+	/*	Variables:
+	dropdown: Dropdown for setting animations by index
+	*/
+	[SerializeField, HideInInspector] private DropdownList<int> dropdown = new DropdownList<int>{{"INVALID", -2}};
 
 	//	Constructor
 	public AnimateAction(){
-		animator = null;
 		animation = -1;
 	}
-	public AnimateAction(SpriteAnimator animator, int animationIndex){
-		this.animator = animator;
+	public AnimateAction(int animationIndex){
 		animation = animationIndex;
 	}
 	public AnimateAction(AnimateAction origin){
-		animator = origin.animator;
 		animation = origin.animation;
 	}
 
@@ -29,9 +30,28 @@ using UnityEngine;
 	override public BaseAction clone(){
 		return new AnimateAction(this);
 	}
+	override public void validate(GameObject actor){
+
+		//	Variable: Animator or actor of `actor`
+		SpriteAnimator animator = actor.GetComponent<SpriteAnimator>();
+
+		//	Check `handler`
+		if(animator == null){
+
+			//	Set error call
+			Debug.LogError("Animation behavior cannot find a proper animator");
+
+			//	Set invalid dropdown
+			dropdown = new DropdownList<int>{{"INVALID", -2}};
+
+		}
+
+		//	Set `dropdown`
+		else dropdown = animator.getAnimationIndexDropdown();
+
+	}
 	override protected void update(){
-		if(animator == null) instance.actor.animate(animation);
-		else animator.callAnimation(animation);
+		instance.actor.animate(animation);
 	}
 
 }

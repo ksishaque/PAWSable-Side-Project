@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 4799702075753780335}
   - component: {fileID: 1474033794597090669}
   m_Layer: 8
-  m_Name: Pusle
+  m_Name: Pulse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

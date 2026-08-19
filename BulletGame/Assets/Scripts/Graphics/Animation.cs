@@ -1,3 +1,4 @@
+#define TRANSITIONSx
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public partial class SpriteAnimator{
 			//	Variable: List of animation frames for each layer
 			[SerializeReference, SubclassSelector] private List<AnimationLayer> animationLayers;
 
-
+#if TRANSITIONS
 			[Header("Transitions")]
 			/*	Variables:
 			TransFromAll: Transition when entering from any other state
@@ -26,6 +27,7 @@ public partial class SpriteAnimator{
 			defaultInFrame: Default frame translation when entering the state
 			*/
 			[SerializeField] private FrameTransition defaultInFrame = null;
+#endif
 
 
 			//	Validation
@@ -58,7 +60,7 @@ public partial class SpriteAnimator{
 
 		}
 
-
+/*
 		//	Callable instant animations
 		[System.Serializable] public class Instant : Animation{
 
@@ -70,7 +72,9 @@ public partial class SpriteAnimator{
 			public string getName() => name;
 
 		}
+//*/
 
+#if TRANSITIONS
 		//	Transitional animations
 		[System.Serializable] public class BaseTransition : Animation{
 
@@ -82,6 +86,7 @@ public partial class SpriteAnimator{
 		//	In-frame transitions
 		[System.Serializable] public class FrameTransition : BaseTransition{
 		}
+#endif
 
 	}
 
