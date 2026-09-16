@@ -220,6 +220,9 @@ MonoBehaviour:
     updateRate: 2
   frameRate: 8
   states: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!50 &3922202191667363167
 Rigidbody2D:
   serializedVersion: 5
