@@ -256,6 +256,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &297914545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2506515737534178331, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+  m_PrefabInstance: {fileID: 810372742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &810372742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,15 +316,39 @@ PrefabInstance:
     - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
       propertyPath: weaponSlots.Array.data[0].weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 43c038a98a6ca914697c1646a9f97438, type: 2}
+      objectReference: {fileID: 11400000, guid: 98d9cc6b1a27d834fa2963c37e258201, type: 2}
+    - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+      propertyPath: weaponSlots.Array.data[1].weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c696f236b05ea446b3bc8366577cb5e, type: 2}
+    - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+      propertyPath: weaponSlots.Array.data[2].weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 64f72f008da2a244da24cc23bb0c5243, type: 2}
     - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
       propertyPath: weaponSlots.Array.data[0].projectiles.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+      propertyPath: weaponSlots.Array.data[1].projectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+      propertyPath: weaponSlots.Array.data[2].projectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
       propertyPath: 'weaponSlots.Array.data[0].projectiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 3c889ec661208c14c9f8dbe1a6d6c785, type: 2}
+      objectReference: {fileID: 11400000, guid: e2494e4bb454a5e418547bf93c48b76f, type: 2}
+    - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+      propertyPath: 'weaponSlots.Array.data[1].projectiles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e2494e4bb454a5e418547bf93c48b76f, type: 2}
+    - target: {fileID: 8991607945857787624, guid: 6ed8c5648d5834c4a853f6a72d6095b6, type: 3}
+      propertyPath: 'weaponSlots.Array.data[2].projectiles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e2494e4bb454a5e418547bf93c48b76f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -371,7 +400,7 @@ MonoBehaviour:
       type: {class: AISpawnPattern/SpawnPlan, ns: , asm: Assembly-CSharp}
       data:
         weight: 1
-        pattern: {fileID: 11400000, guid: e425f886dc15a3f47b7408dd7968e461, type: 2}
+        pattern: {fileID: 11400000, guid: 4a378f033253b28489589fc7f55de678, type: 2}
 --- !u!114 &1079701729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdc3f6f265e52e4c9a31a7d9eb7d010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalReferences
-  player: {fileID: 0}
+  player: {fileID: 297914545}
   blankProjectileLoot: {fileID: 11400000, guid: 3c3836f6245f55d43ab45c385baa038d, type: 2}
   playerDronePrefab: {fileID: 9196405769501993316, guid: ae6d1d3c31809d4499e8cfa14c665598, type: 3}
 --- !u!1 &2099120940
