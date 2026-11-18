@@ -4,6 +4,7 @@ using NaughtyAttributes;
 //	Base class for all possible enemy weapons (because not all weapons are cannons)
 [System.Serializable] public abstract class BaseEnemyWeapon{
 
+
 	//	Variable: Name of the weapon
 	[SerializeField] private string name;
 
@@ -32,7 +33,7 @@ using NaughtyAttributes;
 	*/
 	[SerializeField, MinValue(0)] private float attackInterval = 1;
 	private float attackTimer = 0;
-	//*
+	/*
 	[SerializeField] private bool firing = false;
 	/*/
 	[ShowNonSerializedField] private bool firing = false;

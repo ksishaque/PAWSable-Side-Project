@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: -3164963413265983160}
   - component: {fileID: 8991607945857787624}
   - component: {fileID: 2177835240896698752}
+  - component: {fileID: -2783884643584745285}
   - component: {fileID: 6704645678389323033}
   - component: {fileID: 3906530455690859341}
   - component: {fileID: -7047683106168294873}
@@ -190,6 +191,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-2783884643584745285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506515737534178331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b706f7090bc9a74fa01c5813238af2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics
 --- !u!50 &6704645678389323033
 Rigidbody2D:
   serializedVersion: 5
